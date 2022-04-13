@@ -1,0 +1,13 @@
+.question-toggler {
+   position: fixed;
+   z-index: 8;
+   bottom: 3.5rem;
+   right: 3.5rem;
+   display: none;
+   @screen md {
+      display: inline-flex;
+   }
+   .modal-prevent-scroll & {
+      right: calc(var(--body-scrollbar-width) + 3.5rem);
+   }
+}

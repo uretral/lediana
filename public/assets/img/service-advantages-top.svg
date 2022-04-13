@@ -1,0 +1,10 @@
+<svg width="1920px" height="276px" viewBox="0 0 1920 276" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mask-Group" fill="#fff">
+            <path
+                d="M80,48 C160,96 320,192 480,240 C560,264 640,276 720,276 L0,276 L0,0 L80,48 Z M1920,276 L720,276 C800,276 880,264 960,240 C1028.8,219.36 1097.6,189.8448 1166.4,159.802635 L1176,155.608125 C1264,117.1425 1352,78.45 1440,57 C1600,19 1760,38 1840,48 L1920,57 L1920,276 Z"
+                id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

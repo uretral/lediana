@@ -1,0 +1,86 @@
+.footer {
+   margin-top: auto;
+   position: relative;
+   z-index: 1;
+   background-color: #fff;
+}
+
+.soc-links {
+   flex-wrap: wrap;
+   display: flex;
+   align-items: center;
+   &__list {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 1.6rem;
+   }
+   &__link {
+      width: 4.8rem;
+      height: 4.8rem;
+      border-radius: 50%;
+      overflow: hidden;
+      @apply bg-divider text-black transition-base;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      &::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         z-index: -1;
+         opacity: 0;
+         @apply transition-base;
+      }
+      svg {
+         fill: currentColor;
+      }
+      &:hover {
+         @apply text-white;
+         &::before {
+            opacity: 1;
+         }
+      }
+      &--facebook {
+         svg {
+            width: 2.2rem;
+            height: 4rem;
+            margin-bottom: -0.7rem;
+         }
+         &::before {
+            background-color: #1877f2;
+         }
+      }
+      &--youtube {
+         svg {
+            width: 2.5rem;
+            height: 2rem;
+         }
+         &::before {
+            background-color: #ff0000;
+         }
+      }
+      &--vk {
+         svg {
+            width: 3rem;
+            height: 1.8rem;
+         }
+         &::before {
+            background-color: #2787f5;
+         }
+      }
+      &--instagram {
+         svg {
+            width: 2.7rem;
+            height: 2.7rem;
+         }
+         &::before {
+            background: radial-gradient(99.11% 99.11% at 26.56% 107.7%, #ffdd55 0%, #ffdd55 10%, #ff543e 50%, #c837ab 100%);
+         }
+      }
+   }
+}

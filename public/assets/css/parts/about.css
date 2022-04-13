@@ -1,0 +1,609 @@
+.about {
+   @screen lg {
+      padding-top: 5rem;
+   }
+   @screen xl {
+      padding-top: 10rem;
+   }
+   .container {
+      @screen lg {
+         gap: 4rem;
+         display: grid;
+         grid-template-columns: 1.1fr 1fr;
+      }
+   }
+   &__title {
+      font-weight: bold;
+      @apply text-mob-2xl lg:text-2xl;
+      margin-bottom: 0.8rem;
+      @screen lg {
+         margin-bottom: 2.4rem;
+      }
+   }
+   &__desc {
+      @apply text-mob-lg lg:text-lg;
+   }
+   &__photo {
+      margin-bottom: 2.4rem;
+      max-width: 40rem;
+      @screen lg {
+         margin-bottom: 0;
+         max-width: none;
+      }
+   }
+}
+
+.about-stats {
+   margin-top: 2.4rem;
+   @screen lg {
+      margin-top: 4rem;
+   }
+   br {
+      display: none;
+   }
+   @screen xl {
+      display: flex;
+      justify-content: space-between;
+      br {
+         display: block;
+      }
+   }
+   &__cell {
+      font-weight: bold;
+      display: flex;
+      margin-bottom: 2.4rem;
+      @screen xl {
+         margin-bottom: 0;
+      }
+      svg {
+         width: 2.4rem;
+         height: 2.4rem;
+         color: #f2dfd8;
+         margin-right: 1.6rem;
+      }
+   }
+}
+
+.about-slider {
+   @apply bg-divider;
+   position: relative;
+   z-index: 1;
+   text-align: center;
+   overflow: hidden;
+   @screen md {
+      text-align: left;
+   }
+   &::before {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 10.7rem;
+      background-image: url(../img/down-wave.svg);
+      background-position: center bottom;
+      z-index: 2;
+   }
+}
+
+.about-slide {
+   .container {
+      position: relative;
+      z-index: 1;
+      padding-top: 3.2rem;
+      @screen md {
+         padding-top: 6.4rem;
+         height: 44rem;
+      }
+      @screen lg {
+         height: 53.5rem;
+      }
+   }
+   &__title {
+      @apply text-mob-3xl md:text-2xl lg:text-3xl;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+   }
+   &__desc {
+      @apply text-mob-lg md:text-lg;
+      @screen md {
+         max-width: 50rem;
+      }
+   }
+   &__info {
+      @screen md {
+         max-width: 45rem;
+      }
+      @screen lg {
+         max-width: none;
+      }
+   }
+   &__photo {
+      margin: 0 calc(var(--container-padding) * -1);
+      @screen md {
+         margin: 0;
+         position: absolute;
+         top: 0;
+         z-index: -1;
+         right: -15rem;
+         width: 54rem;
+      }
+      @screen lg {
+         right: -15rem;
+         width: 74rem;
+      }
+      @screen xl {
+         right: -3rem;
+      }
+   }
+}
+
+///////////
+.service-blocks {
+   @apply bg-primary-light;
+   background-clip: content-box;
+   position: relative;
+   z-index: 1;
+   padding-top: 10.4rem;
+   padding-bottom: 0;
+   @screen lg {
+      padding-bottom: 29.3rem;
+      padding-top: 27rem;
+   }
+   .container {
+      padding-top: 4rem;
+      @screen lg {
+         padding-top: 0;
+      }
+   }
+   &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-size: cover;
+      z-index: -1;
+      height: 10.4rem;
+      background-image: url(../img/service-gift-top.svg);
+      background-position: center top;
+      @screen lg {
+         background-position: center top;
+         background-image: url(../img/about-wave-top.svg);
+         height: 60.9rem;
+      }
+   }
+   &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      background-image: url(../img/about-wave-bottom.jpg);
+      background-size: cover;
+      background-position: center bottom;
+      height: 29.3rem;
+      z-index: -1;
+      bottom: 0;
+      @screen lg {
+         bottom: 9rem;
+      }
+   }
+}
+.service-block {
+   text-align: center;
+   margin-bottom: 2rem;
+   @screen lg {
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      text-align: left;
+   }
+   &__info {
+      max-width: 46rem;
+      margin-left: auto;
+      margin-right: auto;
+      @screen lg {
+         margin-right: 0;
+      }
+   }
+   &__title {
+      @apply text-mob-3xl lg:text-2xl;
+      font-weight: bold;
+      margin-bottom: 1.6rem;
+   }
+   &__desc {
+      @apply text-mob-lg lg:text-lg;
+      margin-bottom: 0.8rem;
+      @screen lg {
+         margin-bottom: 4rem;
+      }
+   }
+   &__photo {
+      @screen lg {
+         max-width: 63.5rem;
+         width: 60%;
+         margin-left: auto;
+      }
+   }
+   &__price {
+      font-weight: bold;
+      font-size: 3rem;
+      @screen lg {
+         align-items: center;
+         display: flex;
+         font-size: 4.8rem;
+      }
+      span {
+         display: block;
+         margin-bottom: 2.4rem;
+         @screen lg {
+            margin-bottom: 0;
+            margin-right: 2.4rem;
+         }
+      }
+   }
+}
+
+.photo-gallery {
+   text-align: center;
+   margin-bottom: 2rem;
+   position: relative;
+   padding-top: 15rem;
+   z-index: 2;
+   overflow: hidden;
+   @screen xl {
+      overflow: visible;
+   }
+   &__name {
+      position: absolute;
+      left: 0;
+      right: 0;
+      line-height: 1;
+      text-align: center;
+      color: #feede7;
+      font-weight: 900;
+      font-size: 20vw;
+      top: 10vw;
+      @screen md {
+         top: 0vw;
+      }
+      @screen lg {
+         top: -2vw;
+      }
+      @screen xl {
+         top: -10rem;
+         font-size: 30.5rem;
+      }
+   }
+   &__list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      @screen lg {
+         flex-wrap: nowrap;
+      }
+      img {
+         @apply rounded-sm;
+      }
+      li {
+         position: relative;
+         margin: -1.5rem;
+         width: 50%;
+         @screen md {
+            width: 33.33%;
+         }
+         @screen lg {
+            margin: 0 -1.5rem;
+            width: auto;
+         }
+      }
+      li:nth-child(1) {
+         transform: rotate(-9deg) translateY(-5%);
+         z-index: 1;
+      }
+      li:nth-child(2) {
+         transform: rotate(-3.62deg) translateY(-5%);
+         z-index: 2;
+      }
+      li:nth-child(3) {
+         transform: rotate(3.56deg);
+         z-index: 3;
+      }
+      li:nth-child(4) {
+         transform: rotate(10.18deg) translateY(-5%);
+         z-index: 4;
+      }
+      li:nth-child(5) {
+         transform: rotate(4.32deg) translateY(-10%);
+         z-index: 5;
+      }
+      li:nth-child(6) {
+         transform: rotate(-8.59deg) translateY(-5%);
+         z-index: 6;
+      }
+      li:nth-child(7) {
+         transform: rotate(-2.65deg);
+         z-index: 7;
+         display: none;
+         @screen lg {
+            display: block;
+         }
+      }
+   }
+}
+
+.service-reviews {
+   @apply bg-divider;
+   position: relative;
+   z-index: 1;
+   margin-bottom: 4rem;
+   padding: 0 0 10rem;
+   @screen lg {
+      padding: 20rem 0 20rem;
+   }
+   @screen xl {
+      margin-bottom: 8rem;
+      padding: 30rem 0 24.8rem;
+   }
+   &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      background-image: url(../img/service-reviews-top.svg);
+      background-size: cover;
+      z-index: -1;
+      background-position: right top;
+      height: 15.1rem;
+      top: -10rem;
+      @screen lg {
+         top: 0;
+         height: 24.1rem;
+         background-position: left top;
+      }
+   }
+   &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: url(../img/service-reviews-bottom.svg);
+      background-size: cover;
+      background-position: center bottom;
+      height: 24.8rem;
+      z-index: -1;
+      bottom: -7rem;
+      @screen lg {
+         bottom: 0;
+      }
+   }
+   .container {
+      padding-top: 10rem;
+      @screen lg {
+         padding-top: 0;
+      }
+   }
+   .swiper-pagination-bullet {
+      @apply bg-white;
+   }
+   .swiper-pagination-bullet-active {
+      @apply bg-primary;
+   }
+}
+
+.service-create {
+   @apply bg-divider;
+   position: relative;
+   background-clip: content-box;
+   z-index: 1;
+   overflow: hidden;
+   padding-top: 8rem;
+   @screen lg {
+      padding-top: 32rem;
+   }
+   &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-image: url(../img/service-editor-top.svg);
+      z-index: -1;
+      height: 22rem;
+      background-position: center top;
+      @screen lg {
+         background-position: left top;
+         height: 42rem;
+      }
+   }
+   &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 42rem;
+      background-image: url(../img/service-editor-top.svg);
+      z-index: -1;
+   }
+   .container {
+      padding-bottom: 15rem;
+      @screen md {
+         padding-top: 4rem;
+      }
+      @screen lg {
+         padding-top: 0;
+         margin-top: -15rem;
+         display: flex;
+      }
+   }
+   &__title {
+      @apply text-mob-2xl lg:text-2xl;
+      font-weight: bold;
+      margin-bottom: 1.6rem;
+   }
+   &__info {
+      flex-shrink: 0;
+      @screen lg {
+         width: 33rem;
+      }
+   }
+   &__desc {
+      @apply text-mob-lg lg:text-lg;
+      margin-bottom: 3.2rem;
+   }
+   &__photo {
+      flex-grow: 1;
+      margin-top: 4.5rem;
+      @screen lg {
+         margin-top: 0;
+         margin-left: -10rem;
+         margin-bottom: -5rem;
+         margin-right: -15rem;
+      }
+   }
+}
+
+.service-gift {
+   @apply bg-primary-light;
+   position: relative;
+   z-index: 1;
+   text-align: center;
+   margin-top: -27rem;
+   @screen md {
+      margin-top: -10rem;
+   }
+   @screen lg {
+      margin-top: 0;
+      padding-bottom: 15rem;
+      text-align: left;
+   }
+   @screen xl {
+      padding-bottom: 3rem;
+   }
+   &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      background-image: url(../img/service-gift-top.svg);
+      z-index: -1;
+      background-size: cover;
+      background-position: left 80% top;
+      height: 13.4rem;
+      top: -13.3rem;
+      @screen lg {
+         height: 23.4rem;
+         top: -23.3rem;
+         background-position: center top;
+      }
+   }
+   .container {
+      padding-bottom: 40rem;
+      position: relative;
+      overflow: hidden;
+      @screen md {
+         padding-bottom: 45rem;
+      }
+      @screen lg {
+         overflow: visible;
+         padding-bottom: 0;
+         display: flex;
+      }
+   }
+   &__title {
+      @apply text-mob-3xl lg:text-2xl;
+      font-weight: bold;
+      margin-bottom: 1.6rem;
+   }
+   &__info {
+      @screen md {
+         padding-top: 4rem;
+      }
+      @screen lg {
+         width: 50%;
+         padding-top: 7rem;
+      }
+      @screen xl {
+         padding-top: 15rem;
+      }
+   }
+   &__desc {
+      @apply text-lg;
+      margin-bottom: 3.2rem;
+   }
+   &__photo {
+      position: absolute;
+      bottom: -3rem;
+      left: 2rem;
+      right: -2rem;
+      @screen md {
+         left: 40%;
+      }
+      @screen lg {
+         position: static;
+         width: 50%;
+         transform: translateX(2rem);
+         margin-bottom: -13rem;
+      }
+      @screen xl {
+         margin-bottom: 0;
+         margin-top: -8rem;
+      }
+   }
+}
+
+.service-advantages {
+   position: relative;
+   z-index: 1;
+   .container {
+      padding-top: 7rem;
+      @screen xl {
+         padding-top: 13rem;
+      }
+   }
+   &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      background-image: url(../img/service-advantages-top.svg);
+      z-index: -1;
+      background-size: cover;
+      background-position: center top;
+      top: -15.6rem;
+      height: 15.6rem;
+      @screen xl {
+         top: -27.6rem;
+         height: 27.6rem;
+      }
+   }
+}
+
+.service-shipping {
+   @apply bg-divider;
+   position: relative;
+   margin-bottom: -9rem;
+   padding: 3rem 0 10rem;
+   margin-top: 8rem;
+   @screen lg {
+      margin-top: 15rem;
+      padding: 9rem 0 15rem;
+   }
+   &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      background-size: cover;
+      background-position: center top;
+      background-image: url(../img/shipping-top.svg);
+      top: -13rem;
+      height: 13.1rem;
+      @screen lg {
+         top: -23rem;
+         height: 23.1rem;
+      }
+   }
+}

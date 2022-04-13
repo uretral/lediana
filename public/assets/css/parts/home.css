@@ -1,0 +1,228 @@
+.main-slider {
+   @apply bg-divider;
+
+   position: relative;
+   z-index: 1;
+   text-align: center;
+   @screen md {
+      text-align: left;
+   }
+   &::before {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 10.7rem;
+      background-image: url(../img/down-wave.svg);
+      background-position: center bottom;
+      z-index: 2;
+   }
+   .swiper-pagination-wrapper {
+      position: absolute;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+      top: 20rem;
+      z-index: 4;
+      @screen md {
+         top: 28rem;
+      }
+      @screen lg {
+         top: 33rem;
+      }
+   }
+   .swiper-pagination {
+      margin-left: 0;
+      pointer-events: auto;
+      display: inline-flex;
+      gap: 1.6rem;
+   }
+   .swiper-pagination-bullet {
+      cursor: pointer;
+   }
+   .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+      opacity: 1;
+      background-color: #fff;
+   }
+}
+
+.main-slide {
+   .container {
+      position: relative;
+      z-index: 1;
+      padding-top: 3.2rem;
+      @screen md {
+         padding-top: 6.4rem;
+         height: 44rem;
+      }
+      @screen lg {
+         height: 53.5rem;
+      }
+   }
+   &__title {
+      @apply text-mob-3xl md:text-2xl lg:text-3xl;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+   }
+   &__desc {
+      @apply text-mob-lg md:text-lg;
+      padding-bottom: 3rem;
+      @screen md {
+         padding-bottom: 0;
+      }
+   }
+   &__photo {
+      margin: 0 calc(var(--container-padding) * -1);
+      @screen md {
+         margin: 0;
+         position: absolute;
+         top: 0;
+         z-index: -1;
+         right: -15rem;
+         width: 54rem;
+      }
+      @screen lg {
+         right: -15rem;
+         width: 74rem;
+      }
+      @screen xl {
+         right: -3rem;
+      }
+   }
+}
+
+.info-block {
+   @apply rounded md:border md:border-divider;
+   overflow: hidden;
+   @screen md {
+      min-height: 28.8rem;
+      display: flex;
+   }
+   @screen lg {
+      min-height: 40.8rem;
+   }
+   &__title {
+      @apply text-lg md:text-xl;
+      font-weight: bold;
+      margin-bottom: 0.3em;
+   }
+   &__price {
+      @apply text-lg md:text-xl;
+   }
+   &__desc {
+      display: flex;
+      margin-top: 2.4rem;
+      @apply text-secondary;
+   }
+   &__icon {
+      width: 2.4rem;
+      height: 2.4rem;
+      @apply fill-primary;
+      flex-shrink: 0;
+      margin-right: 1.6rem;
+   }
+   &__info {
+      /* max-width: 27rem; */
+      padding: 0 1.6rem 3.2rem 1.6rem;
+      @screen md {
+         padding: 4.8rem 0 3.2rem 3.2rem;
+      }
+   }
+   &__photo {
+      width: 100%;
+      @screen md {
+         flex-shrink: 0;
+         margin-left: auto;
+         width: 22rem;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+      @screen xl {
+         width: 27rem;
+      }
+   }
+}
+
+.home-footer {
+   @apply bg-black text-white;
+   position: relative;
+   z-index: 1;
+   overflow: hidden;
+   text-align: center;
+   @screen lg {
+      text-align: left;
+   }
+   &__container {
+      padding-bottom: 32rem;
+      padding-top: 10rem;
+      @screen sm {
+         padding-top: 15rem;
+         padding-bottom: 50rem;
+      }
+      @screen md {
+         padding-top: 18rem;
+         padding-bottom: 50rem;
+      }
+      @screen lg {
+         padding-top: 21.5rem;
+         padding-bottom: 10.5rem;
+      }
+      position: relative;
+   }
+   &::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: 0;
+      height: 10.7rem;
+      background-image: url(../img/up-wave.svg);
+      background-position: center top;
+      z-index: -1;
+   }
+   &--dark-top::before {
+      background-image: url(../img/up-wave-dark.svg);
+   }
+   &__title {
+      @apply text-mob-3xl md:text-2xl lg:text-3xl;
+      font-weight: 300;
+   }
+   &__subtitle {
+      @apply text-mob-3xl md:text-2xl lg:text-3xl;
+      font-weight: bold;
+      margin-top: 0.3em;
+      @screen sm {
+         margin-top: 0;
+      }
+   }
+   &__desc {
+      margin-top: 2.4rem;
+      @apply text-mob-lg md:text-lg;
+   }
+   .btn {
+      margin-top: 4rem;
+   }
+
+   &__photo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 35.7rem;
+      bottom: -7.5rem;
+      @screen sm {
+         bottom: -10rem;
+         width: 50.5rem;
+      }
+      @screen lg {
+         bottom: -4rem;
+         left: auto;
+         transform: none;
+         right: -10rem;
+      }
+      @screen xl {
+         right: 4rem;
+      }
+   }
+}

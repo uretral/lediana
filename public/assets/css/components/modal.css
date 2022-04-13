@@ -1,0 +1,126 @@
+:root {
+   --modal-z: 99;
+   --body-scrollbar-width: 0px;
+}
+@keyframes modalShow {
+   from {
+      opacity: 0;
+      visibility: hidden;
+   }
+}
+@keyframes modalClose {
+   to {
+      opacity: 0;
+      visibility: hidden;
+   }
+}
+@keyframes modalContentShow {
+   from {
+      opacity: 0;
+      transform: translateY(4rem);
+   }
+}
+@keyframes modalContentClose {
+   to {
+      opacity: 0;
+      transform: translateY(-4rem);
+   }
+}
+.modal-prevent-scroll {
+   overscroll-behavior: none;
+   touch-action: none;
+   overflow: hidden;
+   padding-right: var(--body-scrollbar-width);
+}
+.modal-backdrop {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   transform: translateZ(0);
+   z-index: calc(var(--modal-z) - 1);
+}
+.modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 100;
+   display: flex;
+   z-index: var(--modal-z);
+   transform: translateZ(0);
+   overflow-x: hidden;
+   overflow-y: auto;
+   overscroll-behavior-y: contain;
+   scrollbar-gutter: stable;
+   &:focus {
+      outline: none;
+   }
+}
+.modal-content {
+   margin: auto;
+   max-width: 100%;
+   overflow: hidden;
+   z-index: var(--modal-z);
+   position: relative;
+}
+
+///////////////////////////////////
+
+.modal {
+   &--open {
+      animation: modalShow 0.35s;
+      @media (prefers-reduced-motion: reduce) {
+         animation: none;
+      }
+   }
+   &--close {
+      animation: modalClose 0.35s;
+      @media (prefers-reduced-motion: reduce) {
+         animation: none;
+      }
+   }
+}
+.modal--default,
+.modal--status {
+   --duration: 0.15s;
+   .modal-content {
+      --duration: 0.15s;
+      &--open {
+         animation: modalContentShow 0.35s;
+         @media (prefers-reduced-motion: reduce) {
+            animation: none;
+         }
+      }
+      &--close {
+         animation: modalContentClose 0.35s;
+         @media (prefers-reduced-motion: reduce) {
+            animation: none;
+         }
+      }
+   }
+}
+
+//////////////////////////////////////
+
+.modal {
+   @apply bg-divider/80;
+   backdrop-filter: blur(0.8rem);
+   padding: 1rem;
+   @screen md {
+      padding: 2rem;
+   }
+}
+.modal-content {
+   width: 116rem;
+   background-color: #fff;
+   @apply rounded;
+}
+
+.modal-close {
+   position: absolute;
+   top: 1.6rem;
+   right: 1.6rem;
+}

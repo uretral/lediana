@@ -1,0 +1,146 @@
+// Sizes
+.btn {
+   /* font-weight: bold; */
+}
+@responsive {
+   .btn--md {
+      --size: 4.8rem;
+      --padding: 2.4rem;
+      --font-size: 1.6rem;
+      --border-radius: 99rem;
+      font-weight: bold;
+   }
+   .btn--sm {
+      --size: 3.2rem;
+      --padding: 1.6rem;
+      --font-size: 1.4rem;
+      --border-radius: theme("borderRadius.sm");
+   }
+}
+
+.btn--primary {
+   --color: theme("colors.black.DEFAULT");
+   --bg: theme("colors.primary.DEFAULT");
+   &:hover {
+      --color: theme("colors.white");
+      --bg: theme("colors.primary.DEFAULT");
+   }
+   &:active {
+      --color: theme("colors.white");
+      --bg: theme("colors.primary.DEFAULT");
+   }
+   /* &:hover {
+      --color: #fff;
+      --bg: theme("colors.black.DEFAULT");
+   }
+   &:active {
+      --color: #fff;
+      --bg: theme("colors.black.dark");
+   } */
+}
+@responsive {
+   .btn--secondary {
+      --color: #000;
+      --bg: theme("colors.divider.DEFAULT");
+      &:hover {
+         --color: #fff;
+         --bg: theme("colors.black.DEFAULT");
+      }
+      &:active {
+         --color: #fff;
+         --bg: theme("colors.black.dark");
+      }
+   }
+   .btn--secondary-dark {
+      --color: #000;
+      --bg: theme("colors.divider.dark");
+      &:hover {
+         --color: #fff;
+         --bg: theme("colors.black.DEFAULT");
+      }
+      &:active {
+         --color: #fff;
+         --bg: theme("colors.black.dark");
+      }
+   }
+}
+.btn--white {
+   --color: #000;
+   --bg: theme("colors.white");
+   &:hover {
+      --color: #fff;
+      --bg: theme("colors.black.DEFAULT");
+   }
+   &:active {
+      --color: #fff;
+      --bg: theme("colors.black.dark");
+   }
+   &:where(.btn--outlined) {
+      --border-color: rgba(theme("colors.white"), 0.3);
+      --color: theme("colors.white");
+      &:hover {
+         --border-color: rgba(theme("colors.white"), 0.5);
+         --color: theme("colors.white");
+      }
+      &:active {
+         --border-color: rgba(theme("colors.white"), 0.7);
+         --color: theme("colors.white");
+      }
+   }
+}
+
+.btn--black {
+   --color: #fff;
+   --bg: theme("colors.black.DEFAULT");
+   &:hover {
+      --color: #fff;
+      --bg: theme("colors.black.DEFAULT");
+   }
+   &:active {
+      --color: #fff;
+      --bg: theme("colors.black.dark");
+   }
+   &:where(.btn--outlined) {
+      --border-color: rgba(theme("colors.black.DEFAULT"), 0.1);
+      --color: theme("colors.black.DEFAULT");
+      &:hover {
+         --border-color: rgba(theme("colors.black.DEFAULT"), 0.5);
+         --color: theme("colors.black.DEFAULT");
+      }
+      &:active {
+         --border-color: rgba(theme("colors.black.DEFAULT"), 0.7);
+         --color: theme("colors.black.DEFAULT");
+      }
+   }
+}
+.btn--red {
+   --color: #fff;
+   --bg: theme("colors.red.DEFAULT");
+   &:hover {
+      --color: #fff;
+      --bg: theme("colors.red.DEFAULT");
+   }
+   &:active {
+      --color: #fff;
+      --bg: theme("colors.red.DEFAULT");
+   }
+}
+
+.btn-close,
+.btn-action {
+   width: 2.4rem;
+   height: 2.4rem;
+   @apply bg-black-dark/30 hover:bg-primary-light active:bg-primary;
+   border-radius: 0.3rem;
+   svg {
+      height: 100%;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      fill: #fff;
+   }
+   &--sm {
+      width: 1.6rem;
+      height: 1.6rem;
+   }
+}

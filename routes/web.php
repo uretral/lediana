@@ -13,6 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+
+Route::get('/', '\App\Http\Controllers\Pages\IndexController@index')->name('index');
+Route::get('/{slug}', '\App\Http\Controllers\Pages\PageRouteController@index')->name('page');
+
+
+
+
+
+
+
+Route::any('/test',function (){
+
+    phpinfo();
+
+//    $r = new \App\Models\Content\Slide();
+//
+//    dump($r->adminFields());
+
+
 });

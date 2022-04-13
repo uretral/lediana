@@ -1,0 +1,16 @@
+<svg width="1932px" height="293px" viewBox="0 0 1932 293" version="1.1" xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="about-wave-bottom" transform="translate(0.000000, -0.000000)">
+      <mask id="mask-2" fill="white">
+        <use xlink:href="#path-1"></use>
+      </mask>
+      <use id="Rectangle" fill="#FFFFFF"
+        transform="translate(966.000000, 146.500000) scale(-1, 1) rotate(-180.000000) translate(-966.000000, -146.500000) "
+        xlink:href="#path-1"></use>
+      <path
+        d="M0,204.672 L80,195.061 C160,185.45 320,166.227 480,195.061 C640,223.895 800,300.786 960,291.174 C1120,281.563 1280,185.45 1440,127.781 C1600,70.1134 1760,50.8908 1840,41.2794 L1920,31.6681 L1920,-1386 L1840,-1386 C1760,-1386 1600,-1386 1440,-1386 C1280,-1386 1120,-1386 960,-1386 C800,-1386 640,-1386 480,-1386 C320,-1386 160,-1386 80,-1386 L0,-1386 L0,204.672 Z"
+        id="Path" fill="#F2DFD8" mask="url(#mask-2)"></path>
+    </g>
+  </g>
+</svg>

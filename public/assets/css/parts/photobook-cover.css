@@ -1,0 +1,278 @@
+.editor-container {
+   position: relative;
+   align-self: flex-start;
+   @screen lg {
+      padding: 0 6rem;
+   }
+}
+
+.editor-btn {
+   width: 4.8rem;
+   height: 4.8rem;
+   background-color: #fff;
+   border-radius: 50%;
+   @apply text-primary;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   svg {
+      width: 1.8rem;
+      height: 1.8rem;
+      fill: currentColor;
+   }
+   &:hover {
+      @apply bg-primary text-white;
+   }
+   &:disabled {
+      background-color: transparent;
+      @apply text-secondary;
+   }
+}
+.editor-btns {
+   position: absolute;
+   top: 50%;
+   left: 0;
+   right: 0;
+   transform: translateY(-50%);
+   justify-content: space-between;
+   display: none;
+   @screen lg {
+      display: flex;
+   }
+}
+.edit-photo {
+   position: relative;
+   &__photo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+   }
+   &__actions {
+      position: absolute;
+      top: 0.8rem;
+      right: 0.8rem;
+      display: flex;
+      gap: 0.8rem;
+   }
+   &__placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      @apply bg-primary-light;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: calc(15 / 13);
+      font-size: 1rem;
+      @screen sm {
+         font-size: 1.3rem;
+      }
+      &::before {
+         content: "";
+         background-image: url(../img/placeholder.svg);
+         background-size: contain;
+         background-position: center;
+         margin-bottom: 0.4rem;
+         width: 3.9rem;
+         height: 3.2rem;
+         @screen sm {
+            width: 6rem;
+            height: 4.9rem;
+         }
+      }
+   }
+}
+
+///////////////////////////////////////
+
+.photobook-cover-wrapper {
+   --w: 740;
+   --h: 340;
+   --cw: 740;
+   --p: calc(var(--cw) / var(--w));
+   padding-bottom: calc(var(--h) / var(--w) * 100%);
+   position: relative;
+}
+.photobook-cover {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   display: grid;
+   gap: calc(0.8rem * var(--p));
+   grid-template-columns: 3.4fr 0.44fr 3.4fr;
+   --br: calc(0.8rem * var(--p));
+}
+.photobook-cover-left,
+.photobook-cover-right,
+.photobook-cover-middle {
+   @apply bg-black text-white;
+   border-radius: var(--br);
+   position: relative;
+   span {
+      display: block;
+   }
+}
+.corner {
+   position: absolute;
+   top: calc(-1.6rem * var(--p));
+   left: calc(-1.6rem * var(--p));
+   right: calc(-1.6rem * var(--p));
+   bottom: calc(-1.6rem * var(--p));
+   background-image: url(../img/corner-tl.svg), url(../img/corner-tr.svg), url(../img/corner-br.svg), url(../img/corner-bl.svg);
+   background-position: left top, right top, right bottom, left bottom;
+   background-size: calc(3.6rem * var(--p));
+   pointer-events: none;
+}
+.photobook-cover-left {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   align-items: center;
+   &__logo {
+      width: calc(11.3rem * var(--p));
+      height: calc(8.1rem * var(--p));
+      background-image: url(../img/cover-logo-light.svg);
+      background-position: center;
+      background-size: cover;
+   }
+   &__title {
+      font-size: calc(0.8rem * var(--p));
+      margin-top: calc(1.5rem * var(--p));
+      line-height: calc(2.4rem * var(--p));
+      margin-bottom: calc(5.5rem * var(--p));
+   }
+}
+.photobook-cover-middle {
+   span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      writing-mode: vertical-lr;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      font-size: calc(1rem * var(--p));
+      letter-spacing: 0.03em;
+      transform: scale(-1);
+   }
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+[data-type="cover"][data-style="3"] {
+   .photobook-cover-right {
+      text-align: center;
+      .edit-photo {
+         height: calc(19rem * var(--p));
+         margin-top: calc(3.2rem * var(--p));
+      }
+      span {
+         padding: 0 calc(2rem * var(--p));
+      }
+      span:nth-of-type(1) {
+         margin-top: calc(1.6rem * var(--p));
+         line-height: calc(24 / 16);
+         text-transform: uppercase;
+         font-size: calc(1.6rem * var(--p));
+         letter-spacing: 0.03em;
+      }
+      span:nth-of-type(2) {
+         margin-top: calc(0.6rem * var(--p));
+         line-height: calc(16 / 11);
+         font-size: calc(1.1rem * var(--p));
+      }
+   }
+}
+
+.layout-preview {
+   padding-bottom: 100%;
+   width: 100%;
+   @apply bg-secondary;
+   mask-image: var(--img);
+   mask-size: contain;
+   mask-repeat: no-repeat;
+   mask-position: center;
+   display: block;
+   &.active {
+      @apply bg-primary;
+   }
+}
+
+///////////////////
+
+.cover-materials-list {
+   @apply bg-white text-black rounded-sm w-full relative z-2;
+   overflow: hidden;
+   opacity: 0;
+   height: 0;
+   transition: 0.2s;
+   margin-top: -7rem;
+   @screen lg {
+      margin-top: -2.6rem;
+   }
+   &.active {
+      opacity: 1;
+      visibility: visible;
+      height: var(--height);
+   }
+}
+
+.cover-materials-toggler {
+   &.active {
+      @apply rounded-b-none;
+   }
+}
+
+@keyframes animateHeightShow {
+   from {
+      height: var(--height);
+      opacity: 1;
+   }
+   to {
+      opacity: 0;
+      height: 0;
+   }
+}
+@keyframes animateHeightHide {
+   from {
+      opacity: 0;
+      height: 0;
+   }
+   to {
+      height: var(--height);
+      opacity: 1;
+   }
+}
+.covers-layouts {
+   overflow: hidden;
+   margin-top: 7rem;
+   @screen lg {
+      margin-top: 2.6rem;
+   }
+   .cover-materials-active & {
+      animation: 0.2s animateHeightShow forwards;
+   }
+   body:not(.cover-materials-active) & {
+      animation: 0.2s animateHeightHide forwards;
+   }
+}
+.cover-materials-hide {
+   transition: 0.2s;
+}
+.cover-materials-active {
+   .cover-materials-hide {
+      opacity: 0.3;
+   }
+}

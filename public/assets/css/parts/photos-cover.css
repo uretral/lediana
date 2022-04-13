@@ -1,0 +1,44 @@
+.editor-container {
+   &--photos {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      @screen md {
+         width: calc(35rem + 6rem * 2);
+      }
+      @screen lg {
+         width: calc(51.2rem + 6rem * 2);
+      }
+   }
+}
+
+.photos-cover-wrapper {
+   /* max-width: 52rem;
+   margin-left: auto;
+   margin-right: auto; */
+   background-color: #fff;
+   --w: 512;
+   --h: 740;
+   --cw: 512;
+   --p: calc(var(--cw) / var(--w));
+   padding-bottom: calc(var(--h) / var(--w) * 100%);
+   position: relative;
+   @screen below-sm {
+      .corner {
+         --p: 0.5;
+      }
+   }
+}
+.photos-cover {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   &[data-style="1"] {
+      .edit-photo {
+         height: 100%;
+         width: 100%;
+      }
+   }
+}
