@@ -63,6 +63,27 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @mixin \Eloquent
  * @property string|null $menu_title
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereMenuTitle($value)
+ * @property string $name
+ * @property int|null $price_from
+ * @property string|null $gallery_title
+ * @property string|null $advantages_title
+ * @property int|null $promotion_id
+ * @property-read About|null $about
+ * @property-read \Illuminate\Database\Eloquent\Collection|Advantage[] $advantage
+ * @property-read int|null $advantage_count
+ * @property-read Creations|null $creation
+ * @property-read \Illuminate\Database\Eloquent\Collection|CrossLink[] $crossLink
+ * @property-read int|null $cross_link_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|PhotoTitle[] $galleryTitle
+ * @property-read int|null $gallery_title_count
+ * @property-read Gift|null $gift
+ * @property-read Info|null $info
+ * @property-read Promotion|null $promotion
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereAdvantagesTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereGalleryTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page wherePriceFrom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page wherePromotionId($value)
  */
 class Page extends Model
 {

@@ -64,7 +64,7 @@ class PageExtender extends PageController
     }
 
     public function promotionTab(Form $form) {
-        $form->tab('Консультация', function (Form $form) {
+        $form->tab('Закрывающий блок', function (Form $form) {
             $form->select('promotion_id','Выберите')->options(Promotion::all()->pluck('name','id'));
         });
     }

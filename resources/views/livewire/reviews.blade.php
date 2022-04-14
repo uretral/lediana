@@ -44,7 +44,7 @@
             <button class="btn @if($btn) {{$btn}} @else btn--secondary @endif btn--md flex-grow justify-start btn--no-loader hidden lg:inline-flex" wire:click="load">
                 <!-- <div class="loader wh-24 mr-8"></div> -->
                 <svg aria-hidden="true" class="fill-current wh-24 mr-8">
-                    <use href="/svg/svg.svg#circle-arrow-down"></use>
+                    <use href="/assets/svg/svg.svg#circle-arrow-down"></use>
                 </svg>
                 Загрузить ещё
             </button>

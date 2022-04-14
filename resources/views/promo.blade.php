@@ -205,7 +205,7 @@
 
                 <div class="calc-sm-title mt-20 lg:mt-40">
                     <svg aria-hidden="true">
-                        <use href="/svg/svg.svg#pages"></use>
+                        <use href="/assets/svg/svg.svg#pages"></use>
                     </svg>
                     Количество разворотов
                 </div>
@@ -285,7 +285,7 @@
                     <button class="btn btn--md btn--primary mt-8 md:mt-0">
                         Заказать фотокнигу
                         <svg aria-hidden="true" class="wh-16 fill-current ml-5 mt-2">
-                            <use href="/svg/svg.svg#arrow-right"></use>
+                            <use href="/assets/svg/svg.svg#arrow-right"></use>
                         </svg>
                     </button>
                 </div>

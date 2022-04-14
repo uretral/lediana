@@ -1,8 +1,10 @@
-<div class="modal modal--default" hidden data-modal id="requisites">
+<div class="modal modal--default modal--opened modal--full-opened" hidden data-modal id="requisites">
+{{--    modal modal--default modal--opened modal--full-opened--}}
+{{--    data-modal="" id="requisites" aria-modal="true" aria-hidden="false" role="dialog" tabindex="-1"--}}
     <!-- <div class="modal-backdrop" data-modal-backdrop></div> -->
     <div class="modal-content" data-modal-content>
         <button class="btn-base btn-close modal-close" aria-label="Закрыть" data-close-modal>
-            <svg aria-hidden="true"><use href="/svg/svg.svg#close"></use></svg>
+            <svg aria-hidden="true"><use href="/assets/svg/svg.svg#close"></use></svg>
         </button>
         <div class="prose px-10 md:px-60 py-40 md:py-70 text-mob-lg md:text-lg">
             <h2>Реквизиты</h2>
@@ -27,10 +29,10 @@
 <div class="modal modal--status bg-white/80" hidden data-modal id="modal-success">
     <div class="modal-content w-400 pt-48 sm:pt-64 pb-70 px-16 bg-divider text-center" data-modal-content>
         <button class="btn-base btn-close modal-close" aria-label="Закрыть" data-close-modal>
-            <svg aria-hidden="true"><use href="/svg/svg.svg#close"></use></svg>
+            <svg aria-hidden="true"><use href="/assets/svg/svg.svg#close"></use></svg>
         </button>
         <div class="wh-140 sm:wh-170 bg-primary-light rounded-full inline-grid place-content-center mb-24">
-            <svg aria-hidden="true" class="wh-85 fill-white"><use href="/svg/svg.svg#checked"></use></svg>
+            <svg aria-hidden="true" class="wh-85 fill-white"><use href="/assets/svg/svg.svg#checked"></use></svg>
         </div>
         <div class="text-mob-2xl sm:text-2xl font-bold">Попап успеха</div>
         <div class="mt-8">Поздравляем, все получилось!</div>
@@ -41,7 +43,7 @@
 <div class="modal modal--status" hidden data-modal id="modal-confirm">
     <div class="modal-content w-400 pt-48 sm:pt-64 pb-70 px-16 text-center" data-modal-content>
         <button class="btn-base btn-close modal-close" aria-label="Закрыть" data-close-modal>
-            <svg aria-hidden="true"><use href="/svg/svg.svg#close"></use></svg>
+            <svg aria-hidden="true"><use href="/assets/svg/svg.svg#close"></use></svg>
         </button>
         <div class="text-mob-2xl sm:text-2xl font-bold">Вы уверены?</div>
         <div class="mt-8">Назад пути нет!</div>
@@ -55,7 +57,7 @@
 <div class="modal modal--status" hidden data-modal id="modal-delete-book">
     <div class="modal-content w-400 pt-48 sm:pt-64 pb-70 px-16 text-center" data-modal-content>
         <button class="btn-base btn-close modal-close" aria-label="Закрыть" data-close-modal>
-            <svg aria-hidden="true"><use href="/svg/svg.svg#close"></use></svg>
+            <svg aria-hidden="true"><use href="/assets/svg/svg.svg#close"></use></svg>
         </button>
         <div class="text-mob-2xl sm:text-xl font-bold">Удалить фотокнигу?</div>
         <div class="mt-8">После удаления вы не сможете её редактировать и отправить в печать</div>
@@ -70,7 +72,7 @@
     <!-- <div class="modal-backdrop" data-modal-backdrop></div> -->
     <div class="modal-content w-600" data-modal-content>
         <button class="btn-base btn-close modal-close" aria-label="Закрыть" data-close-modal>
-            <svg aria-hidden="true"><use href="/svg/svg.svg#close"></use></svg>
+            <svg aria-hidden="true"><use href="/assets/svg/svg.svg#close"></use></svg>
         </button>
         <div class="px-16 sm:px-32 pt-48 pb-64 grid gap-16">
             <h2 class="text-lg font-bold">Редактирование текста</h2>
@@ -129,12 +131,12 @@
 <div class="modal modal--default" hidden data-modal id="cube-video">
     <div class="modal-content w-900 xxl:w-950 below-sm:rounded-sm" data-modal-content>
         <button class="btn-base btn-close modal-close below-sm:top-10 below-sm:right-10" aria-label="Закрыть" data-close-modal>
-            <svg aria-hidden="true"><use href="/svg/svg.svg#close"></use></svg>
+            <svg aria-hidden="true"><use href="/assets/svg/svg.svg#close"></use></svg>
         </button>
         <div class="px-10 sm:px-60 pt-45 sm:pt-30 pb-60 xxl:pb-100">
             <div class="video-wrapper bg-divider mb-16 sm:mb-32">
                 <button class="btn btn--primary btn--md btn--icon center">
-                    <svg aria-hidden="true" class="wh-18"><use href="/svg/svg.svg#play"></use></svg>
+                    <svg aria-hidden="true" class="wh-18"><use href="/assets/svg/svg.svg#play"></use></svg>
                 </button>
             </div>
             <div class="text-mob-2xl sm:text-xl xxl:text-2xl font-bold">Узнайте подробнее о конструкции фотокубика</div>
@@ -142,3 +144,8 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+
+    });
+</script>

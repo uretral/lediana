@@ -48,7 +48,7 @@
                 </div>
             </a>
             <button class="btn-base mob-toggler" data-toggle-modal="mob-menu" aria-label="Меню">
-                <svg aria-hidden="true"><use href="/svg/svg.svg#menu"></use></svg>
+                <svg aria-hidden="true"><use href="/assets/svg/svg.svg#menu"></use></svg>
             </button>
         </div>
     </div>

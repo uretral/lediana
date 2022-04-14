@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use App\Models\Services\MenuType;
 use App\Models\Settings\Communication;
+use App\Models\Settings\Social;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
@@ -11,6 +12,7 @@ class Footer extends Component
 {
     public object $menu;
     public Collection $communications;
+    public Collection $socials;
     /**
      * Create a new component instance.
      *
@@ -25,6 +27,7 @@ class Footer extends Component
         }
         $this->menu = (object)$result;
         $this->communications = Communication::all()->keyBy('slug');
+        $this->socials = Social::whereActive(1)->orderBy('sort')->get();
     }
 
     /**

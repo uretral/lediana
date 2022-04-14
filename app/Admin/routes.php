@@ -15,11 +15,10 @@ Route::group([
     $router->resource('content/slides', \Content\SlideController::class);
     $router->resource('block/promotion', \Blocks\PromotionController::class);
     $router->resource('settings/communications', \Settings\CommunicationController::class);
+    $router->resource('settings/socials', \Settings\SocialController::class);
     $router->resource('pages', PageController::class);
     $router->resource('menu', \Services\MenuTypeController::class);
     $router->resource('products', \Product\ProductController::class);
 
     $router->get('/', 'HomeController@index')->name('home');
 });
-
-//  $router->resource('settings/anketa', \Anketa\AnketaQuestionController::class );

@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \Illuminate\Database\Eloquent\Builder|PromoCard whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PromoCard whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read Page|null $page
  */
 class PromoCard extends Model
 {

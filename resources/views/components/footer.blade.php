@@ -4,7 +4,7 @@
             <!-- <div class="modal-backdrop" data-modal-backdrop></div> -->
             <div class="modal-content w-600 bg-divider" data-modal-content>
                 <button class="btn-base btn-close modal-close" aria-label="Закрыть" data-close-modal>
-                    <svg aria-hidden="true"><use href="/svg/svg.svg#close"></use></svg>
+                    <svg aria-hidden="true"><use href="/assets/svg/svg.svg#close"></use></svg>
                 </button>
                 <div class="px-32 pt-48 pb-64 space-y-16 sm:space-y-32">
                     <h2 class="text-lg font-bold">Вопрос</h2>
@@ -48,26 +48,13 @@
             <div class="soc-links mt-20 lg:mt-0">
                 <div class="soc-links__title w-full mb-8 md:mb-0 md:w-auto mr-12 lg:hidden xl:block">Мы в соцмедиа</div>
                 <ul class="soc-links__list">
-                    <li>
-                        <a href="#" target="_blank" class="soc-links__link soc-links__link--facebook" aria-label="Facebook">
-                            <svg aria-hidden="true"><use href="/assets/svg/svg.svg#facebook"></use></svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank" class="soc-links__link soc-links__link--youtube" aria-label="Youtube">
-                            <svg aria-hidden="true"><use href="/assets/svg/svg.svg#youtube"></use></svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank" class="soc-links__link soc-links__link--vk" aria-label="VK">
-                            <svg aria-hidden="true"><use href="/assets/svg/svg.svg#vk"></use></svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank" class="soc-links__link soc-links__link--instagram" aria-label="Instagram">
-                            <svg aria-hidden="true"><use href="/assets/svg/svg.svg#instagram"></use></svg>
-                        </a>
-                    </li>
+                    @foreach($socials as $social)
+                        <li>
+                            <a href="{{$social->link}}" target="_blank" class="soc-links__link soc-links__link--facebook" aria-label="{{$social->title}}">
+                                <svg aria-hidden="true"><use href="/assets/svg/svg.svg#{{$social->icon}}"></use></svg>
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -89,7 +76,7 @@
 
                 <div class="inline-flex gap-8 sm:gap-16">
 
-                    <svg aria-hidden="true" class="w-18 h-18"><use href="/svg/svg.svg#phone"></use></svg>
+                    <svg aria-hidden="true" class="w-18 h-18"><use href="/assets/svg/svg.svg#phone"></use></svg>
 
                     <div class="space-y-4 sm:space-y-0 sm:contents">
 
@@ -104,11 +91,9 @@
                 <a class="font-bold transition hover:text-primary" href="#requisites">Реквизиты</a>
             </div>
             <div class="flex flex-col sm:flex-row gap-8 sm:gap-24 mt-28 sm:mt-8 col-span-full">
-                <div class="copyrights">©2021 www.lediana.ru, Все права защищены</div>
+                <div class="copyrights">{{$communications['copyrights']->view_value}}</div>
                 <a href="#" class="transition hover:text-primary">Политика конфиденциальности</a>
             </div>
         </div>
     </div>
 </footer>
-
-@dump($communications['phone']->value)
