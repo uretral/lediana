@@ -15,23 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::get('/lk', '\App\Http\Controllers\Pages\DashboardController@index')->middleware(['auth'])->name('dashboard');
 
 Route::get('/', '\App\Http\Controllers\Pages\IndexController@index')->name('index');
 Route::get('/{slug}', '\App\Http\Controllers\Pages\PageRouteController@index')->name('page');
 
+require __DIR__.'/auth.php';
 
-
-
-
-
-
-Route::any('/test',function (){
-
-    phpinfo();
-
-//    $r = new \App\Models\Content\Slide();
-//
-//    dump($r->adminFields());
-
-
-});

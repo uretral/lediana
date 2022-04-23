@@ -4128,6 +4128,9 @@ mark {
     z-index: 2;
     right: 0;
 }
+.account-preview__link.no-arrow::after {
+    display: none;
+}
 @media (min-width: 1024px) {
     .account-preview__link::after {
         right: 3.2rem

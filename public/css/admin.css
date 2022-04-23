@@ -1,0 +1,14 @@
+h4.pull-right {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+span.label {
+    font-size: 11px;
+    /*min-width: 35px;*/
+    /*display: inline-flex;*/
+}
+
+span.label.label-text {
+    color: grey;
+}

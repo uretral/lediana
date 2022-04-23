@@ -3,6 +3,7 @@
 namespace App\Models\Product;
 
 use App\Models\Content\Slide;
+use App\Models\Item\ItemSize;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -36,14 +37,21 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWeight($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|ItemSize[] $size
+ * @property-read int|null $size_count
  */
 class Product extends Model
 {
     protected $guarded = [];
 
-
-    public function hasSlide(): HasOne
+    public function size(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasOne(Slide::class);
+        return $this->hasMany(ItemSize::class,'product_id','id');
     }
+
+
+//    public function hasSlide(): HasOne
+//    {
+//        return $this->hasOne(Slide::class);
+//    }
 }

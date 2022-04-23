@@ -14,6 +14,7 @@ use App\Models\Blocks\Promotion;
 use App\Models\Blocks\Reviews;
 use App\Models\Blocks\Slide;
 use App\Models\Blocks\Text;
+use App\Models\Product\Product;
 use App\Models\Services\Menu;
 use Encore\Admin\Traits\AdminBuilder;
 use Encore\Admin\Traits\ModelTree;
@@ -84,6 +85,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page wherePriceFrom($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page wherePromotionId($value)
+ * @property int|null $product_id
+ * @property-read Product|null $calculator
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereProductId($value)
  */
 class Page extends Model
 {
@@ -149,6 +153,11 @@ class Page extends Model
     public function advantage(): HasMany
     {
         return $this->hasMany(Advantage::class,'page_id','id');
+    }
+
+    public function calculator(): HasOne
+    {
+        return $this->hasOne(Product::class,'id','product_id');
     }
 
 }

@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers\Product;
 
+use App\Admin\Actions\Price\Replicate;
+use App\Models\Item\ItemSizeTitle;
 use App\Models\Product\Product;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
@@ -14,7 +16,7 @@ class ProductController extends Controller
 {
     use HasResourceActions;
 
-    public string $titleColumn = 'title';
+/*    public string $titleColumn = 'title';
     public string $titleLabel = 'Заголовок';
 
     public string $descriptionColumn = 'description';
@@ -33,7 +35,7 @@ class ProductController extends Controller
     public string $priceLabel = 'Цена от';
 
     public string $weightColumn = 'weight';
-    public string $weightLabel = 'Вес, гр.';
+    public string $weightLabel = 'Вес, гр.';*/
 
     /**
      * Index interface.
@@ -101,15 +103,16 @@ class ProductController extends Controller
     protected function grid()
     {
         $grid = new Grid(new Product);
-
         $grid->id('ID');
-        $grid->title($this->titleLabel);
-        $grid->description($this->descriptionLabel);
-        $grid->text($this->textLabel);
-        $grid->slug($this->slugLabel);
-        $grid->photo_preview($this->photoPreviewLabel);
-        $grid->price($this->priceLabel);
-        $grid->weight($this->weightLabel);
+        $grid->column('title','Название');
+        $grid->column('slug','Ссылка')->display(function (){
+            return '<a href="prices/'.$this->id.'">  В список размеров </a>';
+        });
+
+        $grid->actions(function ($actions) {
+            $actions->disableDelete();
+            $actions->disableView();
+        });
 
         return $grid;
     }
@@ -123,15 +126,17 @@ class ProductController extends Controller
     protected function detail($id)
     {
         $show = new Show(Product::findOrFail($id));
-
         $show->id('ID');
+        $show->title('Название');
+
+/*        $show->id('ID');
         $show->title($this->titleLabel);
         $show->description($this->descriptionLabel);
         $show->text($this->textLabel);
         $show->slug($this->slugLabel);
         $show->photo_preview($this->photoPreviewLabel);
         $show->price($this->priceLabel);
-        $show->weight($this->weightLabel);
+        $show->weight($this->weightLabel);*/
 
         return $show;
     }
@@ -144,7 +149,22 @@ class ProductController extends Controller
     protected function form(): Form
     {
         $form = new Form(new Product);
+        $form->display('ID');
+        $form->text('slug', 'Слаг');
+        $form->text('title', 'Название товара')->rules('required');
+/*
+        $form->tab('Главное', function (Form $form){
 
+        })->tab('size', function (Form $form){
+            $form->hasMany('size','', function (Form\NestedForm $form){
+                $form->number('width', 'ширина');
+                $form->number('height', 'высота');
+                $form->multipleSelect('sizes','Размеры')->options(ItemSizeTitle::pluck('title','id'));
+            })->mode('table')->setWidth(12,12);
+        })
+            ;*/
+
+/*
         $form
             ->tab('Карточка', function (Form $form) {
                 $form->display('ID');
@@ -188,7 +208,13 @@ class ProductController extends Controller
 
 
         });
+*/
 
+//        $form->saving(function (Form $form) {
+////            if (!$form->slug) {
+//                $form->slug = str_slug('product-'.$form->title);
+////            }
+//        });
 
         return $form;
     }

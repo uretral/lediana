@@ -4,25 +4,33 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page;
-use App\Models\Settings\Communication;
+use App\Traits\Settings;
 
 class PageRouteController extends Controller
 {
+    use Settings;
 
     public function index($slug) {
-        $page = Page::whereSlug($slug)->with([
-            'promotion',
-            'info',
-            'about',
-            'crossLink.link',
-            'galleryTitle',
-            'creation',
-            'texts'
-        ])->first();
-        $communications = Communication::all();
+        $this->init();
+        $page = $this->getPage($slug);
         return view($page->type)->with([
             'page' => $page,
-            'communications' => $communications,
         ]);
+    }
+    private function getPage($slug){
+        try {
+            return Page::whereSlug($slug)->with([
+                'promotion',
+                'info',
+                'about',
+                'crossLink.link',
+                'galleryTitle',
+                'creation',
+                'texts',
+                'calculator',
+            ])->first();
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 }

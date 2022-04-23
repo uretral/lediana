@@ -1,4 +1,3 @@
-
 <header class="header">
     <div class="header-top">
         <div class="container">
@@ -15,22 +14,37 @@
                 </ul>
             </nav>
             <div class="account-preview">
-                <a href="#" class="account-preview__link">
-                    <div class="account-preview__name">
-                        <span>Alexander</span>
-                        <span>Ebert</span>
-                    </div>
-                    <div class="account-preview__photo">
-                        <img src="/assets/img/avatar.jpg" alt="user photo" />
-                    </div>
-                </a>
-                <ul class="account-preview__list">
-                    <li><a href="/account-orders.html">Мои заказы</a></li>
-                    <li><a href="/account-drafts.html">Мои черновики</a></li>
-                    <li><a href="/account-sales.html">Персональные акции</a></li>
-                    <li><a href="/account-edit.html">Личные данные</a></li>
-                    <li><a href="#">Выйти</a></li>
-                </ul>
+                @if(Auth::user())
+                    <a href="{{route('dashboard')}}" class="account-preview__link">
+                        <div class="account-preview__name">
+                            <span>{{Auth::user()->name}}</span>
+                            <span>{{Auth::user()->surname}}</span>
+                        </div>
+                        <div class="account-preview__photo">
+                            <img src="/assets/img/avatar.jpg" alt="user photo" />
+                        </div>
+                    </a>
+                    <ul class="account-preview__list">
+                        <li><a href="/account-orders.html">Мои заказы</a></li>
+                        <li><a href="/account-drafts.html">Мои черновики</a></li>
+                        <li><a href="/account-sales.html">Персональные акции</a></li>
+                        <li><a href="/account-edit.html">Личные данные</a></li>
+                        <li><a href="{{route('logout')}}">Выйти</a></li>
+                    </ul>
+                @else
+                    <a href="{{route('login')}}" class="account-preview__link no-arrow">
+                        <div class="account-preview__name">
+                            <span>Авторизоваться</span>
+                        </div>
+                        <div class="account-preview__photo">
+                            <img src="/assets/svg/user.svg" alt="user photo" />
+                        </div>
+                    </a>
+{{--                    <ul class="account-preview__list">
+                        <li><a href="{{route('register')}}">Регистрация</a></li>
+                    </ul>--}}
+                @endif
+
             </div>
             <a href="/cart.html" class="cart-preview">
                 <i>

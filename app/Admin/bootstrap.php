@@ -21,3 +21,4 @@
 use Encore\Admin\Admin;
 
 Encore\Admin\Form::forget(['map']);
+Admin::css('/css/admin.css');
