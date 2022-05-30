@@ -37,4 +37,5 @@ class ItemAttribute extends Model
     use SoftDeletes;
 
     protected $table = 'item_attributes';
+    protected $hidden = ['created_at','updated_at','deleted_at'];
 }

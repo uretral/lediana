@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'OldStandardTT-Regular';
+  src: url('OldStandardTT-Regular.eot');
+  src: url('OldStandardTT-Regular.eot?#iefix') format('embedded-opentype'),
+       url('OldStandardTT-Regular.svg#OldStandardTT-Regular') format('svg'),
+       url('OldStandardTT-Regular.ttf') format('truetype'),
+       url('OldStandardTT-Regular.woff') format('woff'),
+       url('OldStandardTT-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

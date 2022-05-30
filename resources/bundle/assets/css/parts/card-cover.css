@@ -1,0 +1,51 @@
+.editor-container {
+   &--card {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+   }
+}
+
+.card-cover-wrapper {
+   /* max-width: 52rem;
+   margin-left: auto;
+   margin-right: auto; */
+   background-color: #fff;
+   --w: 860;
+   --h: 574;
+   --cw: 860;
+   --p: calc(var(--cw) / var(--w));
+   padding-bottom: calc(var(--h) / var(--w) * 100%);
+   position: relative;
+   --br: calc(0.8rem * var(--p));
+   border-radius: var(--br);
+   @screen below-sm {
+      .corner {
+         --p: 0.5;
+      }
+   }
+}
+.card-cover {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   &[data-style="1"] {
+      padding: calc(3.2rem * var(--p));
+      .edit-photo {
+         height: calc(43rem * var(--p));
+         width: 100%;
+      }
+   }
+}
+.card-cover-title {
+   text-align: center;
+   margin-top: calc(3.2rem * var(--p));
+   line-height: calc(24 / 16);
+   text-transform: uppercase;
+   font-size: calc(3.2rem * var(--p));
+   letter-spacing: 0.03em;
+}

@@ -17,6 +17,21 @@ class PageRouteController extends Controller
             'page' => $page,
         ]);
     }
+
+    public function format($slug){
+        $this->init();
+        $page = $this->getPromoPages($slug);
+        return view('formats')->with([
+            'page' => $page,
+        ]);
+    }
+
+    public function editor($slug,$printout_id){
+        $this->init();
+        return view('editors')->with(['printout_id' => $printout_id]);
+    }
+
+
     private function getPage($slug){
         try {
             return Page::whereSlug($slug)->with([
@@ -29,6 +44,14 @@ class PageRouteController extends Controller
                 'texts',
                 'calculator',
             ])->first();
+        } catch (\Exception $e) {
+            dd($e);
+        }
+    }
+
+    private function getPromoPages($slug){
+        try {
+            return Page::whereSlug($slug)->with('calculator')->first();
         } catch (\Exception $e) {
             dd($e);
         }

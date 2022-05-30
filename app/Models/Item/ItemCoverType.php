@@ -3,6 +3,7 @@
 namespace App\Models\Item;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -35,6 +36,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|ItemCoverType whereMaterials($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ItemCoverType whereShortTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ItemCoverType whereText($value)
+ * @property-read \Illuminate\Support\Collection $item_materials
  */
 class ItemCoverType extends Model
 {
@@ -44,8 +46,10 @@ class ItemCoverType extends Model
     protected $casts = [
         'materials' => 'array'
     ];
+    protected $hidden = ['created_at','updated_at','deleted_at'];
 
-/*    public function material(){
-        return $this->hasMany(ItemCoverMaterial::class, 'id', 'materials');
-    }*/
+    public function getItemMaterialsAttribute(): \Illuminate\Support\Collection
+    {
+        return ItemCoverMaterial::whereIn('id', $this->castAttribute('materials', $this->attributes['materials']))->get();
+    }
 }

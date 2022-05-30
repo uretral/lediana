@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper bg-divider">
+         <div class="container">
+            <div class="mx-auto max-w-[58rem] mt-32 mb-64 sm:my-70">
+               <h2 class="text-mob-3xl sm:text-3xl font-black">Авторизация</h2>
+               <div class="text-mob-xl sm:text-lg mt-16">
+                  <p>Авторизуйтесь с помощью вашего email и пароля.</p>
+               </div>
+               <div class="space-y-16 sm:space-y-32 mt-32">
+                  <label class="field-wrapper">
+                     <span class="field-wrapper__title below-sm:sr-only">E-mail</span>
+                     <input type="email" name="" class="field sm:field--outlined-dark" placeholder="E-mail" />
+                  </label>
+                  <label class="field-wrapper">
+                     <span class="field-wrapper__title below-sm:sr-only">Пароль</span>
+                     <input type="password" name="" class="field sm:field--outlined-dark" placeholder="Пароль" />
+                  </label>
+                  <div>
+                     <button class="btn btn--md btn--primary w-full">Войти</button>
+                     <div class="prose text-secondary text-sm mt-8">
+                        <p>Регистируюясь я соглашаюсь с <a href="#">политикой конфиденциальности</a> и согласием на <a href="#">обработку персональных данных</a></p>
+                     </div>
+                  </div>
+                  <div class="soc-links mt-20 lg:mt-0">
+                     <div class="soc-links__title w-full mb-8 md:mb-0 md:w-auto mr-12 lg:hidden xl:block">Зарегистрироваться с помощью</div>
+                     <ul class="soc-links__list">
+                        <li>
+                           <a href="#" target="_blank" class="block wh-48 rounded-full overflow-hidden" aria-label="VK">
+                              <img src="/img/vk.svg" alt="VK" class="image-full" />
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#" target="_blank" class="block wh-48 rounded-full overflow-hidden" aria-label="Facebook">
+                              <img src="/img/facebook.svg" alt="Facebook" class="image-full" />
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#" target="_blank" class="block wh-48 rounded-full overflow-hidden" aria-label="Одноклассники">
+                              <img src="/img/ok.svg" alt="Одноклассники" class="image-full" />
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#" target="_blank" class="block wh-48 rounded-full overflow-hidden" aria-label="Google">
+                              <img src="/img/google.svg" alt="Google" class="image-full" />
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="space-x-24">
+                     <a href="#" class="link link--primary">Создать новый профиль</a>
+                     <a href="#" class="link link--primary">Не помню пароль</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

@@ -1,0 +1,14 @@
+@keyframes heightIn {
+   from {
+      height: 0;
+   }
+   to {
+      height: var(--height);
+   }
+}
+.tablist-enter-active {
+   animation: 0.3s heightIn ease-in-out;
+}
+.tablist-leave-active {
+   animation: 0.3s heightIn ease-in-out reverse;
+}

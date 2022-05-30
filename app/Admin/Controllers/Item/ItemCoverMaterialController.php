@@ -85,10 +85,10 @@ class ItemCoverMaterialController extends Controller
         $grid->column('sort','Порядок')->editable();
         $grid->column('active','Активность')->switch();
         $grid->column('title','Название')->editable();
+        $grid->column('icon','Иконка')->image('',50,50);
 
         return $grid;
     }
-
     /**
      * Make a show builder.
      *
@@ -121,6 +121,7 @@ class ItemCoverMaterialController extends Controller
         $form->display('ID');
         $form->number('sort', 'Порядок')->default(100);
         $form->switch('active', 'Активность')->default(1);
+        $form->image('icon', 'Иконка');
         $form->text('title', 'Название');
         $form->textarea('text', 'Текст');
         $form->datetime('created_at','Создан')->disable();

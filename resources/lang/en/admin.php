@@ -37,7 +37,7 @@ return [
     'show'                  => 'Show',
     'entries'               => 'entries',
     'captcha'               => 'Captcha',
-    'action'                => 'Action',
+    'action'                => 'Classes',
     'title'                 => 'Title',
     'description'           => 'Description',
     'back'                  => 'Back',

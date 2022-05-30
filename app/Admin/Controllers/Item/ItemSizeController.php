@@ -9,6 +9,7 @@ use App\Models\Item\ItemSize;
 use App\Http\Controllers\Controller;
 use App\Models\Item\ItemSizeTitle;
 use App\Models\Item\ItemSpreadType;
+use App\Models\Layout\LayoutRatio;
 use App\Models\Product\Price;
 use App\Models\Product\Product;
 use Encore\Admin\Controllers\HasResourceActions;
@@ -113,13 +114,17 @@ class ItemSizeController extends Controller
         $grid = new Grid(new ItemSize);
         $grid->model()->where('product_id', $item);
 
-        $grid->column('ID')->display(function () {
-            return $this->id;
-        });
+        $grid->column('id','ID');
+        $grid->column('sort','Сортировка')->editable();
 
-        $grid->column('Размер')->display(function () {
-            return $this->width . 'x' . $this->height;
-        })->label('danger');
+        $grid->column('sizes','Размер')->label('danger');
+
+        $grid->column('Rem','rem')->editable();
+
+        $grid->column('ratio_id')->display(function () {
+            $ratio = LayoutRatio::where('id',$this->ratio_id)->first();
+            return $ratio ? $ratio->title : '';
+        });
 
         if (in_array($this->product, [3, 4, 5, 7, 9])) {
             $grid->column('Тираж')->display(function () {
@@ -191,10 +196,13 @@ class ItemSizeController extends Controller
 
         $form->display('id');
         $form->hidden('product_id', 'product_id')->default($this->product);
-
+        $form->number('sort','Порядок');
         $form->divider();
-        $form->number('width', 'Ширина');
-        $form->number('height', 'Высота');
+        $form->currency('width', 'Ширина')->symbol('');
+        $form->currency('height', 'Высота')->symbol('');
+        $form->currency('rem', 'значение стиля "rem"')->symbol('');
+        $form->hidden('sizes');
+
 
         $form->divider();
 
@@ -249,6 +257,8 @@ class ItemSizeController extends Controller
 
         $form->datetime('created_at', 'Создан')->disable();
         $form->datetime('updated_at', 'Обновлен')->disable();
+
+
         /*
             1	Фотокниги
             2	Дизайнерские фотокниги

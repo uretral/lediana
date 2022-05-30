@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper bg-divider">
+         <div class="container pt-32 md:pt-64">
+            <include src="/include/breadcrumbs.html"></include>
+            <h1 class="text-mob-3xl sm:text-3xl font-black">Корзина</h1>
+            <div class="grid lg:grid-cols-2 gap-40 pb-100 mt-30 md:-mt-20">
+               <div class="md:pt-75">
+                  <ul class="space-y-32 mb-32 sm:mb-40">
+                     <li>
+                        <div class="sm:flex bg-white rounded px-16 sm:px-0 pb-30">
+                           <div class="wh-64 sm:wh-140 xl:wh-150 relative ml-5 sm:ml-13 md:ml-0">
+                              <div class="absolute inset-0 -left-5 sm:-left-13 -top-5 sm:-top-13 bg-primary-light rounded-sm"></div>
+                              <img src="/img/order-preview.jpg" class="image-full rounded-tl-sm rounded-br-sm relative" alt="" />
+                           </div>
+                           <div class="pt-16 sm:pt-24 sm:pl-40 sm:pr-35 flex-grow">
+                              <div class="text-lg font-bold mb-4">Фотокнига</div>
+                              <div class="text-sm text-primary">10 разворотов / 20 страниц</div>
+                              <div class="flex items-center mt-16">
+                                 <div class="flex items-center">
+                                    <button class="btn rounded-tiny border border-secondary hover:border-primary-light hover:text-primary-light active:border-primary active:text-primary wh-24">
+                                       -
+                                    </button>
+                                    <span class="w-30 text-center">1</span>
+                                    <button class="btn rounded-tiny border border-secondary hover:border-primary-light hover:text-primary-light active:border-primary active:text-primary wh-24">
+                                       +
+                                    </button>
+                                 </div>
+                                 <div class="ml-16 font-bold">1890 ₽</div>
+                                 <button class="btn text-secondary hover:text-primary ml-auto">
+                                    <svg aria-hidden="true" class="wh-24 fill-current"><use href="/assets/svg/svg.svg.svg#trash"></use></svg>
+                                 </button>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+                  <div class="mb-32 sm:mb-40">
+                     <div class="text-[2.2rem] sm:text-lg font-bold mb-24">У вас есть сертификат или&nbsp;промокод?</div>
+                     <div class="rounded-full bg-divider-dark p-2 flex items-center justify-between sm:pl-24 pr-24">
+                        <span class="hidden xl:contents">Введите промокод</span>
+                        <span class="hidden sm:contents xl:hidden">Промокод</span>
+                        <div class="h-48 rounded-full bg-white w-190 xl:w-200 sm:mx-10 flex items-center">
+                           <input type="text" class="input-base pr-15 pl-20 xl:pl-24" value="FFD24F5576" />
+                           <button class="btn btn--md btn--primary btn--icon text-white">
+                              <svg aria-hidden="true" class="wh-20 fill-current"><use href="/assets/svg/svg.svg.svg#arrow-right"></use></svg>
+                           </button>
+                        </div>
+                        <span class="font-bold ml-auto mr-10"> <span class="hidden sm:contents">Скидка: </span><span class="sm:hidden">-</span>500 ₽ </span>
+                        <svg aria-hidden="true" class="wh-14 fill-primary"><use href="/assets/svg/svg.svg.svg#checked"></use></svg>
+                     </div>
+                     <div class="mt-16">
+                        <button class="btn btn--md btn--secondary-dark">Добавить +</button>
+                     </div>
+                  </div>
+                  <ul class="grid grid-cols-3 gap-10 xl:gap-40">
+                     <li class="flex">
+                        <label class="flex cursor-pointer w-full">
+                           <input type="radio" name="delivery" value="1" class="peer sr-only" />
+                           <div class="py-16 px-6 sm:px-14 xl:px-16 rounded bg-white border-2 text-sm border-transparent peer-checked:border-primary w-full">
+                              <div class="h-35 flex items-center">
+                                 <img src="/img/postrf.png" class="w-[7.3rem] h-35 object-contain mb-6" alt="" />
+                              </div>
+                              <div>
+                                 Доставка Почтой<br />
+                                 РФ <span class="font-bold">бесплатно</span>
+                              </div>
+                           </div>
+                        </label>
+                     </li>
+                     <li class="flex">
+                        <label class="flex cursor-pointer w-full">
+                           <input type="radio" name="delivery" value="2" class="peer sr-only" />
+                           <div class="py-16 px-6 sm:px-14 xl:px-16 rounded bg-white border-2 text-sm border-transparent peer-checked:border-primary w-full">
+                              <div class="h-35 flex items-center">
+                                 <img src="/img/sdek.png" class="w-[7.9rem] h-23 object-contain mb-6" alt="" />
+                              </div>
+                              <div>
+                                 Выбор<br class="sm:hidden" />
+                                 пункта<br />
+                                 выдачи<br class="sm:hidden" />
+                                 заказа
+                              </div>
+                           </div>
+                        </label>
+                     </li>
+                     <li class="flex">
+                        <label class="flex cursor-pointer w-full">
+                           <input type="radio" name="delivery" value="3" class="peer sr-only" />
+                           <div class="py-16 px-6 sm:px-14 xl:px-16 rounded bg-white border-2 text-sm border-transparent peer-checked:border-primary w-full">
+                              <div class="h-35 flex items-center">
+                                 <img src="/img/sdek.png" class="w-[7.9rem] h-23 object-contain mb-6" alt="" />
+                              </div>
+                              <div>
+                                 Доставка<br />
+                                 до вашей двери
+                              </div>
+                           </div>
+                        </label>
+                     </li>
+                  </ul>
+               </div>
+               <div>
+                  <div class="sm:flex items-baseline justify-between">
+                     <div class="text-xl font-bold">Оформление заказа</div>
+                     <div class="text-secondary mt-4 sm:mt-0">Номер заказа: <span class="text-black">123456789</span></div>
+                  </div>
+                  <div class="space-y-16 sm:space-y-32 mt-24 sm:mt-32 mb-24 sm:mb-40 max-w-700">
+                     <label class="field-wrapper">
+                        <span class="field-wrapper__title below-sm:sr-only">Имя</span>
+                        <input name="" class="field sm:field--outlined-dark" placeholder="Имя" />
+                     </label>
+                     <label class="field-wrapper">
+                        <span class="field-wrapper__title below-sm:sr-only">Фамилия</span>
+                        <input name="" class="field sm:field--outlined-dark" placeholder="Фамилия" />
+                     </label>
+                     <label class="field-wrapper">
+                        <span class="field-wrapper__title below-sm:sr-only">Телефон</span>
+                        <input name="" class="field sm:field--outlined-dark" placeholder="Телефон" />
+                     </label>
+                     <label class="field-wrapper">
+                        <span class="field-wrapper__title below-sm:sr-only">E-mail</span>
+                        <input name="" class="field sm:field--outlined-dark" placeholder="E-mail" />
+                     </label>
+
+                     <div class="field-wrapper">
+                        <span class="field-wrapper__title below-sm:sr-only">Страна</span>
+                        <select name="#" id="" class="field" data-select data-select-classes="select--rounded select--no-outlined sm:select--outlined-dark">
+                           <option value="ru">Россия</option>
+                           <option value="by">Беларусь</option>
+                           <option value="kz">Казахстан</option>
+                           <option value="md">Молдова</option>
+                           <option value="gz">Грузия</option>
+                        </select>
+                     </div>
+                     <label class="field-wrapper">
+                        <span class="field-wrapper__title below-sm:sr-only">Город</span>
+                        <input name="" class="field sm:field--outlined-dark" placeholder="Город" />
+                     </label>
+                     <label class="field-wrapper">
+                        <span class="field-wrapper__title below-sm:sr-only">Адрес</span>
+                        <input name="" class="field sm:field--outlined-dark" placeholder="Адрес" />
+                     </label>
+                     <label class="field-wrapper">
+                        <span class="field-wrapper__title below-sm:sr-only">Пароль</span>
+                        <input type="password" class="field sm:field--outlined-dark" placeholder="Пароль" />
+                     </label>
+                  </div>
+                  <div class="flex mb-16">
+                     <label class="block wh-80 relative rounded-sm overflow-hidden">
+                        <input type="checkbox" name="package" value="1" class="checkbox absolute top-8 right-8" />
+                        <img src="/img/package.jpg" class="image-full" alt="" />
+                     </label>
+                     <div class="pl-8 pt-8">
+                        <div class="flex items-center">
+                           Подарочная упаковка
+                           <button class="btn-base wh-24 rounded bg-primary hover:bg-black text-sm text-white ml-8">?</button>
+                        </div>
+                        <div class="font-bold">+500 ₽</div>
+                     </div>
+                  </div>
+                  <div class="text-lg sm:text-xl font-bold mb-16">Итого со скидкой: 2640 ₽</div>
+                  <button class="btn btn--md btn--primary w-full" data-toggle-modal="modal-success">Заказать и оплатить</button>
+                  <div class="prose mt-8 text-secondary text-tiny sm:text-sm">
+                     <p>Делая и оплачивая заказ вы соглашаетесь с <a href="#">политикой конфиденциальности</a> и соглашаетесь на обработку <a href="#">персональных данных</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

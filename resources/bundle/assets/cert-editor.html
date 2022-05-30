@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper bg-divider">
+         <div class="mt-32 sm:my-64">
+            <div class="container">
+               <div class="flex items-center mb-8 sm:mb-16">
+                  <h2 class="text-xl sm:text-2xl md:text-3xl font-black -translate-y-5">Сертификат</h2>
+
+                  <div class="hidden lg:flex ml-auto gap-24">
+                     <button class="btn btn--md btn--black btn--outlined hover:border-primary hover:text-primary">
+                        <svg aria-hidden="true" class="wh-24 mr-8 fill-current"><use href="/assets/svg/svg.svg.svg#save"></use></svg>
+                        Сохранить
+                     </button>
+                     <button class="btn btn--md btn--black btn--outlined hover:border-red hover:text-red" data-open-modal="modal-delete-book">
+                        <svg aria-hidden="true" class="wh-24 mr-8 fill-current"><use href="/assets/svg/svg.svg.svg#trash"></use></svg>
+                        Удалить
+                     </button>
+                  </div>
+               </div>
+
+               <div class="grid lg:grid-cols-[1fr,40rem] xl:grid-cols-[1fr,46rem] gap-20 xl:gap-40">
+                  <div class="pb-20 lg:pb-0">
+                     <div class="grid grid-cols-2 gap-8">
+                        <img src="/img/cert/cert-front.jpg" class="rounded-sm" alt="" />
+                        <img src="/img/cert/cert-back.jpg" class="rounded-sm" alt="" />
+                     </div>
+                     <ul class="grid grid-flow-col gap-10 sm:gap-20 md:gap-40 mt-20 md:mt-40">
+                        <li>
+                           <div class="pb-[140%] bg-white rounded-sm relative overflow-hidden shadow-active-sm sm:shadow-active">
+                              <img src="/img/cert/cert-front.jpg" class="absolute-image-full" alt="" />
+                           </div>
+                        </li>
+                        <li each="4">
+                           <div class="pb-[140%] bg-white rounded-sm relative overflow-hidden"></div>
+                        </li>
+                     </ul>
+
+                     <div class="flex lg:hidden justify-end gap-10 mt-16">
+                        <button class="btn btn--sm btn--black btn--icon btn--text btn--rounded hover:border-primary hover:text-primary">
+                           <svg aria-hidden="true" class="wh-24 fill-current"><use href="/assets/svg/svg.svg.svg#save"></use></svg>
+                        </button>
+                        <button class="btn btn--sm btn--black btn--icon btn--text btn--rounded hover:border-red hover:text-red" data-open-modal="modal-delete-book">
+                           <svg aria-hidden="true" class="wh-24 fill-current"><use href="/assets/svg/svg.svg.svg#trash"></use></svg>
+                        </button>
+                     </div>
+                  </div>
+                  <div>
+                     <div class="grid gap-16">
+                        <h2 class="text-lg font-bold mb-10">Редактирование текста</h2>
+                        <label class="field-wrapper field-wrapper--dark">
+                           <span class="field-wrapper__title w-140 below-sm:sr-only">Заголовок</span>
+                           <input name="" class="field field--outlined-dark" placeholder="Заголовок" />
+                        </label>
+                        <label class="field-wrapper field-wrapper--dark">
+                           <span class="field-wrapper__title w-140 below-sm:sr-only h-auto py-16 self-start">Основной текст</span>
+                           <textarea name="" class="field field--outlined-dark" rows="4" placeholder="Основной текст"></textarea>
+                        </label>
+                        <div class="field-wrapper field-wrapper--dark sm:mt-16">
+                           <span class="field-wrapper__title w-140 below-sm:sr-only">Номинал</span>
+                           <select name="#" id="" class="select-field" data-select data-select-classes="select--rounded select--outlined-dark">
+                              <option value="1000">1000 ₽</option>
+                              <option value="2000" selected>2000 ₽</option>
+                              <option value="3000">3000 ₽</option>
+                           </select>
+                        </div>
+                        <div class="field-wrapper field-wrapper--dark">
+                           <span class="field-wrapper__title w-auto sm:w-150 flex-grow sm:flex-grow-0">Размер</span>
+                           <div class="multi-switcher multi-switcher--md sm:multi-switcher--md multi-switcher--rounded bg-divider-dark">
+                              <div class="multi-switcher__inner" data-menu='{"mode": "radio"}'>
+                                 <label class="multi-switcher__btn below-sm:px-15" data-menu-link>
+                                    <input type="radio" value="0" name="size" class="radio-sr-only" checked />
+                                    30%
+                                 </label>
+                                 <label class="multi-switcher__btn below-sm:px-15" data-menu-link>
+                                    <input type="radio" value="1" name="size" class="radio-sr-only" />
+                                    60 %
+                                 </label>
+                                 <label class="multi-switcher__btn below-sm:px-15" data-menu-link>
+                                    <input type="radio" value="2" name="size" class="radio-sr-only" />
+                                    90 %
+                                 </label>
+                                 <div class="multi-switcher__marker"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <label class="field-wrapper field-wrapper--dark">
+                           <span class="field-wrapper__title w-140 flex-grow sm:flex-grow-0">Цвет</span>
+                           <input type="color" name="head" value="#232325" class="field field--outlined-dark" />
+                        </label>
+                        <div class="hidden lg:flex items-center justify-center bg-white px-16 py-24 rounded mt-24">
+                           <div class="text-lg font-bold text-black mr-16">1890 ₽</div>
+                           <button class="btn btn--md btn--primary flex-grow">В корзину</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="fixed inset-x-0 bottom-0 py-8 lg:hidden text-black bg-primary-light z-10">
+            <div class="container flex items-center justify-center">
+               <div class="text-[2.2rem] font-bold mr-16">1890 ₽</div>
+               <button class="btn btn--md btn--primary">В корзину</button>
+            </div>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

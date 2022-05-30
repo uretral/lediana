@@ -1,0 +1,80 @@
+.resizer {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+.stand {
+    border: 1px dashed black;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    height: 680px;
+}
+.stand img {
+    display: block;
+    height: 100%;
+
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+.figure, .elem {
+    position: absolute;
+    min-width: 20px;
+    min-height: 20px;
+    z-index: 2;
+    background-image: url("../assets/img/dashed-bg.svg");
+}
+.figure.photo {
+    background-color:  rgba(255, 0, 0, .1);
+}
+.figure.text {
+    background-color: rgba(0, 42, 255, 0.1);
+}
+.elem {
+    z-index: 1;
+}
+.draggable {
+    width: 0;
+    height: 0;
+    position: absolute;
+    /*background: #F90;*/
+    z-index: 10;
+    display: none;
+}
+.draggable:after {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 0px;
+    border: 10px solid transparent;
+    /*border-radius: 10px;*/
+    cursor: pointer;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+}
+
+.draggable.top:after {
+    border-top: 10px solid #F90
+}
+.draggable.right:after {
+    border-right: 10px solid #F90
+}
+.draggable.bottom:after {
+    border-bottom: 10px solid #F90
+}
+.draggable.left:after {
+    border-left: 10px solid #F90
+}
+
+.active-input {
+    background: rgba(255, 0, 0, 0.62);
+}
+
+
+

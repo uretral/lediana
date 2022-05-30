@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper relative before:bg-divider before:absolute before:inset-0 lg:before:left-1/2">
+         <div class="container lg:grid grid-cols-[min-content,1fr] h-full relative">
+            <div class="hidden lg:block">
+               <include src="/include/account-sidebar.html"></include>
+            </div>
+            <div class="bg-divider lg:pl-55 pt-32 pb-64 md:py-64">
+               <include src="/include/breadcrumbs.html"></include>
+               <h1 class="text-mob-3xl sm:text-2xl lg:text-3xl font-black">Личные данные</h1>
+
+               <div class="lg:hidden">
+                  <include src="/include/account-sidebar.html"></include>
+               </div>
+
+               <div class="space-y-16 sm:space-y-32 mt-32 max-w-700">
+                  <label class="field-wrapper">
+                     <span class="field-wrapper__title below-sm:sr-only">Имя</span>
+                     <input name="" class="field sm:field--outlined-dark" placeholder="Имя" />
+                  </label>
+                  <label class="field-wrapper">
+                     <span class="field-wrapper__title below-sm:sr-only">Фамилия</span>
+                     <input name="" class="field sm:field--outlined-dark" placeholder="Фамилия" />
+                  </label>
+                  <label class="field-wrapper">
+                     <span class="field-wrapper__title below-sm:sr-only">Телефон</span>
+                     <input name="" class="field sm:field--outlined-dark" placeholder="Телефон" />
+                  </label>
+                  <label class="field-wrapper">
+                     <span class="field-wrapper__title below-sm:sr-only">E-mail</span>
+                     <input name="" class="field sm:field--outlined-dark" placeholder="E-mail" />
+                  </label>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-16 sm:gap-24">
+                     <div class="field-wrapper">
+                        <span class="field-wrapper__title below-sm:sr-only">Страна</span>
+                        <select name="#" id="" class="field" data-select data-select-classes="select--rounded select--no-outlined sm:select--outlined-dark">
+                           <option value="ru">Россия</option>
+                           <option value="by">Беларусь</option>
+                           <option value="kz">Казахстан</option>
+                           <option value="md">Молдова</option>
+                           <option value="gz">Грузия</option>
+                        </select>
+                     </div>
+                     <label class="field-wrapper">
+                        <span class="field-wrapper__title below-sm:sr-only">Город</span>
+                        <input name="" class="field sm:field--outlined-dark" placeholder="Город" />
+                     </label>
+                  </div>
+                  <label class="field-wrapper">
+                     <span class="field-wrapper__title below-sm:sr-only">Адрес</span>
+                     <input name="" class="field sm:field--outlined-dark" placeholder="Адрес" />
+                  </label>
+                  <label class="field-wrapper">
+                     <span class="field-wrapper__title below-sm:sr-only">Пароль</span>
+                     <input type="password" class="field sm:field--outlined-dark" placeholder="Пароль" />
+                  </label>
+                  <button class="btn btn--md btn--primary w-full">Сохранить</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

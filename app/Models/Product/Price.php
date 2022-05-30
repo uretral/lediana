@@ -48,6 +48,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \Illuminate\Database\Eloquent\Collection|ItemSizeTitle[] $formats
  * @property-read int|null $formats_count
  * @method static \Illuminate\Database\Eloquent\Builder|Price whereProductId($value)
+ * @property-read ItemSize|null $size
  */
 class Price extends Model
 {

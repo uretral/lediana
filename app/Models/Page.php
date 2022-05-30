@@ -88,6 +88,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property int|null $product_id
  * @property-read Product|null $calculator
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereProductId($value)
+ * @property string|null $livewire
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereLivewire($value)
  */
 class Page extends Model
 {

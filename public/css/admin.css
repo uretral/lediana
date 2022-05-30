@@ -12,3 +12,15 @@ span.label {
 span.label.label-text {
     color: grey;
 }
+
+.has-many-photos-form input,
+.has-many-texts-form input{
+    width: 60px!important;
+}
+.has-many-photos-form .input-group-addon,
+.has-many-texts-form .input-group-addon{
+    /*display: none;*/
+}
+
+
+

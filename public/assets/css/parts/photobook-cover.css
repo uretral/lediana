@@ -111,6 +111,9 @@
    grid-template-columns: 3.4fr 0.44fr 3.4fr;
    --br: calc(0.8rem * var(--p));
 }
+.photobook-cover.no-spine {
+    gap: calc(0.1rem * var(--p))!important;
+}
 .photobook-cover-left,
 .photobook-cover-right,
 .photobook-cover-middle {

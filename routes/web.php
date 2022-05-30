@@ -15,14 +15,25 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/welcome', function () {
-    return view('welcome');
+Route::get('/ttest', function () {
+    return view('test');
 });
+
+Route::post('/crop-image', '\App\Http\Livewire\Editors\Editor@cropImage')->name('crop.image');
+
 
 Route::get('/lk', '\App\Http\Controllers\Pages\DashboardController@index')->middleware(['auth'])->name('dashboard');
 
 Route::get('/', '\App\Http\Controllers\Pages\IndexController@index')->name('index');
 Route::get('/{slug}', '\App\Http\Controllers\Pages\PageRouteController@index')->name('page');
 
-require __DIR__.'/auth.php';
+
+Route::get('/{slug}/editor', '\App\Http\Controllers\Pages\PageRouteController@format')->name('format');
+Route::get('/{slug}/editor/{id}', '\App\Http\Controllers\Pages\PageRouteController@editor')->name('editor');
+
+
+
+require __DIR__ . '/auth.php';
+
+
 

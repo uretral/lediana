@@ -1,0 +1,49 @@
+@keyframes mobMenuContentShow {
+   from {
+      height: 0%;
+   }
+}
+@keyframes mobMenuContentClose {
+   to {
+      height: 0%;
+      /* opacity: 0; */
+   }
+}
+.mob-menu-modal {
+   top: var(--header-size);
+   padding: 0;
+   --duration: 0;
+   backdrop-filter: none;
+   background: none;
+   .modal-content {
+      --duration-leave: 0.2s;
+      &--opening {
+         animation: mobMenuContentShow 0.3s;
+         @media (prefers-reduced-motion: reduce) {
+            animation: none;
+         }
+      }
+      &--closing {
+         animation: mobMenuContentClose 0.3s;
+         @media (prefers-reduced-motion: reduce) {
+            animation: none;
+         }
+      }
+      margin-top: 0;
+      height: 100%;
+      @apply bg-divider;
+      text-align: center;
+      overflow: auto;
+   }
+}
+
+.mob-menu {
+   background-color: #fff;
+   a {
+      line-height: 4.8rem;
+      display: block;
+   }
+   li {
+      @apply border-t border-divider;
+   }
+}

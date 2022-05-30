@@ -1,0 +1,23 @@
+.calc-sm {
+   position: relative;
+   z-index: 1;
+   margin-bottom: 3rem;
+   @screen lg {
+      margin-bottom: 5rem;
+   }
+   .section-title {
+      margin-bottom: 3.2rem;
+   }
+}
+.calc-sm-title {
+   align-items: center;
+   display: flex;
+   margin-bottom: 1.6rem;
+   font-weight: bold;
+   svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      @apply text-primary;
+      margin-right: 1.6rem;
+   }
+}

@@ -7,12 +7,11 @@
         <div class="about">
             @include('partials.about',['about' => @$page->about])
         </div>
-
         @isset($page->calculator)
-            @livewire('sizes.photo-book', ['product' => $page->calculator])
-{{--            <livewire:promo-sizes :product="$page->calculator"/>--}}
+            <div class="mt-50 lg:mt-100 xl:mt-150">
+                @livewire('formats.'.$page->livewire, ['product' => $page->calculator, 'slug' => $page->slug, 'type' => 'promo'])
+            </div>
         @endisset
-
         @isset($page->crossLink)
             @include('partials.cross',['cross_links' => @$page->crossLink])
         @endisset

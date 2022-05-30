@@ -51,7 +51,7 @@ Route::group(['prefix' => 'lk','middleware' => 'auth'],function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+    Route::any('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 
 

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper bg-divider">
+         <div class="my-32 sm:my-64">
+            <div class="container">
+               <h2 class="text-xl sm:text-2xl md:text-3xl font-black mb-8 sm:mb-16">Выберите размер холста</h2>
+               <div class="text-mob-lg md:text-lg prose">
+                  <p>Все размеры указаны в сантиметрах</p>
+               </div>
+               <div class="avaliable-sizes-wrapper avaliable-sizes-wrapper--1">
+                  <div class="avaliable-sizes-list-wrapper avaliable-sizes-list-wrapper--1">
+                     <ul class="avaliable-sizes-list below-sm:flex-wrap">
+                        <li class="size" style="--w: 20; --h: 30; --max-w: 5.7rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>20×30</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 30; --h: 40; --max-w: 8.5rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>30×40</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 30; --h: 45; --max-w: 8.4rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>30×45</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 40; --h: 50; --max-w: 11.4rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>40×50</span>
+                           </a>
+                        </li>
+                        <div class="flex w-full gap-15 mt-40 items-end sm:contents">
+                           <li class="size" style="--w: 40; --h: 60; --max-w: 11.3rem">
+                              <a href="/canvas-editor.html" class="size__inner">
+                                 <span>40×60</span>
+                              </a>
+                           </li>
+                           <li class="size" style="--w: 50; --h: 60; --max-w: 14.2rem">
+                              <a href="/canvas-editor.html" class="size__inner">
+                                 <span>50×60</span>
+                              </a>
+                           </li>
+                           <li class="size" style="--w: 50; --h: 70; --max-w: 14.3rem">
+                              <a href="/canvas-editor.html" class="size__inner">
+                                 <span>50×70</span>
+                              </a>
+                           </li>
+                           <li class="size" style="--w: 50; --h: 90; --max-w: 14.2rem">
+                              <a href="/canvas-editor.html" class="size__inner">
+                                 <span>50×90</span>
+                              </a>
+                           </li>
+                        </div>
+                     </ul>
+                     <div class="avaliable-sizes-title">
+                        <span>Прямоугольные</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="avaliable-sizes-wrapper avaliable-sizes-wrapper--2 justify-between">
+                  <div class="avaliable-sizes-list-wrapper avaliable-sizes-list-wrapper--1">
+                     <ul class="avaliable-sizes-list">
+                        <li class="size" style="--w: 20; --h: 20; --max-w: 5.7rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>20×20</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 30; --h: 30; --max-w: 8.5rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>30×30</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 40; --h: 40; --max-w: 11.3rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>40×40</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 50; --h: 50; --max-w: 14.3rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>50×50</span>
+                           </a>
+                        </li>
+                     </ul>
+                     <div class="avaliable-sizes-title">
+                        <span>Квадратные</span>
+                     </div>
+                  </div>
+                  <div class="avaliable-sizes-list-wrapper avaliable-sizes-list-wrapper--2">
+                     <ul class="avaliable-sizes-list">
+                        <li class="size" style="--w: 30; --h: 60; --max-w: 8.6rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>30×60</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 30; --h: 90; --max-w: 8.5rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>30×90</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 40; --h: 80; --max-w: 11.4rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>40×80</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 40; --h: 120; --max-w: 11.4rem">
+                           <a href="/canvas-editor.html" class="size__inner">
+                              <span>40×120</span>
+                           </a>
+                        </li>
+                     </ul>
+                     <div class="avaliable-sizes-title">
+                        <span>Панорамные</span>
+                     </div>
+                  </div>
+               </div>
+               <button class="btn btn--md btn--primary mt-24 lg:mt-40 w-full sm:w-auto">
+                  Далее <svg aria-hidden="true" class="wh-16 fill-current ml-5 mt-2"><use href="/assets/svg/svg.svg.svg#arrow-right"></use></svg>
+               </button>
+            </div>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

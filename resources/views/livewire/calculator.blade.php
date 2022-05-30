@@ -1,7 +1,7 @@
 <div class="calc-sm">
     <div class="container">
         <h2 class="section-title">Калькулятор фотокниги</h2>
-@dump($sizes)
+{{--@dump($sizes[0])--}}
         <div class="calc-sm-title f">
             <svg aria-hidden="true">
                 <use href="/assets/svg/svg.svg#photobook"></use>
@@ -9,67 +9,23 @@
             Размер фотокниги, см
             <select name="#" id="" class="sr-only" data-select
                     data-select-classes="select--sm w-auto select--rounded-sm select--no-border ml-auto lg:hidden">
-                <option value="20×20">20×20 см</option>
-                <option value="30×30">30×30 см</option>
-                <option value="40×40">40×40 см</option>
-                <option value="50×50">50×50 см</option>
+                @foreach($sizes as $item)
+                    <option value="{{$item->sizes}}">
+                        {{$item->sizes}} см
+                    </option>
+                @endforeach
             </select>
         </div>
 
         <div class="multi-switcher multi-switcher--sm w-max bg-divider mt-16 hidden lg:flex">
             <div class="multi-switcher__inner" data-menu='{"mode": "radio"}'>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="0" name="switcher" class="radio-sr-only" checked/>
-                    15×15
+                @foreach($sizes as $key => $item)
+                <label class="multi-switcher__btn  @if($item->sizes == $size) active @endif" data-menu-link wire:key="{{$key}}">
+                    <input type="radio" wire:model="size"  class="radio-sr-only" value="{{$item->sizes}}"
+                           @if($item->sizes == $size) checked  @endif/>
+                    {{$item->sizes}}
                 </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    15×20
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    20×15
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    15×15
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    20×20
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    22×22
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    25×25
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    29×29
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    15×20
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    20×29
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    20×15
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    25×20
-                </label>
-                <label class="multi-switcher__btn" data-menu-link>
-                    <input type="radio" value="1" name="switcher" class="radio-sr-only"/>
-                    29×20
-                </label>
+                @endforeach
                 <div class="multi-switcher__marker"></div>
             </div>
         </div>
@@ -81,8 +37,10 @@
             Количество разворотов
         </div>
         <div class="mb-55 sm:flex items-center gap-24 relative">
-            <div class="range-slider w-full sm:w-350" style="--progress: 0.2">
-                <input type="range" min="10" max="30" value="15" step="1"/>
+            <div class="range-slider w-full sm:w-350"
+                 style="--progress: {{($spreads - $rangeMin) / ($rangeMax - $rangeMin)}}">
+                <input type="range" id="spreadsSlider"  min="{{$rangeMin}}" max="{{$rangeMax}}"
+                       value="{{$spreads}}" step="1" wire:model.debounce.500ms="spreads"/>
                 <div class="range-slider__thumb"><i></i><i></i><i></i></div>
                 <div class="range-slider__steps">
                     <span class="range-slider__step range-slider__step--lg"><span>10</span></span>
@@ -110,7 +68,9 @@
             </div>
             <script>
                 document.querySelectorAll(".range-slider").forEach((slider) => {
+
                     let input = slider.querySelector("input");
+
                     let checkProgress = () => {
                         let min = input.min;
                         let max = input.max;
@@ -120,40 +80,46 @@
                     checkProgress();
                     input.addEventListener("input", checkProgress);
                 });
+
             </script>
-            <input type="text"
-                   class="field below-sm:field--sm below-sm:absolute below-sm:-top-45 below-sm:right-0 border w-85"
-                   value="15"/>
+            <input type="text" id="spreads"
+                   class="field below-sm:field--sm below-sm:absolute below-sm:-top-45 below-sm:right-0 border w-85" value="{{$spreads}}"/>
+
         </div>
+
         <ul class="flex flex-wrap lg:flex-nowrap gap-32 max-w-700">
-            <li each="3">
-                <div class="flex">
-                    <label class="block wh-80 relative rounded-sm overflow-hidden flex-shrink-0 cursor-pointer">
-                        <input type="checkbox" name="package" value="1"
-                               class="checkbox absolute top-8 right-8"/>
-                        <img src="/assets/img/package.jpg" class="image-full" alt=""/>
-                    </label>
-                    <div class="pl-8 pt-8">
-                        <div class="flex items-center">
-                            Глянцевая обложка
-                            <button
-                                class="btn-base wh-24 flex-shrink-0 rounded bg-primary hover:bg-black text-sm text-white ml-8 self-start">
-                                ?
-                            </button>
+            @foreach($current->cover as $index => $cover)
+                <li>
+                    <div class="flex yyy">
+                        <label class="block wh-80 relative rounded-sm overflow-hidden flex-shrink-0 cursor-pointer">
+                            <input type="radio" wire:model="coverId" value="{{$cover->prop_id}}"
+                                   class="checkbox absolute top-8 right-8"/>
+                            <img src="/assets/img/package.jpg" class="image-full" alt=""/>
+                        </label>
+                        <div class="pl-8 pt-8">
+                            <div class="flex items-center">
+                                {{$cover->cover->title}}
+                                <button
+                                    class="btn-base wh-24 flex-shrink-0 rounded bg-primary hover:bg-black text-sm text-white ml-8 self-start">
+                                    ?
+                                </button>
+                            </div>
+                            <div class="font-bold">+ {{$cover->price}} ₽</div>
                         </div>
-                        <div class="font-bold">+500 ₽</div>
                     </div>
-                </div>
-            </li>
+                </li>
+            @endforeach
+
         </ul>
         <div
             class="mt-40 bg-divider pt-24 pb-32 md:pb-24 md:mr-48 px-16 md:px-40 rounded md:flex items-center max-w-800">
             <div class="md:mr-48">
                 Вам нужно будет отправить<br/>
-                нам не меньше 10 фотографий
+                нам не меньше {{$minPhotos}} фотографий
             </div>
-            <div class="mt-8 md:mt-0 md:mr-24 text-md font-bold">3450 ₽</div>
-            <button class="btn btn--md btn--primary mt-8 md:mt-0">
+            <div class="mt-8 md:mt-0 md:mr-24 text-md font-bold">{{$finalPrice}} ₽</div>
+
+            <button class="btn btn--md btn--primary mt-8 md:mt-0" wire:click.debounce="goToEditor()">
                 Заказать фотокнигу
                 <svg aria-hidden="true" class="wh-16 fill-current ml-5 mt-2">
                     <use href="/assets/svg/svg.svg#arrow-right"></use>

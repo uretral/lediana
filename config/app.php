@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Spatie\EloquentSortable\EloquentSortableServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -174,7 +175,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        App\Providers\PrintoutSessionServiceProvider::class,
+        App\Providers\PrintoutServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -229,6 +232,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'EditorStyles' => \App\Facades\EditorStyles::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

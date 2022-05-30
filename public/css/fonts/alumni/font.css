@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'AlumniSans-Regular';
+  src: url('AlumniSans-Regular.eot');
+  src: url('AlumniSans-Regular.eot?#iefix') format('embedded-opentype'),
+       url('AlumniSans-Regular.svg#AlumniSans-Regular') format('svg'),
+       url('AlumniSans-Regular.ttf') format('truetype'),
+       url('AlumniSans-Regular.woff') format('woff'),
+       url('AlumniSans-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.g {
+    font-family: AlumniSans-Regular;
+}

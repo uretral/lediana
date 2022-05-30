@@ -1,0 +1,194 @@
+mark {
+   @apply bg-primary/10;
+   color: inherit;
+}
+
+.section-title {
+   @apply text-xl md:text-2xl;
+   font-weight: bold;
+}
+
+.ol,
+.prose ol {
+   counter-reset: ol;
+   & > li {
+      position: relative;
+      padding-left: 2.4rem;
+      & + li {
+         margin-top: 0.8rem;
+      }
+      &::before {
+         counter-increment: ol;
+         content: counters(ol, ".") ".";
+         position: absolute;
+         top: 0em;
+         left: 0;
+      }
+   }
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+   font-weight: bold;
+}
+
+.h1,
+.prose h1 {
+   @apply text-2xl md:text-3xl;
+}
+.h2,
+.prose h2 {
+   @apply text-xl md:text-2xl;
+}
+.h3,
+.prose h3 {
+   @apply text-lg md:text-xl;
+}
+.h4,
+.prose h4,
+.h5,
+.prose h5,
+.h6,
+.prose h6 {
+   @apply text-lg;
+}
+
+.wp-caption {
+   max-width: 100%;
+   margin-bottom: 2.4rem;
+   margin-top: 2.4rem;
+   .wp-caption-text {
+      font-weight: bold;
+      margin-top: 0.8rem;
+      @apply text-sm;
+   }
+}
+
+.prose {
+   .video-wrapper {
+      margin: 7rem 0;
+      max-width: 78rem;
+   }
+   a {
+      @apply link link--primary;
+      &:where([href^="#"], [href^="tel:"]) {
+         @apply link--dashed;
+      }
+      &[href^="tel:"] {
+         white-space: nowrap;
+      }
+   }
+   & > :first-child {
+      margin-top: 0;
+   }
+   & > :last-child {
+      margin-bottom: 0;
+   }
+   p {
+      margin-bottom: 1.2em;
+   }
+   p {
+      img {
+         margin: 4rem 0;
+         @apply rounded-sm;
+      }
+   }
+   ul,
+   ol {
+      margin-top: 1.6rem;
+      margin-bottom: 1.6rem;
+   }
+   ul:not(.advantages-list) {
+      li {
+         position: relative;
+         padding-left: 2.5rem;
+         @screen sm {
+            padding-left: 3.5rem;
+         }
+         & + li {
+            margin-top: 1.5rem;
+            @screem sm {
+               margin-top: 2.5rem;
+            }
+         }
+         &::before {
+            content: "";
+            position: absolute;
+            top: 0.5rem;
+            left: 0;
+            background-color: #7c59ff;
+            height: 0.7rem;
+            width: 0.7rem;
+            @screen sm {
+               height: 1rem;
+               width: 1rem;
+            }
+         }
+      }
+   }
+
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6 {
+      margin-top: 3.2rem;
+   }
+   h1,
+   h2,
+   h3 {
+      margin-bottom: 0.5em;
+   }
+   h4,
+   h5,
+   h6 {
+      margin-bottom: 0.7em;
+   }
+
+   figure {
+      margin-bottom: 2.4rem;
+      margin-top: 2.4rem;
+      figcaption {
+         font-weight: bold;
+         margin-top: 0.8rem;
+         @apply text-sm;
+      }
+   }
+   blockquote {
+      @apply bg-primary/100 text-white;
+      clear: both;
+      margin-top: 2.4rem;
+      margin-bottom: 2.4rem;
+      padding: 1.6rem 1.6rem 2.4rem;
+      @screen md {
+         padding: 1.6rem 2.4rem 3.6rem;
+      }
+   }
+
+   .table-wrapper {
+      width: 100%;
+      overflow: auto hidden;
+      @apply px-container -mx-container md:px-0 md:mx-0;
+      display: flex;
+   }
+   table {
+      margin-top: 2.4rem;
+      margin-bottom: 2.4rem;
+      width: 100%;
+      td {
+         border: 1px solid #b0b9b4;
+         padding: 1.6rem;
+      }
+   }
+}

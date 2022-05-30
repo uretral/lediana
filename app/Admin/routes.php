@@ -30,6 +30,8 @@ Route::group([
 
     $router->resource('products', \Product\ProductController::class);
 
+    $router->resource('layouts', \Layout\LayoutController::class);
+
 //    $router->resource('prices/{item?}', \Item\ItemSizeController::class);
     $router->get('prices/{item?}/create', [\App\Admin\Controllers\Item\ItemSizeController::class,'create']);
     $router->any('prices/{item}/{id}', [\App\Admin\Controllers\Item\ItemSizeController::class,'update']);

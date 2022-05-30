@@ -1,0 +1,123 @@
+.multi-switcher {
+   padding: 2px;
+   display: inline-flex;
+   @apply bg-divider-dark;
+   --marker-color: theme("colors.black.DEFAULT");
+   --marker-bg: theme("colors.white");
+   --size: 3.2rem;
+   --padding: 1.6rem;
+   --font-size: 1.6rem;
+   --border-radius: 0.8rem;
+   border-radius: var(--border-radius);
+   font-size: var(--font-size);
+   @screen md {
+      --size: 4.4rem;
+      --padding: 2.4rem;
+   }
+   &--rounded {
+      --border-radius: 99rem;
+   }
+   &__inner {
+      position: relative;
+      display: flex;
+      z-index: 1;
+      @apply focus-outline;
+   }
+   &__marker {
+      border-radius: var(--border-radius);
+      position: absolute;
+      background-color: var(--marker-bg);
+      top: var(--marker-offset-top);
+      left: var(--marker-offset-left);
+      width: var(--marker-width);
+      height: var(--marker-height);
+      z-index: -1;
+      transition: 0.15s;
+   }
+   &--vertical &__inner {
+      flex-direction: column;
+   }
+   &__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      opacity: 0.5;
+      height: var(--size);
+      padding: 0 var(--padding);
+      &.active {
+         color: var(--marker-color);
+         opacity: 1;
+         transition: 0.15s;
+      }
+   }
+   &--dark {
+      @apply bg-white/10 text-white;
+   }
+   &--primary {
+      @apply bg-primary text-white;
+      --marker-color: theme("colors.primary.DEFAULT");
+   }
+   &--primary &__btn {
+      opacity: 1;
+   }
+}
+@responsive {
+   .multi-switcher--sm {
+      --size: 3.2rem;
+      --padding: 1.6rem;
+      --font-size: 1.4rem;
+   }
+   .multi-switcher--md {
+      --size: 4.4rem;
+      --padding: 2.4rem;
+      --font-size: 1.4rem;
+   }
+}
+
+.radio-sr-only {
+   appearance: none;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: none;
+   color: inherit;
+   border: none;
+   box-shadow: none;
+   outline: none;
+   border-radius: inherit;
+   cursor: pointer;
+   &:disabled {
+      cursor: not-allowed;
+   }
+   &:focus {
+      outline: none;
+   }
+   &:focus-visible {
+      @apply ring ring-primary ring-offset-1 ring-inset;
+   }
+}
+
+.menu-underline {
+   padding: 2px;
+   @apply rounded bg-divider;
+   &__inner {
+      position: relative;
+      display: flex;
+   }
+   &__marker {
+      position: absolute;
+      background-color: #fff;
+      top: var(--marker-offset-top);
+      left: var(--marker-offset-left);
+      width: var(--marker-width);
+      height: var(--marker-height);
+      @apply shadow rounded;
+      transition: var(--transition-base);
+   }
+   &--vertical &__inner {
+      flex-direction: column;
+   }
+}

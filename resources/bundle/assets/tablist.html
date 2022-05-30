@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper bg-divider py-32 sm:py-64">
+         <div class="container">
+            <ul data-tablist class="text-lg space-y-5 w-600">
+               <li data-tablist-item>
+                  <button class="btn btn--md btn--primary btn--outlined w-full justify-start group" accesskey="a" data-tablist-tab="tabpanel-test">
+                     Tab 1
+                     <span class="group-close:hidden w-20">-</span>
+                     <span class="group-open:hidden w-20">+</span>
+                  </button>
+                  <div class="overflow-hidden" data-tablist-tabpanel id="tabpanel-test">
+                     <button class="btn btn--primary btn--md btn--text btn--hover-ghost" data-tablist-close>Close</button>
+                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, consectetur numquam veritatis nobis maxime quas laboriosam tempora possimus magni animi!</p>
+                     <ul>
+                        <li>asdasd1</li>
+                        <li>asdasd2</li>
+                     </ul>
+                  </div>
+               </li>
+
+               <li data-tablist-item>
+                  <button class="btn btn--md btn--primary btn--outlined w-full justify-start group" data-tablist-tab>Tab 2</button>
+                  <div class="overflow-hidden active" data-tablist-tabpanel data-tablist-tabpanel>
+                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, consectetur numquam veritatis nobis maxime quas laboriosam tempora possimus magni animi!</p>
+
+                     <ul data-tablist class="text-lg space-y-5 w-600 pl-50">
+                        <li data-tablist-item>
+                           <button class="btn btn--md btn--primary btn--outlined w-full justify-start group" data-tablist-tab>
+                              Tab 1
+                              <span class="group-close:hidden w-20">-</span>
+                              <span class="group-open:hidden w-20">+</span>
+                           </button>
+                           <div class="overflow-hidden" data-tablist-tabpanel>
+                              <button class="btn btn--primary btn--md btn--text btn--hover-ghost" data-tablist-close>Close</button>
+                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, consectetur numquam veritatis nobis maxime quas laboriosam tempora possimus magni animi!</p>
+                              <ul>
+                                 <li>asdasd1</li>
+                                 <li>asdasd2</li>
+                              </ul>
+                           </div>
+                        </li>
+
+                        <li data-tablist-item>
+                           <button class="btn btn--md btn--primary btn--outlined w-full justify-start group" data-tablist-tab>Tab 2</button>
+                           <div class="overflow-hidden" data-tablist-tabpanel>
+                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, consectetur numquam veritatis nobis maxime quas laboriosam tempora possimus magni animi!</p>
+                           </div>
+                        </li>
+                        <li data-tablist-item>
+                           <button class="btn btn--md btn--primary btn--outlined w-full justify-start group" data-tablist-tab>Tab 2</button>
+                           <div class="overflow-hidden active" data-tablist-tabpanel>
+                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, consectetur numquam veritatis nobis maxime quas laboriosam tempora possimus magni animi!</p>
+                           </div>
+                        </li>
+                        <li data-tablist-item>
+                           <h2 class="btn btn--md btn--primary btn--outlined w-full justify-start group" data-tablist-tab disabled>Tab 2</h2>
+                           <div class="overflow-hidden" data-tablist-tabpanel>
+                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, consectetur numquam veritatis nobis maxime quas laboriosam tempora possimus magni animi!</p>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li data-tablist-item>
+                  <button class="btn btn--md btn--primary btn--outlined w-full justify-start group" data-tablist-tab>Tab 2</button>
+                  <div class="overflow-hidden" id="test-panel" data-tablist-tabpanel>
+                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, consectetur numquam veritatis nobis maxime quas laboriosam tempora possimus magni animi!</p>
+                  </div>
+               </li>
+               <li data-tablist-item>
+                  <h2 class="btn btn--md btn--primary btn--outlined w-full justify-start group" data-tablist-tab disabled accesskey="b">Tab 2</h2>
+                  <div class="overflow-hidden" data-tablist-tabpanel>
+                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, consectetur numquam veritatis nobis maxime quas laboriosam tempora possimus magni animi!</p>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

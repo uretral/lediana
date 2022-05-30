@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper bg-divider">
+         <div class="my-32 sm:my-64">
+            <div class="container">
+               <h2 class="text-xl sm:text-2xl md:text-3xl font-black mb-8 sm:mb-16">Выберите размер фотографий</h2>
+               <div class="text-mob-lg md:text-lg prose mb-50 sm:mb-0">
+                  <p>
+                     Все размеры указаны в сантиметрах, ориентацию<br class="below-sm:hidden" />
+                     фотографий можно сменить на следующем шаге
+                  </p>
+               </div>
+
+               <div class="mb-40">
+                  <ul class="flex items-end flex-wrap gap-y-65 gap-x-20 lg:gap-x-40">
+                     <li class="size below-sm:size-w-devider--1.2" style="--w: 10; --h: 10; --max-w: 10rem">
+                        <a href="/photos-editor.html" class="size__inner">
+                           <span>10×10</span>
+                        </a>
+                        <span class="absolute inset-x-0 -bottom-25 sm:-bottom-30 text-tiny sm:text-base">Инстаграм</span>
+                     </li>
+                     <li class="size below-sm:size-w-devider--1.2" style="--w: 7.9; --h: 7.9; --max-w: 9rem">
+                        <a href="/photos-editor.html" class="size__inner">
+                           <span>7,9×7,9</span>
+                        </a>
+                        <span class="absolute inset-x-0 -bottom-25 sm:-bottom-30 text-tiny sm:text-base">Полароид</span>
+                     </li>
+                     <li class="size below-sm:size-w-devider--1.2" style="--w: 10.5; --h: 15.2; --max-w: 10.5rem">
+                        <a href="/photos-editor.html" class="size__inner">
+                           <span>10,5×15,2</span>
+                        </a>
+                     </li>
+                     <div class="w-full flex sm:contents items-end gap-x-20">
+                        <li class="size" style="--w: 15.2; --h: 21.6; --max-w: 15.2rem">
+                           <a href="/photos-editor.html" class="size__inner">
+                              <span>15,2×21,6</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 20.3; --h: 30.5; --max-w: 20.3rem">
+                           <a href="/photos-editor.html" class="size__inner">
+                              <span>20.3×30,5</span>
+                           </a>
+                        </li>
+                        <li class="size" style="--w: 21; --h: 30.5; --max-w: 20.5rem">
+                           <a href="/photos-editor.html" class="size__inner">
+                              <span>21×30,5</span>
+                           </a>
+                        </li>
+                     </div>
+                  </ul>
+               </div>
+               <ul class="flex items-end gap-20 lg:gap-40">
+                  <li class="size" style="--w: 30.5; --h: 40.6; --max-w: 30.5rem">
+                     <a href="/photos-editor.html" class="size__inner">
+                        <span>30,5×40,6</span>
+                     </a>
+                  </li>
+                  <li class="size" style="--w: 30.5; --h: 42; --max-w: 30.5rem">
+                     <a href="/photos-editor.html" class="size__inner">
+                        <span>30,5×42</span>
+                     </a>
+                  </li>
+                  <li class="size" style="--w: 30.5; --h: 45.7; --max-w: 30.5rem">
+                     <a href="/photos-editor.html" class="size__inner">
+                        <span>30,5×45,7</span>
+                     </a>
+                  </li>
+               </ul>
+
+               <button class="btn btn--md btn--primary mt-24 lg:mt-40 w-full sm:w-auto">
+                  Далее <svg aria-hidden="true" class="wh-16 fill-current ml-5 mt-2"><use href="/assets/svg/svg.svg.svg#arrow-right"></use></svg>
+               </button>
+            </div>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

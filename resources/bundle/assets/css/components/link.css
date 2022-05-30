@@ -1,0 +1,31 @@
+@layer components {
+   .link {
+      --underline-opacity: 0.4;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.25em;
+      /* transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, text-decoration-color; */
+      transition: 0.15s;
+   }
+   .link:hover {
+      --underline-opacity: 1;
+   }
+   .link:active {
+      opacity: 0.5;
+   }
+   .link--dashed {
+      text-decoration-style: dashed;
+   }
+   .link--primary {
+      color: theme("colors.primary.DEFAULT");
+      text-decoration-color: rgba(theme("colors.primary.DEFAULT"), var(--underline-opacity));
+   }
+   .link--secondary {
+      @apply text-secondary;
+      text-decoration-color: rgba(theme("colors.secondary.DEFAULT"), var(--underline-opacity));
+   }
+   .link--black {
+      @apply text-black;
+      text-decoration-color: rgba(theme("colors.black.DEFAULT"), var(--underline-opacity));
+   }
+}

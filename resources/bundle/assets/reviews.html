@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper bg-divider">
+         <div class="my-64">
+            <div class="container">
+               <h2 class="text-xl md:text-2xl font-bold md:font-black mb-50 md:mb-55">Счастливые отзывы</h2>
+               <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-40 gap-20 xl:gap-x-40">
+                  <li each="9" class="swiper-slide">
+                     <include src="/include/review.html"></include>
+                  </li>
+               </ul>
+
+               <div class="flex gap-24 mt-20 lg:mt-40">
+                  <button class="btn btn--white btn--md flex-grow justify-start btn--no-loader">
+                     <!-- <div class="loader wh-24 mr-8"></div> -->
+                     <svg aria-hidden="true" class="fill-current wh-24 mr-8"><use href="/assets/svg/svg.svg.svg#circle-arrow-down"></use></svg>
+                     Загрузить ещё
+                  </button>
+               </div>
+            </div>
+         </div>
+         <div class="home-footer home-footer--dark-top">
+            <div class="container home-footer__container">
+               <div class="home-footer__title">Не знаете, что&nbsp;выбрать?</div>
+               <div class="home-footer__subtitle">Мы подскажем!</div>
+               <div class="home-footer__desc">
+                  По промокоду <span class="text-lg">Lediana2018</span>,<br />
+                  акция действует до 28 октября 2018
+               </div>
+               <button class="btn btn--primary btn--md">
+                  Получить консультацию
+                  <svg aria-hidden="true" class="fill-current wh-24 ml-8"><use href="/assets/svg/svg.svg.svg#circle-arrow-right"></use></svg>
+               </button>
+               <div class="home-footer__photo">
+                  <img src="/img/cubs.png" alt="" />
+               </div>
+            </div>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

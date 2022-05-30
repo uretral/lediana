@@ -19,6 +19,9 @@
  */
 
 use Encore\Admin\Admin;
+use Encore\Admin\Form;
 
 Encore\Admin\Form::forget(['map']);
 Admin::css('/css/admin.css');
+
+Form::extend('layoutSizer', \App\Admin\Extensions\LayoutSizer::class);

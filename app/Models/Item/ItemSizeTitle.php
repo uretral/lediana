@@ -36,4 +36,5 @@ class ItemSizeTitle extends Model
 {
     use SoftDeletes;
     protected $table = 'item_size_titles';
+    protected $hidden = ['created_at','updated_at','deleted_at'];
 }

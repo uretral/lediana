@@ -2,7 +2,9 @@
 
 namespace App\Models\Item;
 
+use App\Models\Layout\Layout;
 use App\Models\Product\Price;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -45,6 +47,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read Price|null $flyleaf
  * @property-read \Illuminate\Database\Eloquent\Collection|Price[] $format
  * @property-read int|null $format_count
+ * @property float|null $rem
+ * @property-read string $slug
+ * @property-read \Illuminate\Database\Eloquent\Collection|Price[] $prices
+ * @property-read int|null $prices_count
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemSize whereRem($value)
+ * @property int $sort
+ * @method static Builder|ItemSize whereSort($value)
+ * @property int|null $ratio_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|Layout[] $layouts
+ * @property-read int|null $layouts_count
+ * @method static Builder|ItemSize whereRatioId($value)
  */
 class ItemSize extends Model
 {
@@ -52,12 +65,46 @@ class ItemSize extends Model
 
     protected $table = 'item_sizes';
     protected $guarded = [];
+    protected $hidden = ['created_at','updated_at','deleted_at'];
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('sort', 'asc');
+        });
 
-    protected $casts = [
-        'sizes' => 'array',
-    ];
+        static::creating(function ($itemSize) {
+            return self::modifyRatio($itemSize);
+        });
+        static::updating(function ($itemSize) {
+            return self::modifyRatio($itemSize);
+        });
+        static::saving(function ($itemSize) {
+            return self::modifyRatio($itemSize);
+        });
+    }
+
+    public function modifyRatio(ItemSize $itemSize): ItemSize
+    {
+        $ratio = $itemSize->width / $itemSize->height;
+        if ($ratio == 1) {
+            $itemSize->ratio_id = 1;
+        } elseif ($ratio > 1) {
+            $itemSize->ratio_id = 2;
+        } elseif ($ratio < 1) {
+            $itemSize->ratio_id = 3;
+        }
+        return $itemSize;
+    }
 
     public array $labelsArray = [];
+
+    public function setSizesAttribute()
+    {
+        $width = (int)$this->width == $this->width ? (int)$this->width : round($this->width, 1);
+        $height = (int)$this->height == $this->height ? (int)$this->height : round($this->height, 1);
+        $this->attributes['sizes'] = $width . '×' . $height;
+    }
 
     /* Relations*/
 
@@ -102,6 +149,19 @@ class ItemSize extends Model
         return $this->hasMany(Price::class, 'size_id', 'id');
     }
 
+    public function layouts(): HasMany
+    {
+        return $this->hasMany(Layout::class, 'ratio_id', 'ratio_id');
+    }
+/*    public function layoutCovers(): HasMany
+    {
+        return $this->hasMany(Layout::class, 'ratio_id', 'ratio_id')->where('template_id', 1);
+    }
+
+    public function layoutSpreads(): HasMany
+    {
+        return $this->hasMany(Layout::class, 'ratio_id', 'ratio_id')->where('template_id', '!=',1);
+    }*/
 
     /*admin methods*/
 

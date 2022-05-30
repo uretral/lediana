@@ -1,0 +1,180 @@
+input::placeholder,
+textarea::placeholder {
+   opacity: 1;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+   -webkit-appearance: none;
+}
+/* Firefox */
+input[type="number"] {
+   -moz-appearance: textfield;
+}
+
+.field-wrapper {
+   display: flex;
+   &__title {
+      @apply bg-divider-dark w-145 -mr-20 h-48 px-25  flex items-center flex-shrink-0;
+      border-top-left-radius: 2.4rem;
+      border-bottom-left-radius: 2.4rem;
+   }
+   &--light &__title {
+      @apply bg-divider;
+   }
+}
+
+.input-base {
+   background: transparent;
+   line-height: normal;
+   display: block;
+   width: 100%;
+   padding: 0;
+   margin: 0;
+   border-width: 0;
+   box-shadow: none;
+   appearance: none;
+   transition: var(--transition-default);
+   border-radius: 0;
+   font-weight: 500;
+   &:focus {
+      outline: none;
+   }
+   &::placeholder {
+      opacity: 1;
+   }
+}
+
+.field {
+   @apply text-black field--md;
+   text-overflow: ellipsis;
+   line-height: normal;
+   background: transparent;
+   display: block;
+   width: 100%;
+   padding: 0;
+   box-shadow: none;
+   appearance: none;
+   transition: 0.15s;
+   background-color: #ffffff;
+   --border-radius: theme("borderRadius.DEFAULT");
+   --border-width: 2px;
+   --border-style: solid;
+   --border-color: theme("colors.divider.DEFAULT");
+   --border: var(--border-width) var(--border-style) var(--border-color);
+   --bg: #fff;
+   height: var(--size);
+   border-radius: var(--border-radius);
+   font-size: var(--font-size);
+   padding: 0 var(--padding);
+   border: var(--border);
+   background: var(--bg);
+   &:focus {
+      outline: none;
+      --border-color: theme("colors.black.DEFAULT");
+      /* border-color: #504f4f; */
+   }
+   &::placeholder {
+      opacity: 1;
+      @apply text-secondary sm:text-transparent;
+   }
+   &.error {
+      @apply border-red;
+      padding-top: 1em;
+      /* &::placeholder {
+      color: var(--color-error, #fd676a);
+      opacity: 0.8;
+    } */
+   }
+   &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+   }
+   &:hover,
+   &:focus {
+      /* border-color: black; */
+   }
+}
+
+.field:where(textarea, .field--type-textarea) {
+   padding-top: 2rem;
+   padding-bottom: 2rem;
+   min-height: var(--size);
+   height: auto;
+}
+.field:where([type="color"], .field--type-color) {
+   padding: 0;
+   overflow: hidden;
+   width: var(--size);
+   &::-webkit-color-swatch-wrapper {
+      padding: 0;
+   }
+   &::-webkit-color-swatch {
+      padding: 0;
+      border: none;
+   }
+}
+.field:where(select, .field--type-select) {
+   --arrow-offset: 2rem;
+   --arrow-size: 1rem;
+   padding-left: var(--padding);
+   padding-right: calc(var(--padding) + var(--arrow-offset));
+   font-weight: 400;
+   background-image: url("data:image/svg+xml,%3Csvg width='8' height='5' viewBox='0 0 8 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.04127 3.19285L1.42421 0.575788L0.575684 1.42432L4.04127 4.8899L7.50686 1.42432L6.65833 0.575788L4.04127 3.19285Z' fill='%23232325'/%3E%3C/svg%3E%0A");
+   background-repeat: no-repeat;
+   background-size: var(--arrow-size) var(--arrow-size);
+   background-position: center right var(--arrow-offset);
+}
+
+.field {
+   @apply field--rounded;
+}
+
+@responsive {
+   .field--outlined-dark {
+      --border-color: theme("colors.divider.dark");
+   }
+   .field--outlined {
+      --border-color: theme("colors.divider.DEFAULT");
+   }
+   .field--no-outlined {
+      --border-color: transparent;
+   }
+   .field--dark {
+      --bg: theme("colors.divider.DEFAULT");
+   }
+   .field--rounded,
+   .field--rounded-full {
+      --border-radius: calc(var(--size) / 2);
+   }
+   .field--rounded-md {
+      --border-radius: theme("borderRadius.DEFAULT");
+   }
+   .field--rounded-sm {
+      --border-radius: theme("borderRadius.sm");
+   }
+   .field--till {
+      --border-radius: 0;
+   }
+   .field--sm {
+      --size: 3.2rem;
+      --padding: 1.6rem;
+      --font-size: 1.4rem;
+      --arrow-offset: 1.5rem;
+      --arrow-size: 0.8rem;
+   }
+   .field--md {
+      --size: 4.8rem;
+      --padding: 2.4rem;
+      --font-size: 1.6rem;
+      --arrow-offset: 2.4rem;
+      --arrow-size: 1.8rem;
+   }
+}

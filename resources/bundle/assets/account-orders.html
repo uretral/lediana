@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper relative before:bg-divider before:absolute before:inset-0 lg:before:left-1/2">
+         <div class="container lg:grid grid-cols-[min-content,1fr] h-full relative">
+            <div class="hidden lg:block">
+               <include src="/include/account-sidebar.html"></include>
+            </div>
+            <div class="bg-divider lg:pl-55 pt-32 pb-64 md:py-64">
+               <include src="/include/breadcrumbs.html"></include>
+               <h1 class="text-mob-3xl sm:text-2xl lg:text-3xl font-black">Мои заказы</h1>
+
+               <div class="lg:hidden">
+                  <include src="/include/account-sidebar.html"></include>
+               </div>
+
+               <div class="multi-switcher mt-24 lg:mt-16 mb-32 md:mb-60">
+                  <div class="multi-switcher__inner" data-menu='{"mode": "radio"}'>
+                     <label class="multi-switcher__btn" data-menu-link>
+                        <input type="radio" value="0" name="switcher" class="radio-sr-only" checked />
+                        Активные
+                     </label>
+                     <label class="multi-switcher__btn" data-menu-link>
+                        <input type="radio" value="1" name="switcher" class="radio-sr-only" />
+                        Завершённые
+                     </label>
+                     <div class="multi-switcher__marker"></div>
+                  </div>
+               </div>
+
+               <ul class="space-y-32">
+                  <li each="3">
+                     <div class="bg-white rounded md:flex px-16 md:px-0">
+                        <div class="wh-140 xl:wh-150 relative ml-13 md:ml-0">
+                           <div class="absolute inset-0 -left-13 -top-13 bg-primary-light rounded-sm"></div>
+                           <img src="/img/order-preview.jpg" class="image-full rounded-tl-sm rounded-br-sm relative" alt="" />
+                        </div>
+                        <div class="py-16 pb-32 md:p-24 md:pl-40 md:pb-48 flex-grow">
+                           <div class="xl:flex items-center justify-between">
+                              <div class="text-lg font-bold">Дизайн PhotoBook</div>
+                              <div class="text-secondary text-sm whitespace-nowrap xl:ml-16 mt-8 md:mt-0">Сегодня 12:59</div>
+                           </div>
+                           <div class="text-secondary text-sm mt-4">Статус: <span class="text-primary">Заказ отправлен на печать</span></div>
+                           <div class="inline-flex items-center h-32 px-16 rounded-sm bg-divider text-sm mt-16">20 страниц / 10 разворотов</div>
+                        </div>
+                        <div class="pt-16 pb-60 md:p-24 md:pt-30 md:pb-48 border-t md:border-t-0 md:border-l border-divider md:w-300 text-sm text-secondary space-y-8">
+                           <div>Номер заказа: <span class="text-black">95333298435410</span></div>
+                           <div>Ваш заказ будет доставлен в течение <span class="text-black whitespace-nowrap">29–52 дней</span>. Время доставки может измениться из-за задержек.</div>
+                           <div>
+                              Трек номер: <span class="text-black">95333298435410</span>
+                              <br />
+                              <a href="" class="link link--primary">Отследить</a>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

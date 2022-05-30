@@ -33,10 +33,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $text
  * @method static \Illuminate\Database\Eloquent\Builder|ItemCoverMaterial whereShortTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ItemCoverMaterial whereText($value)
+ * @property string|null $icon
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemCoverMaterial whereIcon($value)
  */
 class ItemCoverMaterial extends Model
 {
     use SoftDeletes;
 
     protected $table = 'item_cover_materials';
+    protected $hidden = ['created_at','updated_at','deleted_at'];
 }

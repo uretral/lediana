@@ -3255,7 +3255,7 @@ mark {
     opacity: 1;
     transition: 0.15s;
     background: white;
-    border-radius: 6px;
+    border-radius: 26px;
 }
 .multi-switcher--dark {
     background-color: rgba(255, 255, 255, 0.1);
@@ -6172,6 +6172,10 @@ mark {
     padding-bottom: calc(var(--h) / var(--w) * 100%);
     position: relative;
 }
+/*.ratio-1 {*/
+/*    --w: 740;*/
+/*    --h: 396;*/
+/*}*/
 .photobook-cover {
     position: absolute;
     top: 0;
@@ -6183,6 +6187,15 @@ mark {
     grid-template-columns: 3.4fr 0.44fr 3.4fr;
     --br: calc(0.8rem * var(--p));
 }
+.photobook-cover.no-spine {
+    gap: calc(0.1rem * var(--p));
+}
+.photobook-cover.double {
+    grid-template-columns: 3.4fr 0.0fr 3.4fr;
+}
+.photobook-cover.double.wide {
+    grid-template-columns: 6.8fr 0.0fr 0.0fr;
+}
 .photobook-cover-left, .photobook-cover-right, .photobook-cover-middle {
     --tw-bg-opacity: 1;
     background-color: rgba(35, 35, 37, var(--tw-bg-opacity));
@@ -6190,10 +6203,22 @@ mark {
     color: rgba(255, 255, 255, var(--tw-text-opacity));
     border-radius: var(--br);
     position: relative;
+    /*border: 1px solid rgba(35, 35, 37, var(--tw-bg-opacity));*/
+
 }
+
+.photobook-cover-left.white, .photobook-cover-right.white, .photobook-cover-middle.white {
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+    color: rgba(35, 35, 37, var(--tw-text-opacity));
+}
+
+
 .photobook-cover-left span, .photobook-cover-right span, .photobook-cover-middle span {
     display: block;
 }
+
+
+
 .corner {
     position: absolute;
     top: calc(-1.6rem * var(--p));
@@ -6276,10 +6301,13 @@ mark {
     -webkit-mask-position: center;
     mask-position: center;
     display: block;
+    cursor: pointer;
 }
 .layout-preview.active {
     --tw-bg-opacity: 1;
     background-color: rgba(241, 192, 178, var(--tw-bg-opacity));
+    cursor: default;
+
 }
 /*/////////////////*/
 .cover-materials-list {

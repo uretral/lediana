@@ -1,0 +1,1 @@
+export default `button:not([disabled]):not([aria-hidden]),a[href],area[href],input:not([disabled]):not([type="hidden"]):not([aria-hidden]),select:not([disabled]):not([aria-hidden]),textarea:not([disabled]):not([aria-hidden]),[contenteditable],iframe,object,embed,[tabindex]:not([tabindex^="-"])`;

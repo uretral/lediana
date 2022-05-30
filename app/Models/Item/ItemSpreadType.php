@@ -37,4 +37,5 @@ class ItemSpreadType extends Model
     use SoftDeletes;
 
     protected $table = 'item_spread_types';
+    protected $hidden = ['created_at','updated_at','deleted_at'];
 }

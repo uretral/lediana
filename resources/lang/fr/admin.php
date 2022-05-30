@@ -37,7 +37,7 @@ return [
     'show'                  => 'Affiche',
     'entries'               => 'lignes',
     'captcha'               => 'Captcha',
-    'action'                => 'Action',
+    'action'                => 'Classes',
     'title'                 => 'Titre',
     'description'           => 'Description',
     'back'                  => 'Retourner',

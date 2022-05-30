@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper bg-divider">
+         <div class="mt-32 sm:my-64">
+            <div class="container">
+               <div class="flex items-center mb-8 sm:mb-16">
+                  <h2 class="text-xl sm:text-2xl md:text-3xl font-black -translate-y-5">Фотокнига</h2>
+                  <div class="lg:min-w-[17rem] lg:max-w-[30rem] ml-20 relative">
+                     <select id="test" class="select-field absolute inset-0 w-full h-full" data-select data-select-classes="select--sm md:select--md select--rounded-sm select--no-border">
+                        <option value="">Placeholder</option>
+                        <option value="20×20" data-data='{"myData": "uraaa!"}' data-date="2021-07-20">20×20 см</option>
+                        <optgroup label="Группа 1">
+                           <option value="20×20">20×20 см</option>
+                           <option value="30×30" disabled>30×30 см</option>
+                           <option value="40×40">40×40 см</option>
+                           <option value="50×50">50×50 см</option>
+                        </optgroup>
+                        <option value="test">Test</option>
+                        <optgroup label="Группа 2" disabled>
+                           <option value="20×202">20×20 см 2</option>
+                           <option value="30×302" disabled>30×30 см 2</option>
+                           <option value="40×402">40×40 см 2</option>
+                           <option value="50×502">50×50 см 2</option>
+                        </optgroup>
+                        <option value="40×403">40×40 см 3</option>
+                        <option value="50×503">50×50 см 3</option>
+                     </select>
+                  </div>
+                  <div class="hidden lg:flex ml-auto gap-24">
+                     <button class="btn btn--md btn--black btn--outlined hover:border-primary hover:text-primary">
+                        <svg aria-hidden="true" class="wh-24 mr-8 fill-current"><use href="/assets/svg/svg.svg#save"></use></svg>
+                        Сохранить
+                     </button>
+                     <button class="btn btn--md btn--black btn--outlined hover:border-red hover:text-red" data-open-modal="modal-delete-book">
+                        <svg aria-hidden="true" class="wh-24 mr-8 fill-current"><use href="/assets/svg/svg.svg#trash"></use></svg>
+                        Удалить
+                     </button>
+                  </div>
+               </div>
+               <div class="flex gap-16 mb-24 lg:mb-64 overflow-auto disable-scrollbars">
+                  <button class="btn btn--sm btn--primary">Обложка</button>
+                  <button class="btn btn--sm btn--white">1<span class="h-22 w-1 bg-divider mx-10"></span>2</button>
+                  <button class="btn btn--sm btn--white">3<span class="h-22 w-1 bg-divider mx-10"></span>4</button>
+                  <button class="btn btn--sm btn--white">5<span class="h-22 w-1 bg-divider mx-10"></span>6</button>
+                  <button class="btn btn--sm btn--white">7<span class="h-22 w-1 bg-divider mx-10"></span>8</button>
+                  <button class="btn btn--sm btn--white">9<span class="h-22 w-1 bg-divider mx-10"></span>10</button>
+                  <button class="btn btn--sm btn--white">11<span class="h-22 w-1 bg-divider mx-10"></span>12</button>
+                  <button class="btn btn--sm btn--white">13<span class="h-22 w-1 bg-divider mx-10"></span>14</button>
+                  <button class="btn btn--sm btn--white">15<span class="h-22 w-1 bg-divider mx-10"></span>16</button>
+                  <button class="btn btn--sm btn--white">17<span class="h-22 w-1 bg-divider mx-10"></span>18</button>
+                  <button class="btn btn--sm btn--white">19<span class="h-22 w-1 bg-divider mx-10"></span>20</button>
+                  <button class="btn btn--sm btn--white">+</button>
+               </div>
+               <div class="grid lg:grid-cols-[1fr,26rem] gap-20 xl:gap-40">
+                  <div class="editor-container pb-20 lg:pb-0">
+                     <div class="editor-btns">
+                        <button type="button" class="btn-base editor-btn editor-btn--left" disabled aria-label="Предыдущая страница">
+                           <svg aria-hidden="true"><use href="/assets/svg/svg.svg#arrow-thin-left"></use></svg>
+                        </button>
+                        <button type="button" class="btn-base editor-btn editor-btn--right" aria-label="Следующая страница">
+                           <svg aria-hidden="true"><use href="/assets/svg/svg.svg#arrow-thin-right"></use></svg>
+                        </button>
+                     </div>
+                     <div class="photobook-cover-wrapper">
+                        <div class="photobook-cover" data-type="cover" data-style="3">
+                           <div class="photobook-cover-left">
+                              <div class="photobook-cover-left__logo"></div>
+                              <div class="photobook-cover-left__title">www.lediana.ru</div>
+                           </div>
+                           <div class="photobook-cover-middle">
+                              <span>Нажмите, чтобы ввести свой текст</span>
+                           </div>
+                           <div class="photobook-cover-right">
+                              <div class="corner"></div>
+                              <button class="btn-base absolute left-0 top-0 wh-full" data-open-modal="edit-text"></button>
+                              <div class="edit-photo">
+                                 <div class="edit-photo__photo" style="background-image: url(../img/photo.jpg)"></div>
+                                 <div class="edit-photo__actions">
+                                    <button class="btn-base btn-action" aria-label="Увеличить" data-close-modal>
+                                       <svg aria-hidden="true"><use href="/assets/svg/svg.svg#zoom"></use></svg>
+                                    </button>
+                                    <button class="btn-base btn-action" aria-label="Повернуть" data-close-modal>
+                                       <svg aria-hidden="true"><use href="/assets/svg/svg.svg#rotate"></use></svg>
+                                    </button>
+                                    <button class="btn-base btn-action" aria-label="Закрыть" data-close-modal>
+                                       <svg aria-hidden="true"><use href="/assets/svg/svg.svg#close"></use></svg>
+                                    </button>
+                                 </div>
+                              </div>
+                              <span>Нажмите, чтобы ввести свой текст</span>
+                              <span>2021</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="flex lg:hidden items-center justify-between mt-16">
+                        <div class="flex gap-20">
+                           <button class="btn btn--sm btn--black btn--icon btn--outlined btn--rounded">−</button>
+                           <button class="btn btn--sm btn--black btn--icon btn--outlined btn--rounded">+</button>
+                        </div>
+                        <div class="flex gap-10">
+                           <button class="btn btn--sm btn--black btn--icon btn--text btn--rounded hover:border-primary hover:text-primary">
+                              <svg aria-hidden="true" class="wh-24 fill-current"><use href="/assets/svg/svg.svg#save"></use></svg>
+                           </button>
+                           <button class="btn btn--sm btn--black btn--icon btn--text btn--rounded hover:border-red hover:text-red" data-open-modal="modal-delete-book">
+                              <svg aria-hidden="true" class="wh-24 fill-current"><use href="/assets/svg/svg.svg#trash"></use></svg>
+                           </button>
+                        </div>
+                     </div>
+                     <div class="lg:hidden text-secondary text-tiny max-w-210 mt-4">Для редактирования разворота увеличьте его масштаб</div>
+                  </div>
+                  <div>
+                     <div class="bg-white lg:rounded -mx-container lg:mx-0 px-16 pt-32 pb-48 lg:pb-32">
+                        <div class="flex gap-16 mb-32">
+                           <button class="btn btn--md btn--primary flex-grow">Добавить фото</button>
+                           <button class="btn btn--md btn--secondary btn--icon">
+                              <svg aria-hidden="true" class="wh-20 fill-current"><use href="/assets/svg/svg.svg#instagram"></use></svg>
+                           </button>
+                        </div>
+                        <ul class="grid grid-cols-fill-min-90 lg:grid-cols-fill-min-70 gap-8">
+                           <li each="9">
+                              <div class="pb-full relative overflow-hidden rounded-sm">
+                                 <button class="btn-base absolute left-0 top-0 w-full h-full">
+                                    <img src="/img/photo.jpg" class="image-full" alt="" />
+                                 </button>
+                                 <button class="btn-base btn-close btn-close--sm absolute top-4 right-4" aria-label="Закрыть" data-close-modal>
+                                    <svg aria-hidden="true"><use href="/assets/svg/svg.svg#close"></use></svg>
+                                 </button>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="bg-black pt-48 lg:pt-32 pb-50 text-white">
+            <div class="container">
+               <div class="flex flex-wrap items-center mb-16">
+                  <button class="btn btn--sm btn--primary cover-materials-hide">Все обложки</button>
+                  <div class="min-w-190 ml-10 lg:ml-24">
+                     <button class="btn-base text-left field field--type-select field--sm field--rounded-sm cover-materials-toggler" data-toggle="cover-materials">Материал обложки</button>
+                     <!-- <select name="#" id="" class="select-field" data-select data-select-classes="select--sm select--rounded-sm select--no-border">
+                        <option value="default">Материал обложки</option>
+                        <option value="20×20">20×20 см</option>
+                        <option value="30×30">30×30 см</option>
+                        <option value="40×40">40×40 см</option>
+                        <option value="50×50">50×50 см</option>
+                     </select> -->
+                  </div>
+                  <div class="overflow-x-auto overflow-y-hidden disable-scrollbars px-container -mx-container mt-16 lg:m-0 lg:p-0 md:w-full lg:w-auto cover-materials-hide">
+                     <div class="multi-switcher multi-switcher--sm multi-switcher--dark lg:ml-30 w-max">
+                        <div class="multi-switcher__inner" data-menu='{"mode": "radio"}'>
+                           <label class="multi-switcher__btn" data-menu-link>
+                              <input type="radio" value="0" name="switcher" class="radio-sr-only" checked />
+                              Белая бумага
+                           </label>
+                           <label class="multi-switcher__btn" data-menu-link>
+                              <input type="radio" value="1" name="switcher" class="radio-sr-only" />
+                              Чёрная бумага
+                           </label>
+                           <label class="multi-switcher__btn" data-menu-link>
+                              <input type="radio" value="1" name="switcher" class="radio-sr-only" />
+                              Фото на фоне
+                           </label>
+                           <div class="multi-switcher__marker"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="hidden lg:flex items-center ml-auto cover-materials-hide">
+                     <div class="text-lg font-bold text-white mr-16">1890 ₽</div>
+                     <button class="btn btn--md btn--primary">В корзину</button>
+                  </div>
+               </div>
+               <div class="cover-materials-list" data-action-area data-dropdown id="cover-materials">
+                  <ul class="py-20 sm:py-40 px-16 sm:px-50 grid grid-cols-fill-min-120 sm:grid-cols-fill-min-240 gap-20 sm:gap-24 text-tiny">
+                     <li each="10" class="flex flex-col sm:flex-row gap-8 sm:gap-16">
+                        <label class="block">
+                           <input type="checkbox" name="cover-type" value="1" class="sr-only peer" />
+                           <div class="pb-full sm:pb-0 sm:wh-95 flex-shrink-0 relative cursor-pointer peer-checked:shadow-active-sm sm:peer-checked:shadow-active">
+                              <img src="/img/cover.jpg" class="absolute-image-full rounded-sm" alt="" />
+                              <div class="btn btn--sm btn--white btn--outlined btn--icon btn--rounded center">+</div>
+                           </div>
+                        </label>
+                        <div>
+                           <div class="font-bold">Название</div>
+                           <div>Короткое описание на четыре-шесть слов максимум</div>
+                           <div class="font-bold">1500 ₽</div>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+               <div class="covers-layouts" id="covers-layouts">
+                  <div class="text-sm mb-8">Выберите макет разворота</div>
+                  <ul class="grid grid-cols-fill-min-100 gap-8 lg:gap-16">
+                     <li>
+                        <button class="btn-base layout-preview" style="--img: url(/img/photobook/photobook-cover-style-1.svg)"></button>
+                     </li>
+                     <li>
+                        <button class="btn-base layout-preview" style="--img: url(/img/photobook/photobook-cover-style-2.svg)"></button>
+                     </li>
+                     <li>
+                        <button class="btn-base layout-preview active" style="--img: url(/img/photobook/photobook-cover-style-3.svg)"></button>
+                     </li>
+                     <li>
+                        <button class="btn-base layout-preview" style="--img: url(/img/photobook/photobook-cover-style-4.svg)"></button>
+                     </li>
+                     <li>
+                        <button class="btn-base layout-preview" style="--img: url(/img/photobook/photobook-cover-style-5.svg)"></button>
+                     </li>
+                     <li>
+                        <button class="btn-base layout-preview" style="--img: url(/img/photobook/photobook-cover-style-6.svg)"></button>
+                     </li>
+                     <li>
+                        <button class="btn-base layout-preview" style="--img: url(/img/photobook/photobook-cover-style-7.svg)"></button>
+                     </li>
+                     <li>
+                        <button class="btn-base layout-preview" style="--img: url(/img/photobook/photobook-cover-style-8.svg)"></button>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="fixed inset-x-0 bottom-0 py-8 lg:hidden text-black bg-primary-light z-10">
+            <div class="container flex items-center justify-center">
+               <div class="text-[2.2rem] font-bold mr-16">1890 ₽</div>
+               <button class="btn btn--md btn--primary">В корзину</button>
+            </div>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

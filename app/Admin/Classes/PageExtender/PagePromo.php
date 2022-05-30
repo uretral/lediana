@@ -40,7 +40,6 @@ class PagePromo extends PageExtender
     {
         $form->tab('Отзывы', function (Form $form) {
             $form->hasMany('reviews', '', function (Form\NestedForm $form) {
-//                $form->hidden('product_id')->default();
                 $form->number('order', 'Очередь')->default(100);
                 $form->switch('active', 'Активность')->default(1);
                 $form->textarea('text', 'Текст');
@@ -153,6 +152,8 @@ class PagePromo extends PageExtender
     {
         $form->tab('Размеры и калькулятор', function (Form $form) {
             $form->select('product_id', 'Выберите продукт')->options(Product::pluck('title', 'id'));
+            $form->text('calculator.title_editor','Текст заголовка страницы редактора');
+            $form->text('calculator.title_format','Текст заголовка страницы формата');
         });
     }
 }

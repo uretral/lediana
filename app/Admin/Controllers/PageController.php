@@ -168,6 +168,7 @@ class PageController extends Controller
             'text' => 'Текстовая',
             'promo' => 'Промо',
             'constructor' => 'Конструктор',
+            'sizes' => 'Форматы',
             'reviews' => 'Отзывы',
         ];
 
@@ -201,6 +202,12 @@ class PageController extends Controller
                         $form->select('type', 'Тип страниц')->options($type),
                         $form->text('slug', 'Слаг')
                     ]);
+                    break;
+                case 'sizes':
+                    $ext = new PageExtender\PageSize($form, [
+                        $form->select('type', 'Тип страниц')->options($type),
+                    ]);
+
                     break;
                 default:
                     $ext = new PageExtender($form, [

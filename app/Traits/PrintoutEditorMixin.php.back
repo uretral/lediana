@@ -1,0 +1,106 @@
+<?php
+
+namespace App\Traits;
+
+use App\Models\Layout\Layout;
+use App\Models\Printout\Printout;
+use App\Models\Printout\PrintoutSpread;
+use App\Services\PrintoutService;
+
+trait PrintoutEditorMixin
+{
+    public Printout $printout;
+    public int $defaultTemplateId = 3;
+    public int $templateId;
+
+    public int $printout_id;
+//    public object $layout;
+
+
+
+
+
+    public function spread()
+    {
+        return $this->printout->spreads()->where('spread_nr', $this->printout->current_spread_nr)->first();
+    }
+
+    public function defaultTemplateId(){
+        $layout = $this->spread()->getAttribute('layout_id');
+        $this->templateId = $layout
+            ? $this->printout->layouts()->where('layouts.id',$layout)->first()->getAttribute('template_id')
+            : $this->defaultTemplateId;
+    }
+
+
+    /**
+     * Изменеие формата
+     * @param PrintoutService $service
+     * @param $payload
+     * @return void
+     */
+    public function onSizeChanged(PrintoutService $service, $payload = null)
+    {
+        $this->printout->size_id = $payload;
+        $this->printout = $service->update($this->printout);
+    }
+
+    /**
+     * ++ или -- разворотов
+     * @param PrintoutService $service
+     * @param $payload
+     * @return void
+     */
+    public function spreadsQty(PrintoutService $service, $payload = false)
+    {
+        $payload ? $this->printout->spreads_cnt++ : $this->printout->spreads_cnt--;
+        $this->printout = $service->update($this->printout);
+    }
+
+    /**
+     * Переход на другой разворот
+     * @param PrintoutService $service
+     * @param int $currentSpread
+     * @return void
+     */
+    public function currentSpread(PrintoutService $service, int $currentSpread = 0)
+    {
+        $this->printout->current_spread_nr = $currentSpread;
+        $this->printout->current_spread_id = $this->getSpreadId($currentSpread);
+        $this->printout->push();
+        $this->defaultTemplateId();
+    }
+
+    /**
+     * Найти id разворота распечатки или создать новый разворот
+     * @param $currentSpread
+     * @return mixed
+     */
+    public function getSpreadId($currentSpread)
+    {
+        return $this->printout->spreads()->where('spread_nr', $currentSpread)
+            ->firstOrCreate(['printout_id' => $this->printout->id, 'spread_nr' => $currentSpread])
+            ->getAttribute('id');
+    }
+
+    /**
+     * назначает шаблон
+     * @return void
+     */
+/*    public function getLayoutId($currentSpread)
+    {
+        $spread = $this->printout->spreads()->where('spread_nr', $currentSpread)->first();
+        return $spread ? $spread->getAttribute('layout_id') : null;
+    }*/
+
+
+
+
+    /*
+        public function getLayout()
+        {
+            $this->layout = $this->printout->layouts()
+                ->where('id', $this->printout->current_layout_id)->first();
+        }*/
+
+}

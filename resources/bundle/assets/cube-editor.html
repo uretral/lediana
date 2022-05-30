@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <include src="/include/head.html"></include>
+   </head>
+   <body>
+      <include src="/include/header.html"></include>
+      <include src="/include/modals.html"></include>
+      <div class="main-wrapper bg-divider">
+         <div class="mt-32 sm:my-64">
+            <div class="container">
+               <div class="flex items-center mb-8 sm:mb-16">
+                  <h2 class="text-xl sm:text-2xl md:text-3xl font-black -translate-y-5">Фотокубик</h2>
+                  <div class="lg:w-150 ml-20 relative">
+                     <select name="#" id="" class="select-field absolute inset-0 w-full h-full" data-select data-select-classes="select--sm md:select--md select--rounded-sm select--no-border">
+                        <option value="20×20">20×20 см</option>
+                        <option value="30×30">30×30 см</option>
+                        <option value="40×40">40×40 см</option>
+                        <option value="50×50">50×50 см</option>
+                     </select>
+                  </div>
+                  <div class="hidden lg:flex ml-auto gap-24">
+                     <button class="btn btn--md btn--black btn--outlined hover:border-primary hover:text-primary">
+                        <svg aria-hidden="true" class="wh-24 mr-8 fill-current"><use href="/assets/svg/svg.svg.svg#save"></use></svg>
+                        Сохранить
+                     </button>
+                     <button class="btn btn--md btn--black btn--outlined hover:border-red hover:text-red" data-open-modal="modal-delete-book">
+                        <svg aria-hidden="true" class="wh-24 mr-8 fill-current"><use href="/assets/svg/svg.svg.svg#trash"></use></svg>
+                        Удалить
+                     </button>
+                  </div>
+               </div>
+
+               <div class="lg:grid lg:grid-cols-[1fr,26rem] gap-20 xl:gap-40">
+                  <div>
+                     <div class="mb-24 lg:mb-64 lg:flex">
+                        <div class="overflow-auto disable-scrollbars -mx-container px-container lg:px-0 lg:mx-0">
+                           <div class="flex items-center gap-16 mb-16 lg:mb-0">
+                              <span class="w-70 flex-shrink-0 sm:w-auto">Снаружи</span>
+                              <button class="btn btn--sm btn--white">1</button>
+                              <button class="btn btn--sm btn--white">2</button>
+                              <button class="btn btn--sm btn--white">3</button>
+                              <button class="btn btn--sm btn--white">4</button>
+                              <button class="btn btn--sm btn--white">5</button>
+                              <button class="btn btn--sm btn--white">6</button>
+                           </div>
+                        </div>
+                        <div class="overflow-auto disable-scrollbars -mx-container px-container lg:px-0 lg:mr-0 lg:ml-48">
+                           <div class="flex items-center gap-16">
+                              <span class="w-70 flex-shrink-0 sm:w-auto">Внутри</span>
+                              <button class="btn btn--sm btn--primary">7<span class="h-22 w-1 bg-divider mx-10"></span>8</button>
+                              <button class="btn btn--sm btn--white">9<span class="h-22 w-1 bg-divider mx-10"></span>10</button>
+                              <button class="btn btn--sm btn--white">11</button>
+                              <button class="btn btn--sm btn--white">12</button>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="editor-container pb-20 lg:pb-0">
+                        <div class="editor-btns">
+                           <button type="button" class="btn-base editor-btn editor-btn--left" disabled aria-label="Предыдущая страница">
+                              <svg aria-hidden="true"><use href="/assets/svg/svg.svg.svg#arrow-thin-left"></use></svg>
+                           </button>
+                           <button type="button" class="btn-base editor-btn editor-btn--right" aria-label="Следующая страница">
+                              <svg aria-hidden="true"><use href="/assets/svg/svg.svg.svg#arrow-thin-right"></use></svg>
+                           </button>
+                        </div>
+                        <div class="cube-cover-wrapper">
+                           <div class="cube-cover">
+                              <div class="edit-photo">
+                                 <!-- <div class="edit-photo__photo" style="background-image: url(../img/photo.jpg)"></div> -->
+                                 <div class="edit-photo__placeholder">
+                                    Загрузите<br />
+                                    фото
+                                 </div>
+                              </div>
+                              <div class="h-28 sm:h-32 w-35 sm:w-40 text-sm sm:text-black flex items-center justify-center absolute top-12 sm:top-16 left-1/2 -translate-x-1/2 bg-white/30 rounded-sm">
+                                 7
+                              </div>
+                           </div>
+                           <div class="cube-cover">
+                              <div class="edit-photo">
+                                 <!-- <div class="edit-photo__photo" style="background-image: url(../img/photo.jpg)"></div> -->
+                                 <div class="edit-photo__placeholder">
+                                    Загрузите<br />
+                                    фото
+                                 </div>
+                              </div>
+                              <div class="h-28 sm:h-32 w-35 sm:w-40 text-sm sm:text-black flex items-center justify-center absolute top-12 sm:top-16 left-1/2 -translate-x-1/2 bg-white/30 rounded-sm">
+                                 8
+                              </div>
+                           </div>
+                        </div>
+                        <div class="flex lg:hidden items-center justify-between mt-16">
+                           <div class="flex gap-20">
+                              <button class="btn btn--sm btn--black btn--icon btn--outlined btn--rounded">−</button>
+                              <button class="btn btn--sm btn--black btn--icon btn--outlined btn--rounded">+</button>
+                           </div>
+                           <div class="flex gap-10">
+                              <button class="btn btn--sm btn--black btn--icon btn--text btn--rounded hover:border-primary hover:text-primary">
+                                 <svg aria-hidden="true" class="wh-24 fill-current"><use href="/assets/svg/svg.svg.svg#save"></use></svg>
+                              </button>
+                              <button class="btn btn--sm btn--black btn--icon btn--text btn--rounded hover:border-red hover:text-red" data-open-modal="modal-delete-book">
+                                 <svg aria-hidden="true" class="wh-24 fill-current"><use href="/assets/svg/svg.svg.svg#trash"></use></svg>
+                              </button>
+                           </div>
+                        </div>
+                        <div class="lg:hidden text-secondary text-tiny max-w-210 mt-4">Для редактирования разворота увеличьте его масштаб</div>
+                     </div>
+                  </div>
+                  <div>
+                     <button class="btn-base w-full bg-primary-light rounded p-16 lg:mb-32 relative text-left pl-130 lg:pl-95 lg:text-[1.5rem] h-120 group" data-toggle-modal="cube-video">
+                        <img src="/img/cube.png" class="wh-120 lg:wh-90 object-contain object-center absolute left-10 lg:left-5 top-0 lg:top-5" alt="" />
+                        <span class="font-bold"
+                           >Узнайте подробнее о&nbsp;конструкции<br />
+                           фотокубика</span
+                        >
+                        <div class="wh-48 rounded-full bg-primary grid place-content-center ml-auto -mt-30 lg:-mt-20 transition group-hover:bg-black">
+                           <svg aria-hidden="true" class="wh-18"><use href="/assets/svg/svg.svg.svg#play"></use></svg>
+                        </div>
+                     </button>
+                     <div class="lg:bg-white lg:rounded lg:px-16 pt-32 pb-48 lg:pb-32">
+                        <div class="flex gap-16 mb-32">
+                           <button class="btn btn--md btn--primary flex-grow">Добавить фото</button>
+                           <button class="btn btn--md btn--secondary-dark lg:btn--secondary btn--icon">
+                              <svg aria-hidden="true" class="wh-20 fill-current"><use href="/assets/svg/svg.svg.svg#instagram"></use></svg>
+                           </button>
+                        </div>
+                        <ul class="grid grid-cols-fill-min-90 lg:grid-cols-fill-min-70 gap-8">
+                           <li each="9">
+                              <div class="pb-full relative overflow-hidden rounded-sm">
+                                 <button class="btn-base absolute left-0 top-0 w-full h-full">
+                                    <img src="/img/photo.jpg" class="image-full" alt="" />
+                                 </button>
+                                 <button class="btn-base btn-close btn-close--sm absolute top-4 right-4" aria-label="Закрыть" data-close-modal>
+                                    <svg aria-hidden="true"><use href="/assets/svg/svg.svg.svg#close"></use></svg>
+                                 </button>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="bg-black pt-48 lg:pt-32 pb-50 text-white">
+            <div class="container">
+               <div class="text-sm text-center sm:text-left mb-8">Выберите макет разворота</div>
+               <div class="flex max-w-190 mx-auto sm:max-w-none">
+                  <ul class="grid grid-cols-fill-min-190 gap-8 lg:gap-16 flex-grow">
+                     <li>
+                        <button class="btn-base layout-preview" style="--img: url(/img/cube/cube-style-1.svg); padding-bottom: calc(100 / 193 * 100%)"></button>
+                     </li>
+                     <li>
+                        <button class="btn-base layout-preview active" style="--img: url(/img/cube/cube-style-2.svg); padding-bottom: calc(100 / 193 * 100%)"></button>
+                     </li>
+                  </ul>
+                  <div class="hidden lg:flex items-center ml-auto">
+                     <div class="text-lg font-bold text-white mr-16">1890 ₽</div>
+                     <button class="btn btn--md btn--primary">В корзину</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="fixed inset-x-0 bottom-0 py-8 lg:hidden text-black bg-primary-light z-10">
+            <div class="container flex items-center justify-center">
+               <div class="text-[2.2rem] font-bold mr-16">1890 ₽</div>
+               <button class="btn btn--md btn--primary">В корзину</button>
+            </div>
+         </div>
+      </div>
+      <include src="/include/footer.html"></include>
+      <script src="/js/main.js"></script>
+   </body>
+</html>

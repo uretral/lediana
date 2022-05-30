@@ -57,6 +57,9 @@ class PageExtender extends PageController
                     case 'constructor':
                         $form->parent_id = 8;
                         break;
+                    case 'sizes':
+                        $form->parent_id = 19;
+                        break;
                 }
             }
 

@@ -5,6 +5,7 @@ namespace App\Models\Product;
 use App\Models\Content\Slide;
 use App\Models\Item\ItemSize;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
@@ -39,12 +40,16 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|ItemSize[] $size
  * @property-read int|null $size_count
+ * @property string|null $title_editor
+ * @property string|null $title_format
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereTitleEditor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereTitleFormat($value)
  */
 class Product extends Model
 {
     protected $guarded = [];
 
-    public function size(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function size(): HasMany
     {
         return $this->hasMany(ItemSize::class,'product_id','id');
     }

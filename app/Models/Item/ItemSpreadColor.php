@@ -31,9 +31,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @mixin \Eloquent
  * @property string|null $short_title
  * @method static \Illuminate\Database\Eloquent\Builder|ItemSpreadColor whereShortTitle($value)
+ * @property string|null $class
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemSpreadColor whereClass($value)
  */
 class ItemSpreadColor extends Model
 {
     use SoftDeletes;
     protected $table = 'item_spread_colors';
+    protected $hidden = ['created_at','updated_at','deleted_at'];
 }
