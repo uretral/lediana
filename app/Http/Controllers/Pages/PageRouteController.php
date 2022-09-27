@@ -13,6 +13,7 @@ class PageRouteController extends Controller
     public function index($slug) {
         $this->init();
         $page = $this->getPage($slug);
+//        dump('dfsdf', $page);
         return view($page->type)->with([
             'page' => $page,
         ]);

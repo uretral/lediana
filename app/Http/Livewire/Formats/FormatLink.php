@@ -13,6 +13,7 @@ class FormatLink extends Component
     public string $uri;
     public string $slug;
     public int $product_id;
+    public string $hint;
 
     public array $test;
     public int $test2 = 0;

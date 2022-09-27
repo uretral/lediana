@@ -10,7 +10,6 @@ document.addEventListener('alpine:init', () => {
         dataLayoutPhoto: '',
         style: '',
 
-
         onPhotoDragStart(a) {
             this.subjectImage = a.target.getAttribute('src')
             this.photoId = a.target.getAttribute('data-id')

@@ -19,6 +19,7 @@ Route::get('/ttest', function () {
     return view('test');
 });
 
+// Route::post('/crop-image', '\App\Traits\Editor\Cropper@cropImage')->name('crop.image');
 Route::post('/crop-image', '\App\Http\Livewire\Editors\Editor@cropImage')->name('crop.image');
 
 

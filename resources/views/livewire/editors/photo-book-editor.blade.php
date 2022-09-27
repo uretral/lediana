@@ -37,6 +37,7 @@
         </div>
     </div>
 
+
     <x-editor.text-editor-modal :open="$this->textModalOpen" :textModal="$this->textModal"/>
 
     <div class="bg-black pt-48 lg:pt-32 pb-50 text-white" x-data="{open:false}">

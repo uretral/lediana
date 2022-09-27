@@ -7,11 +7,13 @@
         <div class="about">
             @include('partials.about',['about' => @$page->about])
         </div>
+
         @isset($page->calculator)
             <div class="mt-50 lg:mt-100 xl:mt-150">
                 @livewire('formats.'.$page->livewire, ['product' => $page->calculator, 'slug' => $page->slug, 'type' => 'promo'])
             </div>
         @endisset
+
         @isset($page->crossLink)
             @include('partials.cross',['cross_links' => @$page->crossLink])
         @endisset
@@ -24,9 +26,10 @@
             <livewire:reviews :page="$page->id" btn="btn--white"/>
         </div>
 
-        @isset($page->calculator)
+<!-- todo:uretral calculator -->
+{{--        @isset($page->calculator)
             <livewire:calculator :product="$page->calculator"/>
-        @endisset
+        @endisset--}}
 
         @if($page->creation->title)
             @include('partials.creations',['creation' => $page->creation])
@@ -47,5 +50,8 @@
                 @include('partials.promotion', ['promotion' => @$page->promotion])
             </div>
         @endisset
+
     </div>
+
+
 @endsection

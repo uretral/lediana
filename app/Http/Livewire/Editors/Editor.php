@@ -42,7 +42,9 @@ class Editor extends BaseComponent
 
     public array $tpl = [
         0 => 'livewire.editors.editor',
-        1 => 'livewire.editors.photo-book-editor'
+        1 => 'livewire.editors.photo-book-editor',
+        2 => 'livewire.editors.photo-book-editor',
+        3 => 'livewire.editors.photo-editor',
     ];
 
     protected $listeners = [
@@ -77,6 +79,7 @@ class Editor extends BaseComponent
             $this->onSpreadsChanged($this->printout->current_spread_nr);
         }
         //
+
         $this->staff();
     }
 
