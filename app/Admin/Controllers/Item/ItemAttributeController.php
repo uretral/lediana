@@ -122,6 +122,8 @@ class ItemAttributeController extends Controller
         $form->number('sort', 'Порядок')->default(100);
         $form->switch('active', 'Активность')->default(1);
         $form->text('title', 'Название');
+        $form->text('hint', 'Подсказка');
+        $form->image('image', 'Иконка')->move('images');
         $form->datetime('created_at','Создан')->disable();
         $form->datetime('updated_at','Обновлен')->disable();
 

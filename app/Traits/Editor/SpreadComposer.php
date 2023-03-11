@@ -8,60 +8,67 @@ use Illuminate\Database\Eloquent\Collection;
 
 trait SpreadComposer
 {
-    public ?PrintoutSpread $cover = null;
-    public ?PrintoutSpread $oddSpread = null;
-    public ?PrintoutSpread $evenSpread = null;
+
+
+    // =>
+//    public ?PrintoutSpread $cover = null;
+//    public ?PrintoutSpread $oddSpread = null;
+//    public ?PrintoutSpread $evenSpread = null;
     public ?PrintoutSpread $activeSpread = null;
 
-    // helpers
+    public function getCoverProperty()
+    {
+        return $this->printout->spreads->first();
+    }
+
     public function cover()
     {
-        $this->cover = $this->printout->spreads->where('spread_nr', 0)->first();
+        return $this->printout->spreads->first();
     }
 
-    public function oddSpread()
+    public function getOddSpreadProperty()
     {
-        if ($this->printout->current_spread_nr)
-            $this->oddSpread = $this->printout->spreads->where('spread_nr', $this->printout->current_spread_nr)->first();
+
+        return $this->printout->spreads()->find($this->buttonSpreads[0]);
     }
 
-    public function evenSpread()
+    public function getEvenSpreadProperty(): ?PrintoutSpread
     {
-        if ($this->printout->current_spread_nr)
-            $this->evenSpread = $this->printout->spreads->where('spread_nr', $this->printout->current_spread_nr + 1)->first();
+
+        return array_key_exists(1, $this->buttonSpreads)
+            ? $this->printout->spreads->find($this->buttonSpreads[1]) : null;
     }
 
-    public function leftDoubleSliderArrowState(): string
+    public function setSpread($id, $cnt) {
+        $this->printout->current_spread_id = $id;
+        $this->printout->current_spread_nr = $cnt;
+        $this->printout->push();
+    }
+
+    public function leftSliderArrowState(): string
     {
         return $this->printout->current_spread_nr ? '' : 'disabled';
     }
+
 
     public function rightDoubleSliderArrowState(): string
     {
         return $this->printout->spreads_cnt <= $this->printout->current_spread_nr + 2 ? 'disabled' : '';
     }
 
-    public function leftDoubleSliderArrowClick()
+    public function leftSliderArrowClick()
     {
-        if ($this->printout->current_spread_nr == 1) {
-            $this->onSpreadsChanged($this->printout->current_spread_nr - 1, 'doubleSpreadChange');
-            $this->unsetActiveSpread();
-        }
-        if ($this->printout->current_spread_nr) {
-            $this->printout->current_spread_nr % 2
-                ? $this->onSpreadsChanged($this->printout->current_spread_nr - 2, 'doubleSpreadChange')
-                : $this->onSpreadsChanged($this->printout->current_spread_nr - 1, 'doubleSpreadChange');
-            $this->unsetActiveSpread();
+        if ($this->printout->current_spread_nr > 0) {
+            $this->printout->update(['current_spread_nr' => $this->printout->current_spread_nr - 1]);
         }
     }
 
-    public function rightDoubleSliderArrowClick()
+
+    public function rightSliderArrowClick()
     {
-        if ($this->rightDoubleSliderArrowState() !== 'disabled') {
-            $this->printout->current_spread_nr % 2
-                ? $this->onSpreadsChanged($this->printout->current_spread_nr + 2, 'doubleSpreadChange')
-                : $this->onSpreadsChanged($this->printout->current_spread_nr + 1, 'doubleSpreadChange');
-            $this->unsetActiveSpread();
+        if ($this->printout->spreads()->count() > $this->printout->current_spread_nr + 1) {
+            $this->printout->update(['current_spread_nr' => $this->printout->current_spread_nr + 1]);
+//            $this->printout->push();
         }
     }
 
@@ -74,11 +81,13 @@ trait SpreadComposer
         return 'style="--h: ' . $value . ';"';
     }
 
-    public function activeOddSpreadEvent(){
+    public function activeOddSpreadEvent()
+    {
         $this->onSetActiveSpread($this->oddSpread->spread_nr);
     }
 
-    public function activeEvenSpreadEvent(){
+    public function activeEvenSpreadEvent()
+    {
         $this->onSetActiveSpread($this->evenSpread->spread_nr);
     }
 
@@ -90,9 +99,10 @@ trait SpreadComposer
     }
 
     // Активация атрибутов в соответствии с текущей моделью страницы разворота
-    public function setActiveAttributes(){
+    public function setActiveAttributes()
+    {
         $layout = $this->activeSpread ? $this->getActiveLayout($this->activeSpread->layout_id) : null;
-        $this->printout->current_template_id = $layout ? $layout->template->id: self::DEFAULT_TEMPLATE_ID;
+        $this->printout->current_template_id = $layout ? $layout->template->id : self::DEFAULT_TEMPLATE_ID;
         $this->printout->push();
     }
 
@@ -104,12 +114,18 @@ trait SpreadComposer
         return $layout ?? null;
     }
 
-    public function unsetActiveSpread(){
+    public function unsetActiveSpread()
+    {
         $this->activeSpread = null;
         $this->printout->current_template_id = self::DEFAULT_TEMPLATE_ID;
         $this->printout->push();
 //        $this->emit('unsetActiveSpread');
         $this->dispatchBrowserEvent('unsetActiveSpread');
+    }
+
+    public function calculateHeight()
+    {
+//        dump($this->printout->size->width);
     }
 
 }

@@ -20,4 +20,8 @@ trait FormatSelector
             ->where('size.ratio_id', $this->printout->size->ratio_id)
             ->groupBy('format.title');
     }
+
+
+
+
 }

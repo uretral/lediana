@@ -2,15 +2,15 @@
     {{--slider btns--}}
     <div class="editor-btns">
         <button type="button" class="btn-base editor-btn editor-btn--left"
-                wire:click="leftDoubleSliderArrowClick()"
-                aria-label="Предыдущая страница" {{$this->leftDoubleSliderArrowState()}}>
+                wire:click="doubleSpreadChange( {{$this->buttonKey - 1 }})"
+                aria-label="Предыдущая страница" @if($this->printout->current_spread_nr === 0) disabled @endif>
             <svg aria-hidden="true">
                 <use href="/assets/svg/svg.svg#arrow-thin-left"></use>
             </svg>
         </button>
         <button type="button" class="btn-base editor-btn editor-btn--right"
-                wire:click="rightDoubleSliderArrowClick()"
-                aria-label="Следующая страница" {{$this->rightDoubleSliderArrowState()}}>
+                wire:click="doubleSpreadChange( {{is_null($this->buttonKey) ? 0 : $this->buttonKey + 1 }})"
+                aria-label="Следующая страница" @if($this->buttonKey + 1 === count($this->buttons)) disabled @endif>
             <svg aria-hidden="true">
                 <use href="/assets/svg/svg.svg#arrow-thin-right"></use>
             </svg>

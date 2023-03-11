@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/test', function () {
+    \session()->put('printouts', [3 => 65,4 => 69]);
 
-Route::get('/ttest', function () {
+    dump(\session('printouts'));
     return view('test');
 });
 
@@ -31,7 +34,6 @@ Route::get('/{slug}', '\App\Http\Controllers\Pages\PageRouteController@index')->
 
 Route::get('/{slug}/editor', '\App\Http\Controllers\Pages\PageRouteController@format')->name('format');
 Route::get('/{slug}/editor/{id}', '\App\Http\Controllers\Pages\PageRouteController@editor')->name('editor');
-
 
 
 require __DIR__ . '/auth.php';

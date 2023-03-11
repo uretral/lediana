@@ -1,6 +1,5 @@
 @extends('tpl.default')
 @section('mainContent')
-
     <div class="main-wrapper">
         @include('partials.info', ['info' => @$page->info, 'price' => @$page->price_from])
 

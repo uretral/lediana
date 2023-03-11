@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Layout\Layout;
 use App\Models\Page;
+use App\Services\PrintoutService;
 use App\Traits\Settings;
 
 class PageRouteController extends Controller
@@ -27,9 +29,9 @@ class PageRouteController extends Controller
         ]);
     }
 
-    public function editor($slug,$printout_id){
+    public function editor($slug,$printout_id, PrintoutService $service){
         $this->init();
-        return view('editors')->with(['printout_id' => $printout_id]);
+        return view('editors')->with(['service' => $service->get($printout_id)]);
     }
 
 

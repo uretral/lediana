@@ -54,6 +54,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|PrintoutSpread wherePageColor($value)
  * @property int|null $template_id
  * @method static \Illuminate\Database\Eloquent\Builder|PrintoutSpread whereTemplateId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Printout\PrintoutText[] $spreadTexts
+ * @property-read int|null $spread_texts_count
+ * @property int $orientation 0 - стандарт, 1 - противоположная
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Printout\PrintoutPhoto[] $photos
+ * @property-read int|null $photos_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Printout\PrintoutText[] $texts
+ * @property-read int|null $texts_count
+ * @method static \Illuminate\Database\Eloquent\Builder|PrintoutSpread whereOrientation($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Printout\PrintoutSpreadAttribute[] $attributes
+ * @property-read int|null $attributes_count
+ * @method static \Illuminate\Database\Eloquent\Builder|PrintoutSpread whereAttributes($value)
+ * @property int $is_double
+ * @method static \Illuminate\Database\Eloquent\Builder|PrintoutSpread whereIsDouble($value)
  */
 class PrintoutSpread extends Model
 {
@@ -61,6 +74,10 @@ class PrintoutSpread extends Model
     protected $table = 'printout_spreads';
     protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+
+    protected $casts = [
+        'attributes' => 'array'
+    ];
 
 
     public function printout(): BelongsTo
@@ -82,5 +99,26 @@ class PrintoutSpread extends Model
     {
         return $this->hasMany(PrintoutText::class,'spread_nr','spread_nr');
     }
+
+    public function photos(): HasMany
+    {
+        return $this->hasMany(PrintoutPhoto::class,'spread_id','id');
+    }
+
+    public function texts(): HasMany
+    {
+        return $this->hasMany(PrintoutText::class,'spread_id','id');
+    }
+
+    public function color(): HasOne
+    {
+        return $this->hasOne(ItemSpreadColor::class,'id','page_color');
+    }
+
+/*    public function attributes(): HasMany
+    {
+        return $this->hasMany(PrintoutSpreadAttribute::class,'printout_spread_id','id');
+    }*/
+
 
 }

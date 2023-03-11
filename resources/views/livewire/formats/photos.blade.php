@@ -8,21 +8,21 @@
     </div>
     <div class="mb-40">
         <ul class="flex items-end flex-wrap gap-y-65 gap-x-20 lg:gap-x-40">
-            <livewire:formats.format-link :sizes="$sizes" size="10×10" :slug="$slug" hint="Инстаграм"/>
-            <livewire:formats.format-link :sizes="$sizes" size="7.9×7.9" :slug="$slug" hint="Полароид"/>
-            <livewire:formats.format-link :sizes="$sizes" size="10.5×15.2" :slug="$slug"/>
+            <livewire:formats.format-link :sizes="$sizes" size="10×10" :slug="$slug" :layout="169" hint="Инстаграм"/>
+            <livewire:formats.format-link :sizes="$sizes" size="7.9×7.9" :slug="$slug"  :layout="168" hint="Полароид"/>
+            <livewire:formats.format-link :sizes="$sizes" size="10.5×15.2" :layout="169" :slug="$slug"/>
 
             <div class="w-full flex sm:contents items-end gap-x-20">
-                <livewire:formats.format-link :sizes="$sizes" size="15.2×21.6" :slug="$slug"/>
-                <livewire:formats.format-link :sizes="$sizes" size="20.3×30.5" :slug="$slug"/>
-                <livewire:formats.format-link :sizes="$sizes" size="21×30.5" :slug="$slug"/>
+                <livewire:formats.format-link :sizes="$sizes" size="15.2×21.6" :layout="169" :slug="$slug"/>
+                <livewire:formats.format-link :sizes="$sizes" size="20.3×30.5" :layout="169" :slug="$slug"/>
+                <livewire:formats.format-link :sizes="$sizes" size="21×30.5" :layout="169" :slug="$slug"/>
             </div>
         </ul>
     </div>
     <ul class="flex items-end gap-20 lg:gap-40">
-        <livewire:formats.format-link :sizes="$sizes" size="30.5×40.6" :slug="$slug"/>
-        <livewire:formats.format-link :sizes="$sizes" size="30.5×42" :slug="$slug"/>
-        <livewire:formats.format-link :sizes="$sizes" size="30.5×45.7" :slug="$slug"/>
+        <livewire:formats.format-link :sizes="$sizes" size="30.5×40.6" :layout="169" :slug="$slug"/>
+        <livewire:formats.format-link :sizes="$sizes" size="30.5×42" :layout="169" :slug="$slug"/>
+        <livewire:formats.format-link :sizes="$sizes" size="30.5×45.7" :layout="169" :slug="$slug"/>
     </ul>
     @if($type === 'promo')
         <a href="/{{$slug}}/editor">

@@ -38,6 +38,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $text_align
  * @property-read mixed $style
  * @method static \Illuminate\Database\Eloquent\Builder|PrintoutText whereTextAlign($value)
+ * @property int|null $spread_id
+ * @method static \Illuminate\Database\Eloquent\Builder|PrintoutText whereSpreadId($value)
  */
 class PrintoutText extends Model
 {

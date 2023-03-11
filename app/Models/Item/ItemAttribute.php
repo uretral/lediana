@@ -3,6 +3,7 @@
 namespace App\Models\Item;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -31,6 +32,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @mixin \Eloquent
  * @property string|null $short_title
  * @method static \Illuminate\Database\Eloquent\Builder|ItemAttribute whereShortTitle($value)
+ * @property string|null $hint
+ * @property string|null $image
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemAttribute whereHint($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemAttribute whereImage($value)
  */
 class ItemAttribute extends Model
 {
@@ -38,4 +43,5 @@ class ItemAttribute extends Model
 
     protected $table = 'item_attributes';
     protected $hidden = ['created_at','updated_at','deleted_at'];
+
 }

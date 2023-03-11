@@ -43,7 +43,7 @@ class ProductController extends Controller
      * @param Content $content
      * @return Content
      */
-    public function index(Content $content)
+    public function index(Content $content): Content
     {
         return $content
             ->header(trans('admin.index'))
@@ -58,7 +58,7 @@ class ProductController extends Controller
      * @param Content $content
      * @return Content
      */
-    public function show($id, Content $content)
+    public function show($id, Content $content): Content
     {
         return $content
             ->header(trans('admin.detail'))
@@ -73,7 +73,7 @@ class ProductController extends Controller
      * @param Content $content
      * @return Content
      */
-    public function edit($id, Content $content)
+    public function edit($id, Content $content): Content
     {
         return $content
             ->header(trans('admin.edit'))
@@ -87,7 +87,7 @@ class ProductController extends Controller
      * @param Content $content
      * @return Content
      */
-    public function create(Content $content)
+    public function create(Content $content): Content
     {
         return $content
             ->header(trans('admin.create'))
@@ -100,7 +100,7 @@ class ProductController extends Controller
      *
      * @return Grid
      */
-    protected function grid()
+    protected function grid(): Grid
     {
         $grid = new Grid(new Product);
         $grid->id('ID');
@@ -108,6 +108,7 @@ class ProductController extends Controller
         $grid->column('slug','Ссылка')->display(function (){
             return '<a href="prices/'.$this->id.'">  В список размеров </a>';
         });
+
 
         $grid->actions(function ($actions) {
             $actions->disableDelete();
@@ -123,7 +124,7 @@ class ProductController extends Controller
      * @param mixed $id
      * @return Show
      */
-    protected function detail($id)
+    protected function detail($id): Show
     {
         $show = new Show(Product::findOrFail($id));
         $show->id('ID');

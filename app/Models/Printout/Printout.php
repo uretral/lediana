@@ -11,6 +11,7 @@ use App\Models\Photo;
 use App\Models\Product\Price;
 use App\Models\Product\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -78,10 +79,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read int|null $texts_count
  * @property-read mixed $font_names
  * @property-read mixed $font_sizes
+ * @property-read \App\Models\Printout\PrintoutCover|null $cover
+ * @property-read mixed $photo_spread
+ * @property-read \Illuminate\Database\Eloquent\Collection|Price[] $prices
+ * @property-read int|null $prices_count
  */
 class Printout extends Model
 {
-    use SoftDeletes;
+//    use SoftDeletes;
 
     protected $guarded = [];
     protected $hidden = ['created_at','updated_at','deleted_at'];
@@ -104,14 +109,27 @@ class Printout extends Model
         return $this->hasMany(Price::class, 'product_id', 'product_id')->where('prop_name','format');
     }
 
+    public function getPhotoSpreadAttribute()
+    {
+        return PrintoutSpread::with('bg','layout')->where('printout_id', $this->attributes['id'])->where('spread_nr', $this->attributes['current_spread_nr'])->first();
+    }
+
+
     public function spread() : HasOne
     {
         return $this->HasOne(PrintoutSpread::class,'spread_nr','current_spread_nr');
     }
 
+
+
     public function spreads() : HasMany
     {
         return $this->hasMany(PrintoutSpread::class,'printout_id','id');
+    }
+
+    public function cover(): HasOne
+    {
+        return $this->hasOne(PrintoutCover::class,'printout_id', 'id');
     }
 
 
@@ -139,6 +157,12 @@ class Printout extends Model
     {
         return $this->hasMany(Photo::class,'printout_id','id');
     }
+
+    public function prices(): HasMany
+    {
+        return $this->hasMany(Price::class, 'product_id','product_id',);
+    }
+
 
     public function getFontNamesAttribute(){
         return FontName::all();

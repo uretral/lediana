@@ -19,6 +19,7 @@
     <meta name="theme-color" content="#ffffff"/>
     <meta name="description" content="{{@$page->meta_description}}"/>
     @stack('scripts')
+    @stack('scripts-after')
 {{--    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>--}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2/src/sweetalert2.scss"></script>
@@ -47,6 +48,8 @@
 @endif
 
 <script src="{{asset('js/script.js')}}"></script>
+
+@stack('scripts-body')
 
 </body>
 </html>

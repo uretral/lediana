@@ -6,6 +6,7 @@ use App\Models\Layout\Layout;
 use App\Http\Controllers\Controller;
 use App\Models\Layout\LayoutTemplate;
 use App\Models\Layout\LayoutRatio;
+use App\Models\Product\Product;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -83,11 +84,22 @@ class LayoutController extends Controller
     {
         $grid = new Grid(new Layout);
 
+
+
         $grid->id('ID');
         $grid->column('ratio_id', 'Тип формата')->display(function () {
             return LayoutRatio::where('id', $this->ratio_id)->first()->title;
         });
+        $grid->column('template_id', 'Тип шаблона')->display(function () {
+            return LayoutTemplate::where('id', $this->template_id)->first()->title;
+        })->filter(LayoutTemplate::pluck('title','id')->toArray());
+
+        $grid->column('product_id', 'Тип продукта')->display(function () {
+            return Product::where('id', $this->product_id)->first()->title;
+        })->filter(Product::pluck('title','id')->toArray());
+
         $grid->column('icon', 'Иконка')->image();
+//        $grid->column('template_id', 'Тип шаблона');
 
         return $grid;
     }
@@ -125,6 +137,7 @@ class LayoutController extends Controller
         $form->image('tpl', 'Макет из Фотошопа')->move('layouts')->uniqueName();
         $form->select('ratio_id', 'Тип формата')->options(LayoutRatio::all()->pluck('title', 'id'));
         $form->select('template_id', 'Тип шаблона')->options(LayoutTemplate::all()->pluck('title', 'id'));
+        $form->select('product_id', 'Тип продукта')->options(Product::all()->pluck('title', 'id'));
 
         $form->layoutSizer('asdasd');
 

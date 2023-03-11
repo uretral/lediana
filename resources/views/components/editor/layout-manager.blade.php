@@ -1,10 +1,11 @@
 <div class="flex flex-wrap items-center mb-16">
+
     @if($this->printout->current_spread_nr)
 
         @foreach($this->layoutTemplates() as $template)
             <div class="min-w-100 mr-2 lg:mr-24">
-                <button wire:click="onSetTemplate( {{$template->id}} )" class="btn btn--sm cover-materials-hide
-                    @if($this->printout->current_template_id === $template->id) btn--primary @else opacity-50 @endif">
+                <button wire:click="setTemplateProperty( {{$template->id}} )" class="btn btn--sm cover-materials-hide
+                    @if($this->template === $template->id) btn--primary @else opacity-50 @endif">
                     {{$template->title}}
                 </button>
             </div>
@@ -26,7 +27,7 @@
         <div class="multi-switcher multi-switcher--sm multi-switcher--dark lg:ml-30 w-max">
             <div class="multi-switcher__inner">
                 @foreach($this->spreadBg() as $bg)
-                    <label class="multi-switcher__btn  @if($bg->id == @$this->activeSpread->page_color) active @else cursor-pointer @endif"
+                    <label class="multi-switcher__btn  @if($bg->id == @$this->printout->spread->page_color) active @else cursor-pointer @endif"
                            wire:click="onSetBackground({{$bg->id}})">
                         {{$bg->title}}
                     </label>
@@ -36,7 +37,7 @@
         </div>
     </div>
     <div class="hidden lg:flex items-center ml-auto cover-materials-hide">
-        <div class="text-lg font-bold text-white mr-16">1890 ₽</div>
-        <button class="btn btn--md btn--primary">В корзину</button>
+        <div class="text-lg font-bold text-white mr-16">{{$this->price}} ₽</div>
+        <button class="btn btn--md btn--primary" wire:click="goToCart" >В корзину</button>
     </div>
 </div>

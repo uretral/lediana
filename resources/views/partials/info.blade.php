@@ -6,12 +6,14 @@
                 <div class="about-slide__desc">{!! @$info->text!!}</div>
                 <div class="md:flex md:items-center mt-10 lg:mt-40">
                     <div class="text-mob-2xl lg:text-2xl font-bold mb-24 md:mb-0 md:mr-25">от @price(@$price) ₽</div>
-                    <a href="" class="btn btn--md btn--primary">
-                        {!! @$info->link_text!!}
-                        <svg aria-hidden="true" class="wh-24 ml-8 fill-current">
-                            <use href="assets/svg/svg.svg#circle-arrow-right"></use>
-                        </svg>
-                    </a>
+                    @isset($page)
+                        <a href="{{route('format',$page->slug)}}" class="btn btn--md btn--primary">
+                            {!! @$info->link_text!!}
+                            <svg aria-hidden="true" class="wh-24 ml-8 fill-current">
+                                <use href="{{asset('assets/svg/svg.svg#circle-arrow-right')}}"></use>
+                            </svg>
+                        </a>
+                    @endisset
                 </div>
             </div>
             <div class="about-slide__photo">

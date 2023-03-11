@@ -396,13 +396,14 @@
 
 			// CREATE CONTROLS
 			var cropControlZoomMuchIn =      '';
-			var cropControlZoomIn =          '<button class="cropControlZoomIn btn-base btn-action">&oplus;</button>';
-			var cropControlZoomOut =         '<button class="cropControlZoomOut btn-base btn-action">&ominus;</button></i>';
+			var cropControlZoomIn =          '<button class="cropControlZoomIn btn-base btn-action"></button>';
+			var cropControlZoomOut =         '<button class="cropControlZoomOut btn-base btn-action"></button></i>';
 			var cropControlZoomMuchOut =     '';
 			var cropControlRotateLeft =      '';
 	        var cropControlRotateRight =     '';
-	        var cropControlCrop =            '<button class="cropControlCrop btn-base btn-action">&ocir;</button></i>';
-			var cropControlReset =           '<button class="cropControlReset btn-base btn-action">&otimes;</button></i>';
+	        var cropControlCrop =            '<button class="cropControlCrop btn-base btn-action"></button></i>';
+			var cropControlReset =           '<button class="cropControlReset btn-base btn-action"></button></i>';
+			var cropControlResetSub =           '<button class="cropControlResetSub btn-base btn-action"></button></i>';
 
             var html;
 
@@ -411,11 +412,11 @@
 				cropControlZoomMuchOut = '<button class="cropControlZoomMuchOut btn-base btn-action">m+</button></i>';
 			}*/
 			if(that.options.rotateControls){
-				cropControlRotateLeft = '<button class="cropControlRotateLeft btn-base btn-action">&oast;</button></i>';
-				cropControlRotateRight = '<button class="cropControlRotateRight btn-base btn-action">&oast;</button></i>';
+				cropControlRotateLeft = '<button class="cropControlRotateLeft btn-base btn-action"></button></i>';
+				cropControlRotateRight = '<button class="cropControlRotateRight btn-base btn-action"></button></i>';
 			}
             var ratios = that.objW/that.objH >= 1 ? "" : "column";
-			html =  '<div class="cropControls cropControlsCrop '+ratios+'" >'+ cropControlZoomMuchIn + cropControlZoomIn + cropControlZoomOut + cropControlZoomMuchOut + cropControlRotateLeft + cropControlRotateRight + cropControlCrop + cropControlReset + '</div>';
+			html =  '<div class="cropControls cropControlsCrop '+ratios+'" >'+ cropControlZoomMuchIn + cropControlZoomIn + cropControlZoomOut + cropControlZoomMuchOut + cropControlRotateLeft + cropControlRotateRight + cropControlCrop + /*cropControlReset +*/ cropControlResetSub + '</div>';
 
 			that.obj.append(html);
 
@@ -447,6 +448,11 @@
 
 			that.cropControlReset = that.cropControlsCrop.find('.cropControlReset');
 			that.cropControlReset.on('click',function(){ that.reset(); });
+
+            that.cropControlResetSub = that.cropControlsCrop.find('.cropControlResetSub');
+            that.cropControlResetSub.on('click',function(){
+                document.getElementById('croppicModal').remove()
+            });
 
 		},
 		initDrag:function(){

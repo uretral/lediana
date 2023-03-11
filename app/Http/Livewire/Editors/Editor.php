@@ -31,6 +31,7 @@ class Editor extends BaseComponent
     public Printout $printout;
     public $tmpPhotos = [];
     public $photos = [];
+    public $coverHeight = 300;
     protected const DEFAULT_TEMPLATE_ID = 3;
 
     // staff
@@ -45,14 +46,32 @@ class Editor extends BaseComponent
         1 => 'livewire.editors.photo-book-editor',
         2 => 'livewire.editors.photo-book-editor',
         3 => 'livewire.editors.photo-editor',
+        4 => 'livewire.photo-canvas-editor',
+        5 => 'livewire.photo-cube-editor',
+        6 => 'livewire.postcard-editor',
+        7 => 'livewire.postcard-editor',
+        9 => 'livewire.photo-magnet',
     ];
 
     protected $listeners = [
         'activeOddSpreadEvent' => 'activeOddSpreadEvent',
+//        'activeOddSpreadEvent' => 'activeOddSpreadEvent',
         'activeEvenSpreadEvent' => 'activeEvenSpreadEvent',
         'onImageSaveEvent' => 'onImageSaveEvent',
         'onPhotoRemove' => 'onPhotoRemove',
+        'getCoverWidth' => 'getCoverWidth',
     ];
+
+    public function getCoverWidth($coverWidth) {
+
+        $size = $this->printout->size;
+
+
+
+
+
+       $this->coverHeight = $size->height / $size->width * $coverWidth;
+    }
 
     public function mount()
     {

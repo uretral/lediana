@@ -58,6 +58,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \Illuminate\Database\Eloquent\Collection|Layout[] $layouts
  * @property-read int|null $layouts_count
  * @method static Builder|ItemSize whereRatioId($value)
+ * @property-read mixed $padding
+ * @property-read mixed $padding_rotate
  */
 class ItemSize extends Model
 {
@@ -106,6 +108,16 @@ class ItemSize extends Model
         $this->attributes['sizes'] = $width . '×' . $height;
     }
 
+    public function getPaddingAttribute()
+    {
+        return round($this->attributes['height'] / $this->attributes['width'] * 100,2);
+    }
+
+    public function getPaddingRotateAttribute()
+    {
+        return round($this->attributes['width'] / $this->attributes['height'] * 100,2);
+    }
+
     /* Relations*/
 
     public function format(): HasMany
@@ -143,6 +155,8 @@ class ItemSize extends Model
         return $this->hasMany(Price::class, 'size_id', 'id')
             ->where('prop_name', __FUNCTION__);
     }
+
+
 
     public function prices(): HasMany
     {

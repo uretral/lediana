@@ -1,5 +1,4 @@
 <div>
-
     <div id="previews" class="bg-white lg:rounded -mx-container lg:mx-0 px-16 pt-32 pb-48 lg:pb-32">
 
         <div class="flex gap-16 mb-32">
@@ -23,7 +22,7 @@
 
         <div class="text-center" wire:loading wire:target="tmpPhotos">Загружается...</div>
 
-        <ul x-cloak class="img-preview grid grid-cols-fill-min-90 lg:grid-cols-fill-min-70 gap-8">
+        <ul class="img-preview grid grid-cols-fill-min-90 lg:grid-cols-fill-min-70 gap-8">
 
             @if ($this->tmpPhotos)
                 @foreach($this->tmpPhotos as $key => $tmpPhoto)
@@ -45,10 +44,10 @@
                     </li>
                 @endforeach
 
-
             @else
 
                 @foreach($this->printout->pics as $photo)
+
                     @if(!in_array($photo->id, $this->printout->photos()->pluck('photo_id')->toArray()) )
                         <li>
                             <div class="pb-full relative overflow-hidden rounded-sm">
@@ -61,7 +60,7 @@
 {{--                                        :class="$store.editor.uploadImageActive == {{$photo->id}} ? 'active' : '' "--}}
 
                                         data-id="{{$photo->id}}"
-                                        src="/photos/thumbs/{{$this->printout_id}}/{{$photo->photo}}"
+                                        src="{{asset('storage/photos/thumbs/'.$this->printout_id)}}/{{$photo->photo}}"
                                         class="image-full" alt="" draggable="true"/>
                                 </button>
                                 <button class="btn-base btn-close btn-close--sm absolute top-4 right-4"

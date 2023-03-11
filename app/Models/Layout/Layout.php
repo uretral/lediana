@@ -37,6 +37,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \Illuminate\Database\Eloquent\Builder|Layout whereRatioId($value)
  * @property string $tpl
  * @method static \Illuminate\Database\Eloquent\Builder|Layout whereTpl($value)
+ * @property int $product_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Layout whereProductId($value)
  */
 class Layout extends Model
 {

@@ -1,4 +1,4 @@
-<div class="photo crop-container {{\EditorStyles::cornersClass($photo)}}" style="{{\EditorStyles::photoStyle($photo)}}">
+<div class="photo crop-container  {{\EditorStyles::cornersClass($photo)}}" style="{{\EditorStyles::photoStyle($photo)}}">
     <div
 
         @dragover="subjectOnEnter"

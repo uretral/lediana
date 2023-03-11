@@ -8,6 +8,7 @@ document.addEventListener('alpine:init', () => {
         dataSpread: '',
         dataLayout: '',
         dataLayoutPhoto: '',
+        dataSpreadId: null,
         style: '',
 
         onPhotoDragStart(a) {
@@ -20,6 +21,7 @@ document.addEventListener('alpine:init', () => {
         onPhotoClick(a) {
             this.onPhotoDragStart(a)
             this.$store.editor.uploadImageActive = this.photoId
+
         },
 
         onPhotoDrop(e) {
@@ -33,6 +35,7 @@ document.addEventListener('alpine:init', () => {
             this.dataSpread = e.target.getAttribute('data-spread')
             this.dataLayout = e.target.getAttribute('data-layout')
             this.dataLayoutPhoto = e.target.getAttribute('data-photo')
+            this.dataSpreadId = e.target.getAttribute('data-spreadId')
 
             this.cropContainerPreload()
         },

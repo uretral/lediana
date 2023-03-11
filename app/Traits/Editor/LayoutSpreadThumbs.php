@@ -8,6 +8,7 @@ use App\Models\Printout\PrintoutSpread;
 trait LayoutSpreadThumbs
 {
     public ?PrintoutSpread $active_spread = null;
+    public $currentLayouts;
 
     public function defineLayouts()
     {
@@ -19,7 +20,7 @@ trait LayoutSpreadThumbs
 
     public function onSetSpreadLayout($layout_id,$template_id)
     {
-        if (!$this->activeSpread) {
+/*        if (!$this->activeSpread) {
             $this->dispatchBrowserEvent('alert', ['type' => 'warning', 'message' => \Lang::get('front.chose_page')]);
             return false;
         }
@@ -32,7 +33,12 @@ trait LayoutSpreadThumbs
             $this->activeSpread->layout_id = $layout_id;
             $this->activeSpread->template_id = $template_id;
             $this->activeSpread->push();
-        }
+        }*/
+
+        $this->printout->spread()->update([
+            'layout_id' => $layout_id,
+            'template_id' => $template_id
+        ]);
     }
 
     public function unsetEvenSpreadAttributes($layout_id,$template_id)

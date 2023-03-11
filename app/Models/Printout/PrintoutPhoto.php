@@ -35,6 +35,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|PrintoutPhoto whereHtml($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PrintoutPhoto whereLayoutPhotoId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PrintoutPhoto wherePhotoId($value)
+ * @property int|null $spread_id
+ * @method static \Illuminate\Database\Eloquent\Builder|PrintoutPhoto whereSpreadId($value)
  */
 class PrintoutPhoto extends Model
 {

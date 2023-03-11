@@ -1,12 +1,13 @@
+
 <div class="photobook-cover-wrapper" {!! $this->layoutDoubleSpreadStyle() !!} >
-    <div class="photobook-cover no-spine double {{\EditorStyles::classWide($this->printout->spread)}}"
-         data-type="cover" data-style="3" x-data="{ oddSpread:  false , evenSpread: false}">
+    <div
+        class="photobook-cover no-spine double  @if($this->printout->spread->template_id === 4) wide @endif"
+         data-type="cover" data-style="3" x-data="{ oddSpread:  false , evenSpread: false}"> {{--{{\EditorStyles::classWide($this->printout->spread)}} --}}
 
-        <div :class="$store.editor.oddClass"
-             class="photobook-cover-left  {{$this->oddSpread->bg->class}}"
-             @click="$store.editor.activateOdd()"
+        <div  class="photobook-cover-left @if($this->oddSpread->id === $this->printout->spread->id) edit @endif {{$this->oddSpread->color->class}}"
+              wire:click="setSpread( {{$this->oddSpread->id}}, {{$this->oddSpread->spread_nr}} )"
         >
-
+            {{--:class="$store.editor.oddClass" @click="$store.editor.activateOdd()"--}}
             @if($this->oddSpread && $this->oddSpread->layout)
                 @foreach($this->oddSpread->layout->photos as $photos)
                     <x-editor.photo :photo="$photos" :spread="$this->oddSpread" wire:key="photo_{{$this->oddSpread->id}}"/>
@@ -17,9 +18,11 @@
             @endif
 
         </div>
+
         <div class="photobook-cover-middle"></div>
-        <div :class="$store.editor.evenClass" class="photobook-cover-right  {{$this->evenSpread->bg->class}}"
-             @click="$store.editor.activateEven()"
+{{-- :class="$store.editor.evenClass"  @click="$store.editor.activateEven()"--}}
+        <div  class="photobook-cover-right @if($this->evenSpread->id === $this->printout->spread->id) edit @endif {{$this->evenSpread->color->class}}"
+              wire:click="setSpread( {{$this->evenSpread->id}}, {{$this->evenSpread->spread_nr}} )"
         >
 
             @if($this->evenSpread && $this->evenSpread->layout)
@@ -36,3 +39,5 @@
 
     </div>
 </div>
+
+{{--{{$this->oddSpread->bg->class}}--}} {{-- {{$this->evenSpread->bg->class}}--}}

@@ -9,6 +9,16 @@ use App\Services\PrintoutService;
 trait LayoutManager
 {
 
+    public function getTemplateProperty($tpl_id = null)
+    {
+        return $tpl_id ?? $this->printout->spread->template_id ?? 3;
+    }
+
+    public function setTemplateProperty($tpl_id)
+    {
+        $this->template = $tpl_id;
+    }
+
     public function spreadBg()
     {
         return ItemSpreadColor::all();
@@ -16,21 +26,10 @@ trait LayoutManager
 
     public function onSetBackground($bg_id)
     {
-        if (!$this->activeSpread) {
-            $this->dispatchBrowserEvent('alert',
-                ['type' => 'warning', 'message' => \Lang::get('front.chose_page')]);
-            return false;
-        }
-        $this->activeSpread->page_color = $bg_id;
-        $this->activeSpread->push();
+        $this->printout->spread()->update([
+            'page_color' => $bg_id
+        ]);
     }
-
-    public function onSetTemplate($tpl_id)
-    {
-        $this->printout->current_template_id = $tpl_id;
-        $this->printout->push();
-    }
-
 
     public function layoutTemplates()
     {

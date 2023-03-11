@@ -9,6 +9,7 @@ use Livewire\Component;
 class FormatLink extends Component
 {
     public Collection $sizes;
+    public $layout = null;
     public string $size;
     public string $uri;
     public string $slug;
@@ -20,10 +21,23 @@ class FormatLink extends Component
 
     public function goToEditor($item, PrintoutSessionService $sessionService)
     {
-        redirect()->route('editor', [
+        $params = [];
+        $params[] = $this->slug;
+
+        if($this->layout) {
+            $params[] = (int)$sessionService->get($item, $this->layout)->id;
+            $params[] = $this->layout;
+        } else {
+            $params[] = (int)$sessionService->get($item)->id;
+        }
+
+        redirect()->route('editor', $params);
+
+
+        /*redirect()->route('editor', [
             $this->slug,
             (int)$sessionService->get($item)->id
-        ]);
+        ]);*/
     }
 
     public function render()

@@ -161,6 +161,9 @@ class ItemSizeController extends Controller
             })->label('default');
         }
 
+        $grid->quickSearch('ratio_id');
+
+
 
         return $grid;
     }

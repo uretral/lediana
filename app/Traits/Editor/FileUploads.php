@@ -29,16 +29,15 @@ trait FileUploads
     }
 
     public function saveImage($photo){
-        $stored = $photo->store('photos/original/' . $this->printout_id);
-        \Storage::disk('local')->makeDirectory( 'photos/thumbs/' . $this->printout_id);
+        $stored = $photo->store('public/photos/original/' . $this->printout_id);
+        \Storage::disk('local')->makeDirectory( 'public/photos/thumbs/' . $this->printout_id);
         $img = \Image::make(storage_path('app/'.$stored))->resize(800, 800, function ($constraint) {
             $constraint->aspectRatio();
             $constraint->upsize();
         });
-        $img->save(storage_path('app/photos/thumbs/'.$this->printout_id.'/'.$img->basename));
+        $img->save(storage_path('app/public/photos/thumbs/'.$this->printout_id.'/'.$img->basename));
         $this->printout->pics()->create(['photo' => $img->basename]);
     }
-
 
     public function removeTmpPhoto($key)
     {
