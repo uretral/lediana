@@ -56,6 +56,8 @@ class PostCardEditor extends Component
         'onImageRemove'
     ];
 
+
+
     public int $printout_id;
     public Printout $printout;
     protected PrintoutService $service;
