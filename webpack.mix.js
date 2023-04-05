@@ -14,8 +14,11 @@ const mix = require('laravel-mix');
 mix
     .js('resources/js/photo.book.editor.js', 'public/js')
     .js('resources/js/photo.editor.js', 'public/js')
+    .js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
         require('autoprefixer'),
-    ]);
+    ])
+    .vue({version: 3})
+;

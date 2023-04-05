@@ -26,9 +26,23 @@ trait LayoutManager
 
     public function onSetBackground($bg_id)
     {
-        $this->printout->spread()->update([
-            'page_color' => $bg_id
-        ]);
+        if($bg_id == 3) {
+
+            $this->printout->spread()->update([
+                'page_color' => $bg_id
+            ]);
+        } else {
+            tap($this->printout, function ($printout){
+                $printout->photos()
+                    ->where('spread_id', $printout->spread->id)
+                    ->where('layout_id', 169)
+                    ->where('layout_photo_id', null)->delete();
+                return $printout;
+            })->spread()->update([
+                'page_color' => $bg_id
+            ]);
+        }
+
     }
 
     public function layoutTemplates()

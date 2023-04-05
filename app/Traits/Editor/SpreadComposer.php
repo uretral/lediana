@@ -9,11 +9,6 @@ use Illuminate\Database\Eloquent\Collection;
 trait SpreadComposer
 {
 
-
-    // =>
-//    public ?PrintoutSpread $cover = null;
-//    public ?PrintoutSpread $oddSpread = null;
-//    public ?PrintoutSpread $evenSpread = null;
     public ?PrintoutSpread $activeSpread = null;
 
     public function getCoverProperty()
@@ -28,21 +23,23 @@ trait SpreadComposer
 
     public function getOddSpreadProperty()
     {
-
-        return $this->printout->spreads()->find($this->buttonSpreads[0]);
+//        dd('sdasd',$this->buttonSpreads);
+        return array_key_exists(0, $this->buttonSpreads)
+        ? $this->printout->spreads()->find($this->buttonSpreads[0]) : null;
     }
 
     public function getEvenSpreadProperty(): ?PrintoutSpread
     {
-
         return array_key_exists(1, $this->buttonSpreads)
             ? $this->printout->spreads->find($this->buttonSpreads[1]) : null;
     }
 
+    /* Установка активного разворота/страницы */
     public function setSpread($id, $cnt) {
-        $this->printout->current_spread_id = $id;
-        $this->printout->current_spread_nr = $cnt;
-        $this->printout->push();
+        $this->printout->update([
+            'current_spread_id' => $id,
+            'current_spread_nr' => $cnt
+        ]);
     }
 
     public function leftSliderArrowState(): string
@@ -68,7 +65,6 @@ trait SpreadComposer
     {
         if ($this->printout->spreads()->count() > $this->printout->current_spread_nr + 1) {
             $this->printout->update(['current_spread_nr' => $this->printout->current_spread_nr + 1]);
-//            $this->printout->push();
         }
     }
 
@@ -81,51 +77,46 @@ trait SpreadComposer
         return 'style="--h: ' . $value . ';"';
     }
 
-    public function activeOddSpreadEvent()
+/*    public function activeOddSpreadEvent()
     {
         $this->onSetActiveSpread($this->oddSpread->spread_nr);
-    }
+    }*/
 
-    public function activeEvenSpreadEvent()
+/*    public function activeEvenSpreadEvent()
     {
         $this->onSetActiveSpread($this->evenSpread->spread_nr);
-    }
+    }*/
 
-    // Установка страницы разворота для манипуляций
+/*    // Установка страницы разворота для манипуляций
     public function onSetActiveSpread($spread_nr)
     {
         $this->activeSpread = $this->printout->spreads->where('spread_nr', $spread_nr)->first();
         $this->setActiveAttributes();
-    }
+    }*/
 
-    // Активация атрибутов в соответствии с текущей моделью страницы разворота
+/*    // Активация атрибутов в соответствии с текущей моделью страницы разворота
     public function setActiveAttributes()
     {
         $layout = $this->activeSpread ? $this->getActiveLayout($this->activeSpread->layout_id) : null;
         $this->printout->current_template_id = $layout ? $layout->template->id : self::DEFAULT_TEMPLATE_ID;
         $this->printout->push();
-    }
+    }*/
 
-    public function getActiveLayout($layout_id)
+/*    public function getActiveLayout($layout_id)
     {
         if ($layout_id) {
             $layout = $this->printout->layouts->where('id', $layout_id)->first();
         }
         return $layout ?? null;
-    }
+    }*/
 
-    public function unsetActiveSpread()
+/*    public function unsetActiveSpread()
     {
         $this->activeSpread = null;
         $this->printout->current_template_id = self::DEFAULT_TEMPLATE_ID;
         $this->printout->push();
 //        $this->emit('unsetActiveSpread');
         $this->dispatchBrowserEvent('unsetActiveSpread');
-    }
-
-    public function calculateHeight()
-    {
-//        dump($this->printout->size->width);
-    }
+    }*/
 
 }

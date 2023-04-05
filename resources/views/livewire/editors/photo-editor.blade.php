@@ -3,8 +3,16 @@
 @endpush
 
 <div class="main-wrapper bg-divider">
-    <div class="logL">
-        @dump($printout->toArray())
+
+    <div class="wire-loading trans" wire:loading>
+        <div>
+            <div class="lds-facebook">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
     </div>
 
     <div class="mt-32 sm:my-64">
@@ -12,7 +20,7 @@
             <div class="flex items-center mb-8 sm:mb-16">
                 <h2 class="text-xl sm:text-2xl md:text-3xl font-black -translate-y-5">Фотографии</h2>
 
-                <x-editor.select-format/>
+                <x-editor.a-row.select-format/>
 
                 <button class="below-lg:hidden btn btn--md btn--black btn--text" wire:click="changeOrientation()">
                     <svg aria-hidden="true" class="wh-24 mr-8 fill-current">
@@ -21,7 +29,7 @@
                     Сменить ориентацию
                 </button>
 
-                <x-editor.save-delete-block/>
+                <x-editor.a-row.save-delete-block/>
 
             </div>
 
@@ -29,11 +37,11 @@
 {{-- ROW 3 --}}
             <div class="grid lg:grid-cols-[1fr,26rem] gap-20 xl:gap-40" x-data="cropper">
                 {{--spread-editor--}}
-                <x-editor.single-spread-editor :arrows="true"/>
+                <x-editor.c-row.single-spread-editor :arrows="true"/>
 
                 <div>
                     {{--photo-uploader--}}
-                    <x-editor.single-photo-uploader/>
+                    <x-editor.c-row.single-photo-uploader/>
 
                     <div class="hidden lg:flex items-center justify-center bg-white px-16 py-24 rounded mt-32">
                         <div

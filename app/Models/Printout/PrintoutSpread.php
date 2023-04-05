@@ -67,9 +67,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|PrintoutSpread whereAttributes($value)
  * @property int $is_double
  * @method static \Illuminate\Database\Eloquent\Builder|PrintoutSpread whereIsDouble($value)
+ * @property-read ItemSpreadColor|null $color
  */
 class PrintoutSpread extends Model
 {
+    use SoftDeletes;
 
     protected $table = 'printout_spreads';
     protected $guarded = [];

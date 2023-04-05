@@ -1,5 +1,5 @@
 <div class="editor-container editor-container--photos pb-20 lg:pb-0">
-    {{--slider btns--}}
+
     @if($arrows)
         <div class="editor-btns">
             <button type="button" class="btn-base editor-btn editor-btn--left"
@@ -18,44 +18,19 @@
             </button>
         </div>
     @endif
-    <div class="photos-cover-wrapper"
-         style="padding-bottom: @if($this->spread->layout_id == 168) 121.5% @else {{$this->padding * 100}}% @endif">
-        @foreach($this->spread->layout->photos as $photo)
-            <div class="photos-cover" data-style="1" style="{{\EditorStyles::photoStyle($photo)}}">
-                <div class="corner"></div>
+    <div class="photos-cover-wrapper" style="padding-bottom: @if($this->spread->layout_id == 168) 121.5% @else {{$this->padding * 100}}% @endif">
+        @if($this->spread->layout->photos)
+            @foreach($this->spread->layout->photos as $photo)
 
+                <x-editor.c-row.spreads.photo
+                    :photo="$photo"
+                    :spread="$this->spread"
+                    :z="5"
+                    wire:key="photo_{{$this->spread->id}}"
+                />
 
-                <div class="edit-photo crop-container">
-
-                    <div
-
-                        @dragover="subjectOnEnter"
-                        @drop="onPhotoDrop"
-                        @click="onPhotoDrop"
-                        class="crop-subject"
-                        data-spread="{{$this->spread->spread_nr}}"
-                        data-layout="{{$this->spread->layout_id}}"
-                        data-photo="{{$photo->id}}"
-                        id="{{$photo->id}}-{{$this->spread->spread_nr}}-{{$this->spread->layout_id}}"
-                        data-spread-id="{{$this->spread->id}}"
-                    >
-                        @if($pic = $this->getPhotoHtml($this->spread,$photo))
-                            {!! $pic->html !!}
-                            7
-                            <button class="crop-restart" @click.stop="onResetCropper"></button>
-                            <button class="crop-delete" @click.stop="onDeleteCropper"></button>
-                        @endif
-
-                    </div>
-                    {{--                    <div class="edit-photo__placeholder">
-                                            Загрузите<br/>
-                                            фото
-                                        </div>--}}
-                </div>
-
-
-            </div>
-        @endforeach
+            @endforeach
+        @endif
     </div>
 
     <div class="flex lg:hidden justify-end w-full gap-10 mt-16">

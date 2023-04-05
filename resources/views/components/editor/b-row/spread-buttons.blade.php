@@ -16,7 +16,7 @@
         @endforeach
     </div>
 
-    @if($this->printout->spreads_cnt > 1)
+    @if($this->printout->spreads->count() > 1)
         <button class="btn btn--sm btn--white" wire:click="spreadAddRemove(2)">-</button>
     @endif
     <button class="btn btn--sm btn--white" wire:click="spreadAddRemove(2, true)">+</button>

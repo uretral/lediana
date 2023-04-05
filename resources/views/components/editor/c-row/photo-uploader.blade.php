@@ -56,9 +56,6 @@
                                         @dragstart="onPhotoDragStart"
                                         @click="onPhotoClick"
                                         :class="{'active' : $store.editor.uploadImageActive == {{$photo->id}} }"
-
-{{--                                        :class="$store.editor.uploadImageActive == {{$photo->id}} ? 'active' : '' "--}}
-
                                         data-id="{{$photo->id}}"
                                         src="{{asset('storage/photos/thumbs/'.$this->printout_id)}}/{{$photo->photo}}"
                                         class="image-full" alt="" draggable="true"/>

@@ -416,7 +416,7 @@
 				cropControlRotateRight = '<button class="cropControlRotateRight btn-base btn-action"></button></i>';
 			}
             var ratios = that.objW/that.objH >= 1 ? "" : "column";
-			html =  '<div class="cropControls cropControlsCrop '+ratios+'" >'+ cropControlZoomMuchIn + cropControlZoomIn + cropControlZoomOut + cropControlZoomMuchOut + cropControlRotateLeft + cropControlRotateRight + cropControlCrop + /*cropControlReset +*/ cropControlResetSub + '</div>';
+			html =  '<div class="cropControls cropControlsCrop column '+ratios+'" >'+ cropControlZoomMuchIn + cropControlZoomIn + cropControlZoomOut + cropControlZoomMuchOut + cropControlRotateLeft + cropControlRotateRight + cropControlCrop + /*cropControlReset +*/ cropControlResetSub + '</div>';
 
 			that.obj.append(html);
 

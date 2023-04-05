@@ -10,18 +10,18 @@
         </button>
         <button type="button" class="btn-base editor-btn editor-btn--right"
                 wire:click="doubleSpreadChange( {{is_null($this->buttonKey) ? 0 : $this->buttonKey + 1 }})"
-                aria-label="Следующая страница" @if($this->buttonKey + 1 === count($this->buttons)) disabled @endif>
+                aria-label="Следующая страница" @if( !is_null($this->buttonKey) && $this->buttonKey + 1 === count($this->buttons) || !count($this->buttons)) disabled @endif>
             <svg aria-hidden="true">
                 <use href="/assets/svg/svg.svg#arrow-thin-right"></use>
             </svg>
         </button>
     </div>
+{{--    @endif--}}
 
-
-    @if($this->printout->current_spread_nr)
-        <x-editor.spread-double wire:key="spread-double"/>
+    @if($this->printout->current_spread_nr && count($this->buttons))
+        <x-editor.c-row.spreads.spread-double wire:key="spread-double"/>
     @else
-        <x-editor.cover-double wire:key="cover-double"/>
+        <x-editor.c-row.spreads.cover-double wire:key="cover-double"/>
     @endif
 
 

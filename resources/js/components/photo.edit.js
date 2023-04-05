@@ -65,7 +65,6 @@ document.addEventListener('alpine:init', () => {
         },
 
 
-
         subjectOnEnter(e) {
             e.preventDefault()
         },
@@ -102,9 +101,9 @@ document.addEventListener('alpine:init', () => {
             this.dataLayoutPhoto = parent.getAttribute('data-photo')
             this.dataSpread = parent.getAttribute('data-spread')
             this.dataLayout = parent.getAttribute('data-layout')
-            this.dataSpreadId =parent.getAttribute('data-spread-id')
-            // a.target.parentNode.remove()
-            // parent.innerHTML = ''
+            this.dataSpreadId = parent.getAttribute('data-spread-id')
+            // console.log(this.photoId, this.subjectImage, this.subjectId, this.dataLayoutPhoto, this.dataSpread, this.dataLayout, this.dataSpreadId);
+
             this.cropContainerPreload();
         },
 
@@ -131,11 +130,11 @@ document.addEventListener('alpine:init', () => {
                         imgX1: this.imgX1,
                         cropH: this.objH,
                         cropW: this.objW,
-                        left: Number(imgStyle.style.left.replace(/[^0-9-.]/g,"") ),
-                        top: Number(imgStyle.style.top.replace(/[^0-9-.]/g,"") ),
+                        left: Number(imgStyle.style.left.replace(/[^0-9-.]/g, "")),
+                        top: Number(imgStyle.style.top.replace(/[^0-9-.]/g, "")),
                         rotation: this.actualRotation
                     }
-                    console.log( document.querySelector('.cropImgWrapper img').style.left);
+                    console.log(document.querySelector('.cropImgWrapper img').style.left);
                     window.Livewire.emit('onImageSaveEvent',
                         that.dataLayoutPhoto,
                         that.dataSpread,
@@ -146,6 +145,18 @@ document.addEventListener('alpine:init', () => {
                         that.dataSpreadId,
                     )
                     document.querySelector('#croppicModal').remove();
+
+
+                    that.photoId = ''
+                    that.subjectId = ''
+                    that.subjectImage = ''
+                    that.dataSpread = ''
+                    that.dataLayout = ''
+                    that.dataLayoutPhoto = ''
+                    that.dataSpreadId = null
+                    that.style = ''
+                    that.width = ''
+
                 },
 
                 /*                onReset: function () {

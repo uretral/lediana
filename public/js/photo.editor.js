@@ -3065,8 +3065,7 @@ document.addEventListener('alpine:init', function () {
         this.dataLayoutPhoto = parent.getAttribute('data-photo');
         this.dataSpread = parent.getAttribute('data-spread');
         this.dataLayout = parent.getAttribute('data-layout');
-        this.dataSpreadId = parent.getAttribute('data-spread-id'); // a.target.parentNode.remove()
-        // parent.innerHTML = ''
+        this.dataSpreadId = parent.getAttribute('data-spread-id'); // console.log(this.photoId, this.subjectImage, this.subjectId, this.dataLayoutPhoto, this.dataSpread, this.dataLayout, this.dataSpreadId);
 
         this.cropContainerPreload();
       },
@@ -3098,6 +3097,15 @@ document.addEventListener('alpine:init', function () {
             console.log(document.querySelector('.cropImgWrapper img').style.left);
             window.Livewire.emit('onImageSaveEvent', that.dataLayoutPhoto, that.dataSpread, that.dataLayout, that.photoId, document.querySelector('.cropImgWrapper').innerHTML, cropData, that.dataSpreadId);
             document.querySelector('#croppicModal').remove();
+            that.photoId = '';
+            that.subjectId = '';
+            that.subjectImage = '';
+            that.dataSpread = '';
+            that.dataLayout = '';
+            that.dataLayoutPhoto = '';
+            that.dataSpreadId = null;
+            that.style = '';
+            that.width = '';
           }
           /*                onReset: function () {
                               // cropper.destroy()

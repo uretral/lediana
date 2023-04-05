@@ -5,8 +5,8 @@
     </div>
 
     <ul class="flex items-end gap-20 lg:gap-40 mt-40">
-        <livewire:formats.format-link :sizes="$sizes" size="13×13" :slug="$slug"/>
-        <livewire:formats.format-link :sizes="$sizes" size="20×20" :slug="$slug"/>
+        <livewire:formats.format-link :sizes="$sizes" size="13×13" :slug="$slug" :layout="169"/>
+        <livewire:formats.format-link :sizes="$sizes" size="20×20" :slug="$slug" :layout="169"/>
     </ul>
     @if($type === 'promo')
         <a href="/{{$slug}}/editor">
@@ -18,4 +18,5 @@
             </button>
         </a>
     @endif
+    <livewire:modals.is-size-correct/>
 </div>

@@ -19,9 +19,9 @@
                     ></textarea>
                 </label>
 
-                <x-editor.modal-text-editor.font-name/>
+                <x-editor.m-row.text-editor.font-name/>
 
-                <x-editor.modal-text-editor.font-size/>
+                <x-editor.m-row.text-editor.font-size/>
 
 
                 <label class="field-wrapper field-wrapper--light">

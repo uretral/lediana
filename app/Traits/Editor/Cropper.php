@@ -17,10 +17,6 @@ trait Cropper
         $this->printout->photos()->find($id)->delete();
     }
 
-    // =>
-
-
-
     public function onImageSaveEvent($layout_photo_id, $spread_nr, $layout_id, $photo_id, $html, $cropData, $spreadId)
     {
         $this->printout->photos()->updateOrCreate([
@@ -39,10 +35,21 @@ trait Cropper
 
     }
 
+    public function onPhotoRemove($photo_id)
+    {
+        $this->printout->photos()->where('id', $photo_id)->delete();
+    }
+
+    public function unsetPhotos()
+    {
+        $this->printout->photos()->where('spread_nr', $this->activeSpread->spread_nr)->delete();
+    }
+
     public function getPhotoHtml(PrintoutSpread $spread, LayoutPhoto $photo)
     {
         $res = $this->printout->photos()
-            ->where('spread_nr', $spread->spread_nr)
+//            ->where('spread_nr', $spread->spread_nr)
+            ->where('spread_id', $spread->id)
             ->where('layout_id', $photo->layout_id)
             ->where('layout_photo_id', $photo->id)
             ->first();
@@ -52,14 +59,17 @@ trait Cropper
         return $res;
     }
 
-    public function onPhotoRemove($photo_id)
+    public function getPhotoBgHtml(PrintoutSpread $spread)
     {
-        $this->printout->photos()->where('id', $photo_id)->delete();
-    }
-
-    public function unsetPhotos()
-    {
-        $this->printout->photos()->where('spread_nr', $this->activeSpread->spread_nr)->delete();
+        $res = $this->printout->photos()
+            ->where('spread_id', $spread->id)
+            ->where('layout_id', 169)
+            ->where('layout_photo_id', null)
+            ->first();
+        if ($res && $res->html) {
+            $res->html = str_replace('<img', '<img class="photo-cropped" rel="' . $res->id . '" data-id="' . $res->photo_id . '"', $res->html);
+        }
+        return $res;
     }
 
 

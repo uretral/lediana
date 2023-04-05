@@ -7,12 +7,15 @@ use App\Models\Printout\PrintoutSpread;
 class Styles
 {
 
-    public function photoStyle($photo): string
+    public function photoStyle($photo, $z = 0): string
     {
         $style = 'top: ' . $photo->top . '%; ';
         $style .= 'right: ' . $photo->right . '%; ';
         $style .= 'bottom: ' . $photo->bottom . '%; ';
         $style .= 'left: ' . $photo->left . '%; ';
+        if($z > 0) {
+            $style .= 'z-index: ' . $z . '; ';
+        }
         return $style;
     }
 

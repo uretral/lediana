@@ -14,13 +14,13 @@
             <livewire:editors.photo-canvas-editor  :printout_id="$service->id"/>
             @break
         @case(5)
-            Фотокубики
+            <livewire:editors.cube-editor :printout_id="$service->id"/>
             @break
         @case(6)
             Подарочная карта
             @break
         @case(7)
-            Открытки
+            <livewire:editors.post-card-editor :printout_id="$service->id"/>
             @break
         @case(8)
             Премиум фотокниги

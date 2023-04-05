@@ -7,29 +7,6 @@ use App\Models\Printout\PrintoutSpread;
 
 trait SpreadButtons
 {
-
-    public function getButtonKeyProperty()
-    {
-        $res = null;
-        foreach ($this->buttons as $key => $btn) {
-            if (in_array($this->printout->spread->id, $btn['spreads'])) {
-                $res = $key;
-            }
-        }
-        return $res;
-    }
-
-    public function getButtonSpreadsProperty()
-    {
-        $res = [];
-        foreach ($this->buttons as $key => $btn) {
-            if (in_array($this->printout->spread->id, $btn['spreads'])) {
-                $res = $btn['spreads'];
-            }
-        }
-        return $res;
-    }
-
     public function getButtonsProperty(): array
     {
 
@@ -56,6 +33,31 @@ trait SpreadButtons
 
         return $btnArray;
     }
+
+    public function getButtonKeyProperty()
+    {
+        $res = null;
+
+        foreach ($this->buttons as $key => $btn) {
+            if (in_array($this->printout->spread->id ?? $this->printout->current_spread_id, $btn['spreads'])) {
+                $res = $key;
+            }
+        }
+        return $res;
+    }
+
+    public function getButtonSpreadsProperty($id = null)
+    {
+        $res = [];
+        foreach ($this->buttons as $key => $btn) {
+            if (in_array($id ?? $this->printout->spread->id, $btn['spreads'])) {
+                $res = $btn['spreads'];
+            }
+        }
+        return $res;
+    }
+
+
 
     // Клик на кнопки + -
     public function spreadAddRemove($qty, bool $plus = false)

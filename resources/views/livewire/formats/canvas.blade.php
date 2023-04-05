@@ -46,4 +46,6 @@
     <button class="btn btn--md btn--primary mt-24 lg:mt-40 w-full sm:w-auto">
         Далее <svg aria-hidden="true" class="wh-16 fill-current ml-5 mt-2"><use href="/svg/svg.svg#arrow-right"></use></svg>
     </button>
+
+    <livewire:modals.is-size-correct/>
 </div>

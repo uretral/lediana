@@ -9,6 +9,18 @@ use Livewire\TemporaryUploadedFile;
 trait SingleFileUploads
 {
 
+    public function updatedTmpPhotos() {
+        $this->validate([
+            'tmpPhotos.*' => 'image|max:30000',
+        ]);
+
+        foreach ($this->tmpPhotos as $photo) {
+            $this->saveImage($photo);
+        }
+        $this->tmpPhotos = [];
+    }
+
+
     public function save()
     {
         $this->validate([

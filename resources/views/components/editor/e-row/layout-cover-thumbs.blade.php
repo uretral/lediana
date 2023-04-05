@@ -5,7 +5,7 @@
             @foreach($this->layoutCoverThumbs as $layout)
                 @if($layout)
                 <li
-                    wire:click="onSetCoverLayout( {{$layout->id}} )">
+                    wire:click="setCoverLayout( {{$layout->id}}, {{$this->printout->spread->id}} )">
                     <button
                         class="btn-base layout-preview @if($layout->id === $this->printout->spread->layout_id) active @endif "
                         style="--img: url({{asset('/storage/'.$layout->icon)}})"

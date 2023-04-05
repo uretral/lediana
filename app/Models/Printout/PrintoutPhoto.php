@@ -37,6 +37,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|PrintoutPhoto wherePhotoId($value)
  * @property int|null $spread_id
  * @method static \Illuminate\Database\Eloquent\Builder|PrintoutPhoto whereSpreadId($value)
+ * @property int $is_background
+ * @method static \Illuminate\Database\Eloquent\Builder|PrintoutPhoto whereIsBackground($value)
  */
 class PrintoutPhoto extends Model
 {

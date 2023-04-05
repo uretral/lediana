@@ -150,6 +150,18 @@
     width: 100%;
     height: 100%;
     position: relative;
+    &:hover {
+        .crop-restart {
+            display: block;
+        }
+        .crop-delete {
+            display: block;
+        }
+    }
+
+
+
+
 }
 
 .crop-panel, .cropControls.cropControlsCrop { //
@@ -219,13 +231,20 @@
     width: 100vw;
     justify-content: center;
     align-items: center;
-    //background: rgba(0,0,0, .5);
+    background: rgba(0,0,0, .5);
     > div {
         display: flex;
         height: 100vh;
         width: 100vw;
         justify-content: center;
         align-items: center;
+    }
+
+    &.trans {
+        background: transparent;
+        > div {
+            display: none;
+        }
     }
 }
 
@@ -304,6 +323,10 @@
     }
 }
 
+.photobook-cover-left__logo.white {
+    background-image: url(../img/cover-logo-dark.svg);
+}
+
 #croppicModal {
     background: rgba(0, 0, 0, .95) !important;
 
@@ -344,24 +367,53 @@
     width: 24px;
     height: 0;
     padding-bottom: 24px;
-    display: block;
+    //display: block;
     position: absolute;
     top: 10px;
     right: 10px;
     background: url("../img/cropReloadLight.svg") no-repeat left 0px;
     background-size: contain;
     z-index: 12;
+    display: none;
+    &.left {
+        top: 2px!important;
+        left: 2px!important;
+    }
+    &.right {
+        top: 2px!important;
+        left: 2px!important;
+    }
 }
 
 .crop-delete {
     width: 24px;
     height: 0;
     padding-bottom: 24px;
-    display: block;
+    display: none;
     position: absolute;
     top: 10px;
     right: 44px;
     background: url("../img/cropControDelete.svg") no-repeat left 0px;
     background-size: contain;
     z-index: 12;
+    &.left {
+        top: 2px!important;
+        right: 2px!important;
+    }
+    &.right {
+        top: 2px!important;
+        right: 2px!important;
+    }
+}
+
+.cube-cover-wrapper.single {
+    grid-template-columns: repeat(1, minmax(50%, 50%));
+    justify-content: center;
+    &.double {
+        grid-template-columns: 1fr;
+        .cube-cover {
+            padding-bottom: 50%;
+
+        }
+    }
 }

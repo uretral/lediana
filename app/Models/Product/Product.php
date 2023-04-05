@@ -4,6 +4,7 @@ namespace App\Models\Product;
 
 use App\Models\Content\Slide;
 use App\Models\Item\ItemSize;
+use App\Models\Page;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -44,6 +45,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string|null $title_format
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereTitleEditor($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereTitleFormat($value)
+ * @property string|null $accusative
+ * @property-read Page|null $page
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereAccusative($value)
  */
 class Product extends Model
 {
@@ -52,6 +56,11 @@ class Product extends Model
     public function size(): HasMany
     {
         return $this->hasMany(ItemSize::class,'product_id','id');
+    }
+
+    public function page(): HasOne
+    {
+        return $this->hasOne(Page::class, 'product_id', 'id');
     }
 
 

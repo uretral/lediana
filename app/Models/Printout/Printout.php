@@ -10,6 +10,7 @@ use App\Models\Layout\LayoutTemplate;
 use App\Models\Photo;
 use App\Models\Product\Price;
 use App\Models\Product\Product;
+use Encore\Admin\Form\Field\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -83,6 +84,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read mixed $photo_spread
  * @property-read \Illuminate\Database\Eloquent\Collection|Price[] $prices
  * @property-read int|null $prices_count
+ * @property string|null $spine_text
+ * @property int|null $spread_view
+ * @property-read Product|null $product
+ * @method static \Illuminate\Database\Eloquent\Builder|Printout whereSpineText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Printout whereSpreadView($value)
  */
 class Printout extends Model
 {
@@ -99,6 +105,13 @@ class Printout extends Model
     }
 
     // relations
+
+    public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Product::class,'product_id','id');
+    }
+
+
     public function size() : HasOne
     {
         return $this->hasOne(ItemSize::class,'id','size_id');
@@ -117,7 +130,7 @@ class Printout extends Model
 
     public function spread() : HasOne
     {
-        return $this->HasOne(PrintoutSpread::class,'spread_nr','current_spread_nr');
+        return $this->HasOne(PrintoutSpread::class,'id','current_spread_id');
     }
 
 

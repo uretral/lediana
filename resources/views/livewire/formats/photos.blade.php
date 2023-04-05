@@ -15,7 +15,7 @@
             <div class="w-full flex sm:contents items-end gap-x-20">
                 <livewire:formats.format-link :sizes="$sizes" size="15.2×21.6" :layout="169" :slug="$slug"/>
                 <livewire:formats.format-link :sizes="$sizes" size="20.3×30.5" :layout="169" :slug="$slug"/>
-                <livewire:formats.format-link :sizes="$sizes" size="21×30.5" :layout="169" :slug="$slug"/>
+                <livewire:formats.format-link :sizes="$sizes" size="21×30.5" :slug="$slug"/>
             </div>
         </ul>
     </div>
@@ -34,4 +34,10 @@
             </button>
         </a>
     @endif
+
+    <livewire:modals.is-size-correct/>
+
 </div>
+
+
+

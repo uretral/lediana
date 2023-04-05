@@ -1,19 +1,16 @@
 @push('scripts-after')
-    <script src="{{asset('js/photo.book.editor.js')}}"></script>
+    <script src="{{asset('js/photo.editor.js')}}"></script>
 @endpush
 <div class="main-wrapper bg-divider">
-    <div class="wire-loading" wire:loading>
-{{--        <div>--}}
-{{--            <div class="lds-facebook"><div></div><div></div><div></div></div>--}}
-{{--        </div>--}}
+    <div class="wire-loading trans" wire:loading>
+        <div>
+            <div class="lds-facebook">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
 
-    </div>
-
-    <div class="logL">
-{{--        @dd($this->buttonSpreads[0]);--}}
-{{--        @dump($printout->toArray())--}}
-{{--        @dump(($this->oddSpread->toArray()))--}}
-{{--        @dump(($this->evenSpread->toArray()))--}}
     </div>
 
     <div class="mt-32 sm:my-64">
@@ -22,50 +19,53 @@
 
                 <h2 class="text-xl sm:text-2xl md:text-3xl font-black -translate-y-5">Фотокнига</h2>
 {{-- format --}}
-                <x-editor.select-format/>
+                <x-editor.a-row.select-format/>
+
 {{-- delete-block --}}
-                <x-editor.save-delete-block/>
+                <x-editor.a-row.save-delete-block/>
 
             </div>
+
 {{--spread-buttons--}}
-            <x-editor.spread-buttons/>
+            <x-editor.b-row.spread-buttons/>
 
             <div x-data="cropper" class="grid lg:grid-cols-[1fr,26rem] gap-20 xl:gap-40">
 {{--spread-editor--}}
-                <x-editor.spread-editor wire:key="spread-editor"/>
+                <x-editor.c-row.spread-editor wire:key="spread-editor"/>
 {{--photo-uploader--}}
-                <x-editor.photo-uploader/>
+                <x-editor.c-row.single-photo-uploader/>
             </div>
+
         </div>
     </div>
 
 {{--text-editor-modal--}}
-    <x-editor.text-editor-modal :open="$this->textModalOpen" :textModal="$this->textModal"/>
-    <x-editor.photo-editor-modal :open="$this->croppreModal" />
+    <x-editor.m-row.text-editor-modal :open="$this->textModalOpen" :textModal="$this->textModal"/>
+    <x-editor.m-row.spine-text-editor-modal :open="$this->spineTextModalOpen"/>
+    <x-editor.m-row.photo-editor-modal :open="$this->croppreModal" />
 
     <div class="bg-black pt-48 lg:pt-32 pb-50 text-white" x-data="{open:false}">
 
         <div class="container" :class="open ? 'cover-materials-active' : ''" @click.outside="open = false">
 {{--Все обложки--}}
-            <x-editor.layout-manager>
+            <x-editor.d-row.layout-manager>
                 <button
                     class="btn-base text-left field field--type-select field--sm field--rounded-sm cover-materials-toggler"
                     data-toggle="cover-materials" :class="open ? 'active' : ''"
                     x-on:click="open = !open">
                     Материал обложки
                 </button>
-            </x-editor.layout-manager>
+            </x-editor.d-row.layout-manager>
 {{--Материал обложки--}}
             <div class="cover-materials-list toggle-init " :class="open ? 'active' : ''">
-                <x-editor.layout-cover-material :spread="$this->printout->spread"/>
+                <x-editor.e-row.layout-cover-material/>
             </div>
-
             @if($printout->current_spread_nr)
 {{--Выберите макет разворота--}}
-                <x-editor.layout-spread-thumbs :spread="$printout->current_spread_nr % 2 ? $this->oddSpread : $this->evenSpread"/>
+                <x-editor.e-row.layout-spread-thumbs/>
             @else
 {{--Выберите макет обложки--}}
-                <x-editor.layout-cover-thumbs/>
+                <x-editor.e-row.layout-cover-thumbs/>
             @endif
 
         </div>

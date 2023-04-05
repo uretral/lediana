@@ -65,4 +65,6 @@
         </button>
         </a>
     @endif
+
+    <livewire:modals.is-size-correct/>
 </div>

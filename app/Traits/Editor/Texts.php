@@ -10,10 +10,12 @@ use App\Models\Printout\PrintoutText;
 trait Texts
 {
     public ?bool $textModalOpen = false;
+    public ?bool $spineTextModalOpen = false;
+    public string $spineText = '';
     public ?PrintoutText $textModal = null;
 
 
-    protected array $rules = [
+    protected array $rulesText = [
         'textModal.text' => '',
         'textModal.font_size' => '',
         'textModal.font_color' => '',
@@ -34,7 +36,6 @@ trait Texts
     {
         $res = $this->printout->texts()
             ->where('printout_id', $this->printout_id)
-            ->where('spread_nr', $spread->spread_nr)
             ->where('layout_id', $text->layout_id)
             ->where('layout_text_id', $text->id)
             ->first();
@@ -67,16 +68,34 @@ trait Texts
         }
     }
 
-    public function onTextEdit($spread_nr, $layout_id, $text_id)
+    public function spineEdit() {
+        $this->spineTextModalOpen = true;
+    }
+    public function spineEditClose() {
+        $this->spineTextModalOpen = false;
+    }
+    public function spineTextEdit() {
+        $this->printout->update([
+            'spine_text' => $this->spineText
+        ]);
+        $this->spineTextModalOpen = false;
+    }
+
+    public function onTextEdit($spread_id, $layout_id, $text_id)
     {
-//        dump($this->activeSpread);
-        if($this->activeSpread && $spread_nr ===  $this->activeSpread->spread_nr){
+//        dump('adfsdfsf',$spread_id, $layout_id, $text_id);
+        $this->textModalOpen = true;
+        $this->textModal = $this->printout->texts()->firstOrCreate([
+            'printout_id' => $this->printout->id, 'layout_id' => $layout_id,
+            'layout_text_id' => $text_id, 'spread_id' => $spread_id
+        ]);
+/*        if($this->printout->spread && $spread_nr ===  $this->activeSpread->spread_nr){
             $this->textModalOpen = true;
             $this->textModal = $this->printout->texts()->firstOrCreate([
                 'printout_id' => $this->printout->id, 'layout_id' => $layout_id,
                 'layout_text_id' => $text_id, 'spread_nr' => $spread_nr
             ]);
-        }
+        }*/
 
     }
 

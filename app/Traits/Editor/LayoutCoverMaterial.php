@@ -4,9 +4,10 @@ namespace App\Traits\Editor;
 
 trait LayoutCoverMaterial
 {
-    public function onSetCoverAttributes($cover_type_id, $material_id){
-        $this->printout->spread->cover_type_id = $cover_type_id;
-        $this->printout->spread->cover_material_id = $material_id;
-        $this->printout->spread->push();
+    public function onSetCoverAttributes($coverTypeId, $materialId, $spreadId){
+        $this->printout->spreads->find($spreadId)->update([
+            'cover_type_id' => $coverTypeId,
+            'cover_material_id' => $materialId,
+        ]);
     }
 }

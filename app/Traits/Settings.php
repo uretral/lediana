@@ -10,6 +10,7 @@ trait Settings
 {
     public function init(){
         $menus = MenuType::with('pages')->get();
+
         $result = [];
         foreach ($menus as $menu){
             $result[$menu->type] = $menu;

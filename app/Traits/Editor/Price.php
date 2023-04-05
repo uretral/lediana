@@ -16,7 +16,18 @@ trait Price
 
     public function getPriceProperty()
     {
+//        $price = 0;
+
+/*        if(in_array( $this->printout->product_id,[1,258147369])) {
+
+        } else {
+
+        }*/
+
         $this->attributes = $this->printout->spread->attributes ?? [];
+
+
+
         $this->spreadPrice = $this->printout->prices->where('copies', '<=', $this->circulation)->first()->getAttribute('price');
         $this->printout->cost = $this->spreadPrice * $this->printout->spreads->count() + $this->attributesPrice();
         $this->printout->push();
@@ -30,6 +41,11 @@ trait Price
             $sum += AttributePrice::find($attributeId)->getAttribute('price');
         }
         return $sum;
+    }
+
+
+    public function coverPrice() {
+
     }
 
 }

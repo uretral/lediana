@@ -1,17 +1,11 @@
 <div id="previews" class="bg-white lg:rounded -mx-container lg:mx-0 px-16 pt-32 pb-48 lg:pb-32">
 
+
     <div class="flex gap-16 mb-32">
-        <form wire:submit.prevent="save">
-            <input type="file" id="addPhotos" wire:model="tmpPhotos" multiple class="hidden">
-            @error('tmpPhotos.*') <span class="error">{{ $message }}</span> @enderror
+        <input type="file" id="addPhotos" wire:model="tmpPhotos" multiple class="hidden">
+        @error('tmpPhotos.*') <span class="error">{{ $message }}</span> @enderror
+        <label for="addPhotos" class="btn btn--md btn--primary flex-grow">Добавить фото</label>
 
-            @if ($this->tmpPhotos)
-                <button type="submit" class="btn btn--md btn--primary flex-grow">Добавить фото</button>
-            @else
-                <label for="addPhotos" class="btn btn--md btn--primary flex-grow">Выбрать фото</label>
-            @endif
-
-        </form>
         <button class="btn btn--md btn--secondary btn--icon" @click="ch">
             <svg aria-hidden="true" class="wh-20 fill-current">
                 <use href="/assets/svg/svg.svg#instagram"></use>

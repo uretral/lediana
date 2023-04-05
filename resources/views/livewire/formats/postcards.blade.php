@@ -5,12 +5,12 @@
     </div>
 
     <ul class="flex flex-wrap items-end gap-y-65 gap-x-20 lg:gap-x-40 mt-40">
-        <livewire:formats.format-link :sizes="$sizes" size="10×7" :slug="$slug"/>
-        <livewire:formats.format-link :sizes="$sizes" size="15×10" :slug="$slug"/>
-        <livewire:formats.format-link :sizes="$sizes" size="15×15" :slug="$slug"/>
+        <livewire:formats.format-link :sizes="$sizes" size="10×7" :slug="$slug" :layout="169"/>
+        <livewire:formats.format-link :sizes="$sizes" size="15×10" :slug="$slug" :layout="169"/>
+        <livewire:formats.format-link :sizes="$sizes" size="15×15" :slug="$slug" :layout="169"/>
         <div class="w-full flex sm:contents items-end gap-x-20">
-            <livewire:formats.format-link :sizes="$sizes" size="15×20" :slug="$slug"/>
-            <livewire:formats.format-link :sizes="$sizes" size="20×30" :slug="$slug"/>
+            <livewire:formats.format-link :sizes="$sizes" size="15×20" :slug="$slug" :layout="169"/>
+            <livewire:formats.format-link :sizes="$sizes" size="20×30" :slug="$slug" :layout="169"/>
         </div>
     </ul>
 
@@ -24,4 +24,5 @@
             </button>
         </a>
     @endif
+    <livewire:modals.is-size-correct/>
 </div>

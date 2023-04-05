@@ -10,7 +10,7 @@
             <div class="flex items-center mb-8 sm:mb-16">
                 <h2 class="text-xl sm:text-2xl md:text-3xl font-black -translate-y-5">Холст</h2>
                 {{--//--}}
-                <x-editor.select-format/>
+                <x-editor.a-row.select-format/>
                 {{--//--}}
                 <button class="below-lg:hidden btn btn--md btn--black btn--text" wire:click="changeOrientation()">
                     <svg aria-hidden="true" class="wh-24 mr-8 fill-current">
@@ -19,18 +19,18 @@
                     Сменить ориентацию
                 </button>
                 {{--//--}}
-                <x-editor.save-delete-block/>
+                <x-editor.a-row.save-delete-block/>
             </div>
 {{-- ROW 2--}}
 {{-- ROW 3--}}
             <div class="grid lg:grid-cols-[1fr,26rem] gap-20 xl:gap-40 mt-30 sm:mt-50" x-data="cropper">
 
                 {{--spread-editor--}}
-                <x-editor.single-spread-editor :arrows="false"/>
+                <x-editor.c-row.single-spread-editor :arrows="false"/>
 
                 <div>
                     {{--photo-uploader--}}
-                    <x-editor.single-photo-uploader/>
+                    <x-editor.c-row.single-photo-uploader/>
 
 
                     <ul class="grid grid-cols-1 gap-32 my-32 pb-20 lg:pb-0">

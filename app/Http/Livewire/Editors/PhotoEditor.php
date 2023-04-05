@@ -15,6 +15,7 @@ use App\Traits\Editor\SingleFileUploads;
 use App\Traits\Editor\SingleSpreadButton;
 use App\Traits\Editor\SingleSpreadComposer;
 use App\Traits\Editor\SpreadButtons;
+use App\Traits\Editor\ToCart;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -22,11 +23,20 @@ class PhotoEditor extends Component
 {
     use WithFileUploads;
 
+    // a-row
     use FormatSelector, Orientation, Save, Delete;
-    use SingleSpreadButton;
-    use SingleSpreadComposer, SingleFileUploads, Cropper;
 
-    use Price;
+    //b-row
+    use SingleSpreadButton;
+
+    //c-row
+    use SingleSpreadComposer, SingleFileUploads;
+
+    //d-row
+    use Price, ToCart;
+
+    //e-row
+    use Cropper;
 
     protected $rules = [
         'printout.spread.attributes'
@@ -48,17 +58,21 @@ class PhotoEditor extends Component
     public $coverHeight = 300;
     protected const DEFAULT_TEMPLATE_ID = 3;
 
+    public $viewData = [];
+
     public $testMess = '';
 
-    public function handle()
+
+    public function init(PrintoutService $service)
     {
-        $service = new PrintoutService();
         $this->printout = $service->get($this->printout_id);
+        if (config('app.env') === 'local')
+            $this->viewData = $this->printout->toArray();
     }
 
-    public function render()
+    public function render(PrintoutService $service)
     {
-        $this->handle();
+        $this->init($service);
         return view('livewire.editors.photo-editor', [
             'printout' => $this->printout
         ]);
